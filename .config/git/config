@@ -1,0 +1,11 @@
+# Git's per user config thing
+[core]
+    editor = gvim -v # neovim
+[user]
+    email = jessebot.noreply@protonmail.com
+    name = usernamesystems
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

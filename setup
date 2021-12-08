@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# Setup personal dotfiles
+current=$(pwd)
+confighome=${XDG_CONFIG_HOME:-$HOME/.config}
+datahome=${XDG_CONFIG_HOME:-$HOME/.local/share}
+
+mkdir -p $confighome
+
+mkdir -p $HOME/.vim 
+ln -sf $current/.vim/vimrc $HOME/.vim/vimrc
+
+mkdir -p $confighome/dwm
+ln -sf $current/.config/dwm/autostart.sh $confighome/dwm/autostart.sh
+
+mkdir -p $confighome/git
+ln -sf $current/.config/git/config $confighome/git/config
+
+mkdir -p $confighome/gtk-2.0
+ln -sf $current/.config/gtk-2.0/gtkrc $confighome/gtk-2.0/gtkrc
+
+mkdir -p $confighome/gtk-3.0
+ln -sf $current/.config/gtk-3.0/settings.ini $confighome/gtk-3.0/settings.ini
+
+mkdir -p $confighome/mpv
+ln -sf $current/.config/mpv/input.conf $confighome/mpv/input.conf
+ln -sf $current/.config/mpv/mpv.conf $confighome/mpv/mpv.conf
+
+mkdir -p $confighome/shell
+ln -sf $current/.config/shell/aliasrc $confighome/shell/aliasrc
+ln -sf $current/.config/shell/profile $confighome/shell/profile
+
+mkdir -p $confighome/sxhkd
+ln -sf $current/.config/sxhkd/sxhkdrc $confighome/sxhkd/sxhkdrc
+
+mkdir -p $datahome/icons/default
+ln -sf $current/.local/share/icons/default/index.theme $datahome/icons/default/index.theme
