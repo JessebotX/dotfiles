@@ -44,5 +44,9 @@ ln -sf $current/.config/sxhkd/sxhkdrc $confighome/sxhkd/sxhkdrc
 mkdir -p $confighome/tint2
 ln -sf $current/.config/tint2/tint2rc $confighome/tint2/tint2rc
 
+mkdir -p $confighome/x11
+ln -sf $current/.config/x11/.xinitrc $confighome/x11/.xinitrc
+ln -sf $current/.config/x11/.Xresources $confighome/x11/.Xresources
+
 mkdir -p $datahome/icons/default
 ln -sf $current/.local/share/icons/default/index.theme $datahome/icons/default/index.theme
