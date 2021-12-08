@@ -1,0 +1,9 @@
+#!/bin/sh
+
+picom &
+dunst &
+sxhkd &
+xwallpaper --zoom ~/.local/share/bg &
+
+tint2 &
+#exec openbox

@@ -26,12 +26,20 @@ mkdir -p $confighome/mpv
 ln -sf $current/.config/mpv/input.conf $confighome/mpv/input.conf
 ln -sf $current/.config/mpv/mpv.conf $confighome/mpv/mpv.conf
 
+mkdir -p $confighome/openbox
+ln -sf $current/.config/openbox/autostart $confighome/openbox/autostart
+ln -sf $current/.config/openbox/rc.xml $confighome/openbox/rc.xml
+ln -sf $current/.config/openbox/menu.xml $confighome/openbox/menu.xml
+
 mkdir -p $confighome/shell
 ln -sf $current/.config/shell/aliasrc $confighome/shell/aliasrc
 ln -sf $current/.config/shell/profile $confighome/shell/profile
 
 mkdir -p $confighome/sxhkd
 ln -sf $current/.config/sxhkd/sxhkdrc $confighome/sxhkd/sxhkdrc
+
+mkdir -p $confighome/tint2
+ln -sf $current/.config/tint2/tint2rc $confighome/tint2/tint2rc
 
 mkdir -p $datahome/icons/default
 ln -sf $current/.local/share/icons/default/index.theme $datahome/icons/default/index.theme
