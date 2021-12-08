@@ -10,7 +10,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # common aliases
-alias dotfiles="cd ~/repos/usernamesystems/dotfiles"
+alias dotfiles="cd ~/.config/dotfiles"
 alias scripts="cd ~/.local/bin/"
 alias e="~/.local/bin/edit ~"
 # alias d="cd $(dirname $(fzf))"
