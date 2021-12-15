@@ -9,6 +9,7 @@ export XDG_STATE_HOME="$HOME"/.local/state
 
 export DESKTOP="$HOME/Desktop"
 export DOCUMENTS="$HOME/Documents"
+export DOWNLOADS="$HOME/Downloads"
 export VIDEOS="$HOME/Videos"
 export MUSIC="$HOME/Music"
 export PICTURES="$HOME/Pictures"
