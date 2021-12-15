@@ -7,6 +7,18 @@ export XDG_CACHE_HOME="$HOME"/.cache
 export XDG_DATA_HOME="$HOME"/.local/share
 export XDG_STATE_HOME="$HOME"/.local/state
 
+export DESKTOP="$HOME/Desktop"
+export DOCUMENTS="$HOME/Documents"
+export VIDEOS="$HOME/Videos"
+export MUSIC="$HOME/Music"
+export PICTURES="$HOME/Pictures"
+export PUBLIC="$HOME/Public"
+export PRIVATE="$HOME/Private"
+export TEMPLATES="$HOME/Templates"
+export GAMES="$HOME/Games"
+export APPLICATIONS="$HOME/Applications"
+export REPOS="$HOME/repos"
+
 export LYNX_LSS="$XDG_CONFIG_HOME"/lynx/lynx.lss
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
