@@ -114,6 +114,11 @@ function NERDTreeToggleAndRefresh()
 	endif
 endfunction
 
+" 
+" VEM TABLINE
+"
+let g:vem_tabline_show_icon=0
+
 "
 " GOYO + LIMELIGHT
 "
