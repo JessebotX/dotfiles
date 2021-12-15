@@ -1,11 +1,18 @@
 #!/bin/sh
 
 # Setup personal dotfiles
+# DEPENDENCIES (mkdir with --parent option, ln)
 current=$(pwd)
 confighome=${XDG_CONFIG_HOME:-$HOME/.config}
 datahome=${XDG_CONFIG_HOME:-$HOME/.local/share}
+cachehome=${XDG_CACHE_HOME:-$HOME/.cache}
 
 mkdir -p $confighome
+
+# history file
+mkdir -p $cachehome/bash
+
+ln -sf $current/.bashrc $HOME/.bashrc
 
 mkdir -p $HOME/.vim 
 ln -sf $current/.vim/vimrc $HOME/.vim/vimrc
