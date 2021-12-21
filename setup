@@ -29,6 +29,9 @@ ln -sf $current/.config/gtk-2.0/gtkrc $confighome/gtk-2.0/gtkrc
 mkdir -p $confighome/gtk-3.0
 ln -sf $current/.config/gtk-3.0/settings.ini $confighome/gtk-3.0/settings.ini
 
+mkdir -p $confighome/lynx
+ln -sf $current/.config/lynx/lynx.lss $confighome/lynx/lynx.lss
+
 mkdir -p $confighome/mpv
 ln -sf $current/.config/mpv/input.conf $confighome/mpv/input.conf
 ln -sf $current/.config/mpv/mpv.conf $confighome/mpv/mpv.conf

@@ -9,18 +9,20 @@ if [ -x /usr/bin/dircolors ]; then
 	alias egrep='egrep --color=auto'
 fi
 
-# common aliases
+alias dot="cd ~/.config/dotfiles"
+alias dots="cd ~/.config/dotfiles"
 alias dotfiles="cd ~/.config/dotfiles"
 alias scripts="cd ~/.local/bin/"
-alias e="~/.local/bin/edit ~"
-# alias d="cd $(dirname $(fzf))"
-alias v="$EDITOR"
-alias vim="$EDITOR"
-alias nvim="$EDITOR"
-alias tm="trash-put"
 alias repos="cd ~/repos"
 alias txev="cd ~/repos/txev"
 alias user="cd ~/repos/usernamesystems"
+
+alias v="$EDITOR"
+alias vim="$EDITOR"
+alias nvim="$EDITOR"
+alias e="~/.local/bin/edit ~"
+alias tm="trash-put"
+alias '?'="~/.local/bin/search"
 
 # prevent accidental destructive commands
 alias rm="rm -i"
