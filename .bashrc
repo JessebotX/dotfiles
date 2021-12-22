@@ -6,23 +6,19 @@ esac
 # change history file location
 export HISTFILE="$XDG_CACHE_HOME/bash/history"
 
-# [user@hostname CURRENTDIR]$ 
-#export PS1="\e[1m\[\e[35m\][\[\e[31m\]\u\[\e[34m\]@\h \[\e[32m\]\W\[\e[35m\]]$\e[0m\[\e[39m\] "
-#export PS1="\[$(tput bold)\]\[\033[38;5;13m\][\[$(tput sgr0)\]\[\033[38;5;1m\]\u\[$(tput sgr0)\]\[\033[38;5;4m\]@\[$(tput sgr0)\]\[\033[38;5;41m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;3m\]\W\[$(tput sgr0)\]\[\033[38;5;13m\]]\\$\[$(tput sgr0)\]"
-
 # Draw prompt
-export PS1="\[\033[01;35m\]"
-export PS1=$PS1"["
-export PS1=$PS1"\[\033[01;31m\]"
-export PS1=$PS1"\u"
-export PS1=$PS1"\[\033[01;34m\]"
-export PS1=$PS1"@"
-export PS1=$PS1"\h "
-export PS1=$PS1"\[\033[01;32m\]"
-export PS1=$PS1"\W"
-export PS1=$PS1"\[\033[01;35m\]"
-export PS1=$PS1"]$ "
-export PS1=$PS1"\[\033[00;39m\]"
+export PS1="\[\033[01;35m\]"		# magenta bold
+export PS1=$PS1"["					# [
+export PS1=$PS1"\[\033[01;31m\]"	# red bold
+export PS1=$PS1"\u"					# username (ie. user)
+export PS1=$PS1"\[\033[01;34m\]"	# blue bold
+export PS1=$PS1"@"					# @
+export PS1=$PS1"\h "					# hostname
+export PS1=$PS1"\[\033[01;32m\]"	# green bold
+export PS1=$PS1"\W"					# current working directory basename
+export PS1=$PS1"\[\033[01;35m\]" # magenta bold
+export PS1=$PS1"]$ "					# ]
+export PS1=$PS1"\[\033[00;39m\]"	# default regular
 
 bind 'set show-all-if-ambiguous on'
 bind 'set completion-ignore-case on'
