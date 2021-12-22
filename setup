@@ -6,8 +6,18 @@ current=$(pwd)
 confighome=${XDG_CONFIG_HOME:-$HOME/.config}
 datahome=${XDG_CONFIG_HOME:-$HOME/.local/share}
 cachehome=${XDG_CACHE_HOME:-$HOME/.cache}
+templatesdir=${XDG_TEMPLATES_DIR:-$HOME/Templates}
 
 mkdir -p $confighome
+
+# XDG TEMPLATES DIRECTORY
+[ ! -d $templatesdir ] && mkdir -p $templatesdir
+
+[ ! -d $templatesdir/snippets ] && mkdir -p $templatesdir/snippets
+[ ! -d $templatesdir/licenses ] && mkdir -p $templatesdir/licenses
+ln -sf $current/Templates/licenses $templatesdir/licenses
+ln -sf $current/Templates/snippets $templatesdir/snippets
+
 
 # history file
 mkdir -p $cachehome/bash
