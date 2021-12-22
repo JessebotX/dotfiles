@@ -1,23 +1,31 @@
 #!/bin/sh
 
-# Setup personal dotfiles
-# DEPENDENCIES (mkdir with --parent option, ln)
+# Setup personal dotfiles/system
+# DEPENDENCIES (git, mkdir with --parent option, ln, touch)
 current=$(pwd)
 confighome=${XDG_CONFIG_HOME:-$HOME/.config}
 datahome=${XDG_CONFIG_HOME:-$HOME/.local/share}
 cachehome=${XDG_CACHE_HOME:-$HOME/.cache}
 templatesdir=${XDG_TEMPLATES_DIR:-$HOME/Templates}
-
-mkdir -p $confighome
+localbin="$HOME/.local/bin"
+remotegiturl="git@usernamesystems.xyz"
+remotepubgitdir="/var/www/git"
 
 # XDG TEMPLATES DIRECTORY
 [ ! -d $templatesdir ] && mkdir -p $templatesdir
 
-[ ! -d $templatesdir/snippets ] && mkdir -p $templatesdir/snippets
-[ ! -d $templatesdir/licenses ] && mkdir -p $templatesdir/licenses
+[ -d $templatesdir/snippets ] && rm -rf $templatesdir/snippets
+[ -d $templatesdir/licenses ] && rm -rf $templatesdir/licenses
 ln -sf $current/Templates/licenses $templatesdir/licenses
 ln -sf $current/Templates/snippets $templatesdir/snippets
 
+# SETUP SCRIPTS DIR
+[ ! -d $localbin ] && mkdir -p $localbin
+cd $localbin && git clone $remotegiturl:$remotepubgitdir/bin ./ || echo "Seems like $localbin has already been setup"
+cd $current
+
+# DOTFILES
+mkdir -p $confighome
 
 # history file
 mkdir -p $cachehome/bash
