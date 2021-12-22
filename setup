@@ -47,6 +47,8 @@ ln -sf $current/.config/picom/picom.conf $confighome/picom/picom.conf
 mkdir -p $confighome/shell
 ln -sf $current/.config/shell/aliasrc $confighome/shell/aliasrc
 ln -sf $current/.config/shell/profile $confighome/shell/profile
+# for different environments, may require different envvars set
+touch $confighome/shell/machinerc 
 
 mkdir -p $confighome/sxhkd
 ln -sf $current/.config/sxhkd/sxhkdrc $confighome/sxhkd/sxhkdrc
