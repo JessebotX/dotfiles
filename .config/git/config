@@ -1,9 +1,9 @@
 # Git's per user config thing
 [core]
-    editor = gvim -v # neovim
+    editor = gvim -v
 [user]
     email = jessebot.noreply@protonmail.com
-    name = usernamesystems
+    name = Jesse
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
