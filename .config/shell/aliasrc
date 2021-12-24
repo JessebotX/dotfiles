@@ -40,17 +40,4 @@ if [ -x "$(command -v doas)" ]; then
 	alias sudo="doas"
 fi
 
-########################
-# STARTUP APPLICATIONS #
-########################
-
-# start pfetch/fastfetch/neofetch
-#if [ -x "$(command -v pfetch)" ]; then
-	#pfetch
-#elif [ -x "$(command -v fastfetch)" ]; then
-	#fastfetch
-#else
-	#neofetch
-#fi
-
 
