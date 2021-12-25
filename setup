@@ -2,19 +2,31 @@
 
 # Setup personal dotfiles/system
 # DEPENDENCIES (git, mkdir with --parent option, ln, touch)
+
 current=$(pwd)
 confighome=${XDG_CONFIG_HOME:-$HOME/.config}
 datahome=${XDG_CONFIG_HOME:-$HOME/.local/share}
 cachehome=${XDG_CACHE_HOME:-$HOME/.cache}
-templatesdir=${XDG_TEMPLATES_DIR:-$HOME/Templates}
+
 documentsdir=${XDG_DOCUMENTS_DIR:-$HOME/Documents}
+downloadsdir=${XDG_DOWNLOADS_DIR:-$HOME/Downloads}
+musicdir=${XDG_PICTURES_DIR:-$HOME/Music}
+publicdir=${XDG_PUBLIC_DIR:-$HOME/Public}
 picturesdir=${XDG_PICTURES_DIR:-$HOME/Pictures}
+templatesdir=${XDG_TEMPLATES_DIR:-$HOME/Templates}
+videosdir=${XDG_PICTURES_DIR:-$HOME/Videos}
+reposdir=${REPOS_DIR:-$HOME/repos}
+gamesdir=${GAMES_DIR:-$HOME/Games}
+applicationsdir=${APPLICATIONS_DIR:-$HOME/Applications}
+
 localbin="$HOME/.local/bin"
 remotegiturl="git@usernamesystems.xyz"
 remoteprivgitdir="privaterepos"
 remotepubgitdir="/var/www/git"
 
+#
 # XDG TEMPLATES DIRECTORY
+#
 [ ! -d $templatesdir ] && mkdir -p $templatesdir
 
 [ -d $templatesdir/snippets ] && rm -rf $templatesdir/snippets
@@ -22,16 +34,22 @@ remotepubgitdir="/var/www/git"
 ln -sf $current/Templates/licenses $templatesdir/licenses
 ln -sf $current/Templates/snippets $templatesdir/snippets
 
+#
 # SETUP DOCUMENTS/NOTES DIR
+#
 git clone $remotegiturl:$remoteprivgitdir/notes $documentsdir/notes/ || \
 	echo "Seems like $documentsdir/notes has already been setup"
 
+#
 # SETUP SCRIPTS DIR
+#
 [ ! -d $localbin ] && mkdir -p $localbin
 git clone $remotegiturl:$remotepubgitdir/bin $localbin || \
 	echo "Seems like $localbin has already been setup"
 
+#
 # DOTFILES
+#
 mkdir -p $confighome
 
 # history file
@@ -41,9 +59,9 @@ ln -sf $current/.bashrc $HOME/.bashrc
 
 mkdir -p $HOME/.vim 
 ln -sf $current/.vim/vimrc $HOME/.vim/vimrc
-# install vim plug
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# install vim plugins in .vim/setuppackages
+$current/.vim/setuppackages
+ln -sf $current/.vim/setuppackages $HOME/.vim/setuppackages
 
 mkdir -p $confighome/dwm
 ln -sf $current/.config/dwm/autostart.sh $confighome/dwm/autostart.sh
