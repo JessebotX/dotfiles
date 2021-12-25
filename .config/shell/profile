@@ -41,7 +41,7 @@ export PF_COL3=1
 #
 export FFF_HIDDEN=1
 export FFF_TRASH=$HOME/.local/share/trash
-export FFF_FILE_FORMAT="\t%f"
+export FFF_FILE_FORMAT=" %f"
 export FFF_MARK_FORMAT="> %f*"
 
 export GOPATH="$XDG_DATA_HOME"/go 
