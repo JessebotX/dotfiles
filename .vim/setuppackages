@@ -2,10 +2,12 @@
 
 # Requires ~/.local/bin/vimpkg to be in PATH
 
-vimpkg i morhetz/gruvbox
-vimpkg i mhinz/vim-startify
-vimpkg i pacha/vem-tabline
-vimpkg i preservim/nerdtree
-vimpkg i junegunn/goyo.vim
-vimpkg i junegunn/limelight.vim
-#vimpkg i ryanoasis/vim-devicons
+com="$HOME/.local/bin/vimpkg"
+
+$com i morhetz/gruvbox
+$com i mhinz/vim-startify
+$com i pacha/vem-tabline
+$com i preservim/nerdtree
+$com i junegunn/goyo.vim
+$com i junegunn/limelight.vim
+#$com i ryanoasis/vim-devicons

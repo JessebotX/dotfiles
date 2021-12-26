@@ -57,7 +57,7 @@ mkdir -p $cachehome/bash
 
 ln -sf $current/.bashrc $HOME/.bashrc
 
-mkdir -p $HOME/.vim 
+mkdir -p $HOME/.vim
 ln -sf $current/.vim/vimrc $HOME/.vim/vimrc
 # install vim plugins in .vim/setuppackages
 $current/.vim/setuppackages
@@ -94,7 +94,7 @@ mkdir -p $confighome/shell
 ln -sf $current/.config/shell/aliasrc $confighome/shell/aliasrc
 ln -sf $current/.config/shell/profile $confighome/shell/profile
 # for different environments, may require different envvars set
-touch $confighome/shell/machinerc 
+touch $confighome/shell/machinerc
 
 mkdir -p $confighome/sxhkd
 ln -sf $current/.config/sxhkd/sxhkdrc $confighome/sxhkd/sxhkdrc
