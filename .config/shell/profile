@@ -46,7 +46,7 @@ export FFF_MARK_FORMAT="> %f*"
 # 
 # shfm
 #
-export SHFM_OPENER="/home/user/.local/bin/shfm-open"
+export SHFM_OPENER="$HOME/.local/bin/shfmrifle"
 
 export GOPATH="$XDG_DATA_HOME"/go 
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
