@@ -39,7 +39,6 @@ set shiftwidth=0 " make it always = tabstop
 "
 " THEMING
 "
-set guifont=JetBrainsMono\ Nerd\ Font
 if (has('termguicolors'))
 	set termguicolors
 endif
@@ -148,7 +147,7 @@ endfunction
 " CURSOR
 "
 let &t_SI = "\<Esc>[2 q"
-let &t_SR = "\<Esc>[2 q"
+let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
 
 " Change cursor shape for iTerm2 on macOS {
@@ -156,14 +155,14 @@ let &t_EI = "\<Esc>[2 q"
 " inside iTerm2
 if $TERM_PROGRAM =~# 'iTerm'
 	let &t_SI = "\<Esc>]50;CursorShape=0\x7"
-	let &t_SR = "\<Esc>]50;CursorShape=0\x7"
+	let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 	let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
 " inside tmux
 if exists('$TMUX') && $TERM != 'xterm-kitty'
 	let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-	let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+	let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
 	let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 endif
 

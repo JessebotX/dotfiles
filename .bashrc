@@ -18,7 +18,7 @@ export PS1=$PS1"\[\033[01;32m\]"	# green bold
 export PS1=$PS1"\W"					# current working directory basename
 export PS1=$PS1"\[\033[01;35m\]" # magenta bold
 export PS1=$PS1"]$ "					# ]
-export PS1=$PS1"\[\033[00;37m\]"	# default regular
+export PS1=$PS1"\[\033[00m\]"	# default regular
 
 bind 'set show-all-if-ambiguous on'
 bind 'set completion-ignore-case on'
