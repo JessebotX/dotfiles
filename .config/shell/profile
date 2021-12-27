@@ -70,5 +70,5 @@ export PATH="$PATH:$XDG_DATA_HOME/cargo/env:$XDG_DATA_HOME/cargo/bin"
 
 # SHFM
 f() {
-	cd "$(shfm)"
+	shfm && cd "$(cat ${XDG_CACHE_HOME:-$HOME/.cache}/shfm/exitpath)"
 }
