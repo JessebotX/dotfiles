@@ -3,7 +3,7 @@
 # Setup personal dotfiles/system
 # DEPENDENCIES (git, mkdir with --parent option, ln, touch)
 
-current=$(pwd)
+current=$PWD
 confighome=${XDG_CONFIG_HOME:-$HOME/.config}
 datahome=${XDG_CONFIG_HOME:-$HOME/.local/share}
 cachehome=${XDG_CACHE_HOME:-$HOME/.cache}
@@ -62,6 +62,10 @@ ln -sf $current/.vim/vimrc $HOME/.vim/vimrc
 # install vim plugins in .vim/setuppackages
 $current/.vim/setuppackages
 ln -sf $current/.vim/setuppackages $HOME/.vim/setuppackages
+
+mkdir -p $confighome/alacritty
+ln -sf $current/.config/alacritty/alacritty.yml \
+  	$confighome/alacritty/alacritty.yml
 
 mkdir -p $confighome/dwm
 ln -sf $current/.config/dwm/autostart.sh $confighome/dwm/autostart.sh
