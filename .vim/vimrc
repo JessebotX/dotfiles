@@ -24,7 +24,6 @@ set matchtime=5
 set scrolloff=5
 set splitright
 set splitbelow
-set cursorline
 set nu
 set rnu
 set linebreak
@@ -43,11 +42,14 @@ if (has('termguicolors'))
 	set termguicolors
 endif
 
-let g:gruvbox_italic=1
-let g:gruvbox_contrast_dark="soft"
+if (isdirectory(expand("~/.vim/pack")))
+	let g:gruvbox_italic=1
+	let g:gruvbox_contrast_dark="soft"
 
-colors gruvbox
-hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
+	set cursorline
+	colors gruvbox
+	hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
+endif
 
 "
 " GENERAL COMMANDS
@@ -65,83 +67,85 @@ nmap <Leader>h :bp<CR>
 nmap <Leader>l :bn<CR>
 nmap <Leader>k :bd<CR>
 
-"
-" VIM STARTIFY
-"
-let g:ascii = [
-			\ '  ______                           ',
-			\ ' |  ____|                          ',
-			\ ' | |__   _ __ ___   __ _  ___ ___  ',
-			\ ' |  __| | |_ ` _ \ / _` |/ __/ __| ',
-			\ ' | |____| | | | | | (_| | (__\__ \ ',
-			\ ' |______|_| |_| |_|\__,_|\___|___/ ',
-			\ ]                   
-let g:startify_custom_header = g:ascii
+if (isdirectory(expand("~/.vim/pack"))) 
+	"
+	" VIM STARTIFY
+	"
+	let g:ascii = [
+				\ '  ______                           ',
+				\ ' |  ____|                          ',
+				\ ' | |__   _ __ ___   __ _  ___ ___  ',
+				\ ' |  __| | |_ ` _ \ / _` |/ __/ __| ',
+				\ ' | |____| | | | | | (_| | (__\__ \ ',
+				\ ' |______|_| |_| |_|\__,_|\___|___/ ',
+				\ ]                   
+	let g:startify_custom_header = g:ascii
 
-let g:startify_lists = [
-			\ { 'type': 'bookmarks', 'header': ['']      },
-			\ ]
-let g:startify_bookmarks = [ 
-			\ {'a': "./"}, 
-			\ {'h': "~/"}, 
-			\ {'c': "~/.vim/vimrc"}, 
-			\ {'r': "~/repos"},
-			\ ]
-let g:startify_enable_special = 0
+	let g:startify_lists = [
+				\ { 'type': 'bookmarks', 'header': ['']      },
+				\ ]
+	let g:startify_bookmarks = [ 
+				\ {'a': "./"}, 
+				\ {'h': "~/"}, 
+				\ {'c': "~/.vim/vimrc"}, 
+				\ {'r': "~/repos"},
+				\ ]
+	let g:startify_enable_special = 0
 
-"
-" NERDTREE
-"
-nmap <C-x>tt :call NERDTreeToggleAndRefresh()<CR>
+	"
+	" NERDTREE
+	"
+	nmap <C-x>tt :call NERDTreeToggleAndRefresh()<CR>
 
-let NERDTreeShowHidden = 1
+	let NERDTreeShowHidden = 1
 
-function NERDTreeToggleAndRefresh()
-	:NERDTreeToggle
-	if g:NERDTree.IsOpen()
-		:NERDTreeRefreshRoot
-	endif
-endfunction
+	function NERDTreeToggleAndRefresh()
+		:NERDTreeToggle
+		if g:NERDTree.IsOpen()
+			:NERDTreeRefreshRoot
+		endif
+	endfunction
 
-" 
-" VEM TABLINE
-"
-let g:vem_tabline_show_icon=0
+	" 
+	" VEM TABLINE
+	"
+	let g:vem_tabline_show_icon=0
 
-"
-" GOYO + LIMELIGHT
-"
-let g:goyo_width = 80
+	"
+	" GOYO + LIMELIGHT
+	"
+	let g:goyo_width = 80
 
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
+	autocmd! User GoyoEnter nested call <SID>goyo_enter()
+	autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
-nmap <leader>tb :Goyo<CR>
+	nmap <leader>tb :Goyo<CR>
 
-function! s:goyo_enter()
-	" something to do with tmux
-	if executable('tmux') && strlen($TMUX)
-		silent !tmux set status off
-		silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
-	endif
-	Limelight " focus (limelight.vim)
-	set scrolloff=999 " typewriter style centered cursor
-	set noshowmode " don't show mode
-	set colorcolumn=0 " hide vertical ruler
-endfunction
+	function! s:goyo_enter()
+		" something to do with tmux
+		if executable('tmux') && strlen($TMUX)
+			silent !tmux set status off
+			silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+		endif
+		Limelight " focus (limelight.vim)
+		set scrolloff=999 " typewriter style centered cursor
+		set noshowmode " don't show mode
+		set colorcolumn=0 " hide vertical ruler
+	endfunction
 
-" commands to call after exiting Goyo mode
-function! s:goyo_leave()
-	" something to do with tmux
-	if executable('tmux') && strlen($TMUX)
-		silent !tmux set status on
-		silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
-	endif
-	Limelight! " turn off limelight
-	set scrolloff=5 " set scroll margin to 5
-	set showmode " show mode
-	set colorcolumn=80 " show vertical ruler
-endfunction
+	" commands to call after exiting Goyo mode
+	function! s:goyo_leave()
+		" something to do with tmux
+		if executable('tmux') && strlen($TMUX)
+			silent !tmux set status on
+			silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+		endif
+		Limelight! " turn off limelight
+		set scrolloff=5 " set scroll margin to 5
+		set showmode " show mode
+		set colorcolumn=80 " show vertical ruler
+	endfunction
+endif
 
 "
 " CURSOR
