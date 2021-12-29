@@ -1,8 +1,3 @@
-case $- in
-	*i*) ;; # interactive
-	*) return ;; 
-esac
-
 # change history file location
 export HISTFILE="$XDG_CACHE_HOME/bash/history"
 
@@ -10,7 +5,7 @@ export HISTFILE="$XDG_CACHE_HOME/bash/history"
 export PS1="\[\033[01;35m\]"		# magenta bold
 export PS1=$PS1"["					# [
 export PS1=$PS1"\[\033[01;31m\]"	# red bold
-export PS1=$PS1"\u"					# username (ie. user)
+export PS1=$PS1"$USER"					# username (ie. user)
 export PS1=$PS1"\[\033[01;34m\]"	# blue bold
 export PS1=$PS1"@"					# @
 export PS1=$PS1"\h "					# hostname
@@ -29,10 +24,10 @@ bind 'TAB:menu-complete'
 
 set -o vi
 
+# profiles/envvars/aliases
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/profile" ] && \
-  	source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/profile"
+  	. "${XDG_CONFIG_HOME:-$HOME/.config}/shell/profile"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && \
-	source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
+	. "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/machinerc" ] && \
-  	source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/machinerc"
-
+  	. "${XDG_CONFIG_HOME:-$HOME/.config}/shell/machinerc"

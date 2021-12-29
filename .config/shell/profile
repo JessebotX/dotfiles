@@ -1,5 +1,5 @@
 # main EDITOR
-export EDITOR="gvim -v"
+export EDITOR="vim"
 
 # User Directories
 export XDG_CONFIG_HOME="$HOME"/.config

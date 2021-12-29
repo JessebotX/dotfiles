@@ -57,6 +57,8 @@ mkdir -p $cachehome/bash
 
 ln -sf $current/.bashrc $HOME/.bashrc
 
+ln -sf $current/.profile $HOME/.profile
+
 mkdir -p $HOME/.vim
 ln -sf $current/.vim/vimrc $HOME/.vim/vimrc
 # install vim plugins in .vim/setuppackages
