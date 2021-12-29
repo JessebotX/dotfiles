@@ -111,6 +111,9 @@ ln -sf $current/.config/sxhkd/sxhkdrc $confighome/sxhkd/sxhkdrc
 mkdir -p $confighome/tint2
 ln -sf $current/.config/tint2/tint2rc $confighome/tint2/tint2rc
 
+mkdir -p $confighome/tmux
+ln -sf $current/.config/tmux/tmux.conf $confighome/tmux/tmux.conf
+
 mkdir -p $confighome/x11
 ln -sf $current/.config/x11/.xinitrc $confighome/x11/.xinitrc
 ln -sf $current/.config/x11/.Xresources $confighome/x11/.Xresources
