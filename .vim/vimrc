@@ -6,6 +6,8 @@ syntax on
 set clipboard^=unnamed,unnamedplus
 
 set nocompatible
+set autoindent
+set autoread
 set history=10000
 set hlsearch
 set hidden
