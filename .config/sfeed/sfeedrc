@@ -1,0 +1,11 @@
+sfeedpath="${XDG_STATE_HOME:-$HOME/.local/state}/sfeed/feeds"
+[ ! -d $sfeedpath ] && mkdir -p $sfeedpath
+
+feeds() {
+	# feed <name> <feedurl> [basesiteurl] [encoding]
+	feed "lukesmith blog" "https://lukesmith.xyz/rss.xml" "https://lukesmith.xyz"
+	feed "lukesmith videos" "https://videos.lukesmith.xyz/feeds/videos.xml?sort=-publishedAt" "https://lukesmith.xyz"
+	feed "archlinux news" "https://archlinux.org/feeds/news/" "https://archlinux.org"
+	feed "debian news" "https://www.debian.org/News/news" "https://www.debian.org"
+	feed "reddit r/linux" "https://www.reddit.com/r/linux/"
+}

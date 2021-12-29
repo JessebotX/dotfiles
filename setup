@@ -94,6 +94,9 @@ ln -sf $current/.config/openbox/menu.xml $confighome/openbox/menu.xml
 mkdir -p $confighome/picom
 ln -sf $current/.config/picom/picom.conf $confighome/picom/picom.conf
 
+mkdir -p $confighome/sfeed
+ln -sf $current/.config/sfeed/sfeedrc $confighome/sfeed/sfeedrc
+
 mkdir -p $confighome/shell
 ln -sf $current/.config/shell/aliasrc $confighome/shell/aliasrc
 ln -sf $current/.config/shell/profile $confighome/shell/profile
