@@ -2,18 +2,8 @@
 export HISTFILE="$XDG_CACHE_HOME/bash/history"
 
 # Draw prompt
-export PS1="\[\033[01;35m\]"		# magenta bold
-export PS1=$PS1"["					# [
-export PS1=$PS1"\[\033[01;31m\]"	# red bold
-export PS1=$PS1"$USER"					# username (ie. user)
-export PS1=$PS1"\[\033[01;34m\]"	# blue bold
-export PS1=$PS1"@"					# @
-export PS1=$PS1"\h "					# hostname
-export PS1=$PS1"\[\033[01;32m\]"	# green bold
-export PS1=$PS1"\W"					# current working directory basename
-export PS1=$PS1"\[\033[01;35m\]" # magenta bold
-export PS1=$PS1"]$ "					# ]
-export PS1=$PS1"\[\033[00m\]"	# default regular
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/prompt" ] && \
+  	. "${XDG_CONFIG_HOME:-$HOME/.config}/shell/prompt"
 
 bind 'set show-all-if-ambiguous on'
 bind 'set completion-ignore-case on'

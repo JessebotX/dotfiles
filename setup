@@ -102,6 +102,7 @@ ln -sf $current/.config/sfeed/sfeedrc $confighome/sfeed/sfeedrc
 mkdir -p $confighome/shell
 ln -sf $current/.config/shell/aliasrc $confighome/shell/aliasrc
 ln -sf $current/.config/shell/profile $confighome/shell/profile
+ln -sf $current/.config/shell/prompt $confighome/shell/prompt
 # for different environments, may require different envvars set
 touch $confighome/shell/machinerc
 
