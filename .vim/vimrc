@@ -33,8 +33,7 @@ set wrap
 
 set colorcolumn=80
 " tab width
-set tabstop=3
-set softtabstop=3
+set tabstop=8
 set shiftwidth=0 " make it always = tabstop
 
 "
