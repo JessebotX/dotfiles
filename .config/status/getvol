@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# print current volume
+# REQUIRES:
+# - amixer
+# - awk
+
+
+amixer get Master | awk 'NR==6{print $5" "$6}'

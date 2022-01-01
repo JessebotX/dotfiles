@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Get computer memory usage
+# REQUIRES:
+# - free
+# - awk
+
+free -h | awk 'NR==2{print $3}'

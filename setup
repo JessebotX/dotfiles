@@ -106,6 +106,12 @@ ln -sf $current/.config/shell/prompt $confighome/shell/prompt
 # for different environments, may require different envvars set
 touch $confighome/shell/machinerc
 
+mkdir -p $confighome/status
+ln -sf $current/.config/status/getmem $confighome/status/getmem
+ln -sf $current/.config/status/getvol $confighome/status/getvol
+ln -sf $current/.config/status/getping $confighome/status/getping
+ln -sf $current/.config/status/getdt $confighome/status/getdt
+
 mkdir -p $confighome/sxhkd
 ln -sf $current/.config/sxhkd/sxhkdrc $confighome/sxhkd/sxhkdrc
 

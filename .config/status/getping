@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Get ping from some website (default artixlinux.org)
+# REQUIRES
+# - ping
+# - awk
+
+pingloc="${1:-artixlinux.org}"
+
+ping -c 1 "$pingloc" | awk -F'=' 'NR==2{print $NF}'
