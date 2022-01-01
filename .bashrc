@@ -8,8 +8,8 @@ export HISTFILE="$XDG_CACHE_HOME/bash/history"
 bind 'set show-all-if-ambiguous on'
 bind 'set completion-ignore-case on'
 bind 'set show-mode-in-prompt on'
-bind 'set vi-cmd-mode-string "[c]"'
-bind 'set vi-ins-mode-string "[i]"'
+bind 'set vi-cmd-mode-string ""'
+bind 'set vi-ins-mode-string ""'
 bind 'TAB:menu-complete'
 
 set -o vi
