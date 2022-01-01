@@ -1,7 +1,5 @@
 #!/bin/sh
 
-picom -b &
+picom -b --no-fading-openclose &
 xrdb -merge ~/.config/x11/.Xresources &
-sxhkd &
-xwallpaper --zoom ~/.config/wallpaper
 dwmblocks &
