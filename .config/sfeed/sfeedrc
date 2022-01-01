@@ -8,4 +8,5 @@ feeds() {
 	feed "archlinux news" "https://archlinux.org/feeds/news/" "https://archlinux.org"
 	feed "debian news" "https://www.debian.org/News/news" "https://www.debian.org"
 	feed "reddit r/linux" "https://www.reddit.com/r/linux/"
+	feed "suckless" "http://suckless.org/atom.xml" "http://suckless.org"
 }
