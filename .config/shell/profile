@@ -30,6 +30,7 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 #export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
 #export XSERVERRC="$XDG_CONFIG_HOME"/X11/xserverrc
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+export CFLAGS='-Wall -Wextra -Werror'
 
 export TERM=xterm-256color
 
