@@ -18,6 +18,7 @@
 #define base0E     #c678dd
 #define base0F     #be5046
 
+*.font:            monospace:pixelsize=12
 *.foreground:      base05
 *.background:      base00
 *.cursorColor:     base05

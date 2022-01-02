@@ -12,16 +12,16 @@ super + p
 	dmenu_run -b -l 10 -h 30
 
 super + shift + minus
-	amixer set Master 2%-; kill -44 $(pidof dwmblocks)
+	amixer set Master 1%-; kill -44 $(pidof dwmblocks)
 
 super + shift + equal
-	amixer set Master 2%+; kill -44 $(pidof dwmblocks)
+	amixer set Master 1%+; kill -44 $(pidof dwmblocks)
 
 XF86AudioLowerVolume
-	amixer set Master 2%-; kill -44 $(pidof dwmblocks)
+	amixer set Master 1%-; kill -44 $(pidof dwmblocks)
 
 XF86AudioRaiseVolume
-	amixer set Master 2%+; kill -44 $(pidof dwmblocks)
+	amixer set Master 1%+; kill -44 $(pidof dwmblocks)
 
 XF86AudioMute 
 	amixer set Master toggle; kill -44 $(pidof dwmblocks)
