@@ -111,6 +111,11 @@ ln -sf $current/.config/status/getmem $confighome/status/getmem
 ln -sf $current/.config/status/getvol $confighome/status/getvol
 ln -sf $current/.config/status/getping $confighome/status/getping
 ln -sf $current/.config/status/getdt $confighome/status/getdt
+ln -sf $current/.config/status/getbat $confighome/status/getbat
+
+mkdir -p $confighome/sway
+ln -sf $current/.config/sway/config $confighome/sway/config
+ln -sf $current/.config/sway/statusbar $confighome/sway/statusbar
 
 mkdir -p $confighome/sxhkd
 ln -sf $current/.config/sxhkd/sxhkdrc $confighome/sxhkd/sxhkdrc

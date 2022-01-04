@@ -1,0 +1,5 @@
+#!/bin/sh
+
+battery="$(cat /sys/class/power_supply/BAT0/capacity)"
+
+[ ! -z $battery ] && echo $battery

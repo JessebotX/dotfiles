@@ -1,0 +1,12 @@
+#!/bin/sh
+
+statusdir=${XDG_CONFIG_HOME:-$HOME/.config}/status
+while true; do
+	date=$($statusdir/getdt)
+	ping=$($statusdir/getping)
+	vol=$($statusdir/getvol)
+	mem=$($statusdir/getmem)
+	bat=$($statusdir/getbat)
+
+	echo "Mem: $mem | Net: $ping | Vol: $vol | Bat: $bat | Date: $date"
+done
