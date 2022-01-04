@@ -1,6 +1,6 @@
 # Git's per user config thing
 [core]
-    editor = gvim -v
+    editor = vim
 [user]
     email = username.git@posteo.net
     name = Jesse
