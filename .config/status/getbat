@@ -1,5 +1,6 @@
 #!/bin/sh
 
 battery="$(cat /sys/class/power_supply/BAT0/capacity)"
+state="$(cat /sys/class/power_supply/BAT0/status)"
 
-[ ! -z $battery ] && echo $battery
+[ ! -z $battery ] && echo "$battery% [$state]"
