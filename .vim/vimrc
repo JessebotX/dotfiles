@@ -68,6 +68,13 @@ nmap <Leader>h :bp<CR>
 nmap <Leader>l :bn<CR>
 nmap <Leader>k :bd<CR>
 
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+nmap <C-x>tt :Vexplore<CR>
+
 if (isdirectory(expand("~/.vim/pack"))) 
 	"
 	" VIM STARTIFY
@@ -92,20 +99,6 @@ if (isdirectory(expand("~/.vim/pack")))
 				\ {'r': "~/repos"},
 				\ ]
 	let g:startify_enable_special = 0
-
-	"
-	" NERDTREE
-	"
-	nmap <C-x>tt :call NERDTreeToggleAndRefresh()<CR>
-
-	let NERDTreeShowHidden = 1
-
-	function NERDTreeToggleAndRefresh()
-		:NERDTreeToggle
-		if g:NERDTree.IsOpen()
-			:NERDTreeRefreshRoot
-		endif
-	endfunction
 
 	" 
 	" VEM TABLINE

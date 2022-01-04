@@ -7,7 +7,7 @@ com="$HOME/.local/bin/vimpkg"
 $com i morhetz/gruvbox
 $com i mhinz/vim-startify
 $com i pacha/vem-tabline
-$com i preservim/nerdtree
+#$com i preservim/nerdtree
 $com i junegunn/goyo.vim
 $com i junegunn/limelight.vim
 #$com i ryanoasis/vim-devicons
