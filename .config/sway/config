@@ -85,6 +85,7 @@ bindsym $mod+p exec $menu
 # Change volume
 bindsym XF86AudioRaiseVolume exec amixer set Master 1%+
 bindsym XF86AudioLowerVolume exec amixer set Master 1%-
+bindsym XF86AudioMute exec amixer set Master toggle
 bindsym Shift+XF86AudioRaiseVolume exec amixer set Master 5%+
 bindsym Shift+XF86AudioLowerVolume exec amixer set Master 5%-
 bindsym $mod+equal exec amixer set Master 1%+
@@ -236,7 +237,8 @@ bar {
 	colors {
 		statusline #ffffff
 		background #0e0e0e
-		inactive_workspace #32323200 #32323200 #5c5c5c
+		inactive_workspace #0e0e0e #0e0e0e #808080
+		focused_workspace #808080 #808080 #000000
 	}
 }
 
