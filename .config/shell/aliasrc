@@ -20,6 +20,7 @@ alias txev="cd $REPOS/txev"
 alias user="cd $REPOS/usernamesystems"
 
 alias v="$EDITOR"
+alias vi="$EDITOR"
 alias vim="$EDITOR"
 alias nvim="$EDITOR"
 alias e="$SCRIPTS/edit ~"
