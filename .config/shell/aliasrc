@@ -9,6 +9,8 @@ if [ -x /usr/bin/dircolors ]; then
 	alias egrep='egrep --color=auto'
 fi
 
+alias game="cd $REPOS/txev/fractus"
+
 alias dot="cd $XDG_CONFIG_HOME/dotfiles"
 alias dots="cd $XDG_CONFIG_HOME/dotfiles"
 alias dotfiles="cd $XDG_CONFIG_HOME/dotfiles"
