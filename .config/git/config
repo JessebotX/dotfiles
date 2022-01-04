@@ -2,7 +2,7 @@
 [core]
     editor = gvim -v
 [user]
-    email = jessebot.noreply@protonmail.com
+    email = username.git@posteo.net
     name = Jesse
 [filter "lfs"]
 	clean = git-lfs clean -- %f
