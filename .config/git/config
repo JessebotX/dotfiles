@@ -1,9 +1,9 @@
 # Git's per user config thing
 [core]
-    editor = vim
+	editor = vim
 [user]
-    email = username.git@posteo.net
-    name = Jesse
+	email = username.git@posteo.net
+	name = Jesse
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
