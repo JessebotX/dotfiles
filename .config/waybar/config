@@ -1,0 +1,134 @@
+// Global 
+{
+	"layer": "top",   
+	"position": "top",
+	// If height property would be not present, it'd be calculated dynamically
+	"height": 15,
+	"width" : 00,
+
+	"modules-left": [
+		"sway/workspaces",
+		"sway/mode",
+	],
+
+	"modules-center": [     
+		"clock",
+	],
+
+	"modules-right": [
+		"network",
+		"memory",
+		"pulseaudio",
+		"battery",
+		"tray",
+	],
+
+	// Modules
+
+
+	"idle_inhibitor": {
+		"format": "{icon} ",
+		"format-icons":{
+			"activated": "",
+			"deactivated": ""
+
+		}
+	},
+
+	"battery": {
+		"states": {
+			// "good": 95,
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{capacity}% {icon}",
+		"format-charging": "{capacity}% ",
+		"format-plugged": "{capacity}% ",
+		// "format-good": "", // An empty format will hide the module
+		// "format-full": "",
+		"format-icons": ["", "", "", "", ""]
+	},
+
+	"clock": {
+		"interval": 10,
+		"format": "{: %a %b %d, %-l:%M %p}",
+		"tooltip-format": "{:%A, %B %d %Y}"
+	},
+
+	"cpu": {
+		"interval": 5,
+		"format": "  {usage}% ({load})", // Icon: microchip
+		"states": {
+			"warning": 70,
+			"critical": 90,
+		},
+		"on-click": "foot -e 'htop'",
+	},
+
+	"memory": {
+		"interval": 5,
+		"format": " {}%", // Icon: memory
+		"on-click": "foot -e 'htop'", 
+		"states": {
+			"warning": 70,
+			"critical": 90
+		}
+	},
+
+	"network": {
+		"interval": 5,
+		"format-wifi": " {essid} ({signalStrength}%)", // Icon: wifi
+		"format-ethernet": " {ifname}: {ipaddr}/{cidr}", // Icon: ethernet
+		"format-disconnected": "⚠ Disconnected",
+		"tooltip-format": "{ifname}: {ipaddr}",
+		"on-click": "foot -e 'nmtui'",
+	},
+	"network#vpn": {
+		"interface": "tun0",
+		"format": "  {essid} ({signalStrength}%)",
+		"format-disconnected": "⚠  Disconnected",
+		"tooltip-format": "{ifname}: {ipaddr}/{cidr}",          
+	},
+
+	"sway/mode": {
+		"format": "{}",
+		"tooltip": false
+	},
+
+	"sway/window": {
+		"format": "{}",
+		"max-length": 120
+	},
+
+	"sway/workspaces": {
+		"disable-scroll": true,
+		"disable-markup" : false,
+		"all-outputs": true,
+		"format": "{icon}",
+		//"format":"{icon}",
+		//"format-icons": {
+		//	"1": "",
+		//	"2": "",
+		//	"3": "",
+		//	"4": "",
+		//}
+	},
+	"pulseaudio": {
+		"scroll-step": 1, // %, can be a float
+		"format": " {volume}%",
+		"format-bluetooth": "{volume}%  {format_source}",
+		"format-bluetooth-muted": "  {format_source}",
+		"format-muted": "婢{format_source}",
+		"format-source": "{volume}% ",
+		"format-source-muted": "",
+		"on-click": "pavucontrol",
+		"on-scroll-up": "pamixer -ui 2",
+		"on-scroll-down": "pamixer -ud 2",
+	},
+
+	"tray": {
+		"icon-size": 18,
+		"spacing":10,
+	},
+}
+

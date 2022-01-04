@@ -229,20 +229,24 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-	position top
+	swaybar_command waybar
+}
+
+#bar {
+#	position top
 
 	# When the status_command prints a new line to stdout, swaybar updates.
 	# The default just shows the current date and time.
-	status_command \
-		${XDG_CONFIG_HOME:-$HOME/.config}/sway/statusbar
-
-	colors {
-		statusline #ffffff
-		background #0e0e0e
-		inactive_workspace #0e0e0e #0e0e0e #808080
-		focused_workspace #808080 #808080 #000000
-	}
-}
+#	status_command \
+#		${XDG_CONFIG_HOME:-$HOME/.config}/sway/statusbar
+#
+#	colors {
+#		statusline #ffffff
+#		background #0e0e0e
+#		inactive_workspace #0e0e0e #0e0e0e #808080
+#		focused_workspace #808080 #808080 #000000
+#	}
+#}
 
 # no borders
 default_border pixel
