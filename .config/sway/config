@@ -234,9 +234,9 @@ bar {
 
 #bar {
 #	position top
-
-	# When the status_command prints a new line to stdout, swaybar updates.
-	# The default just shows the current date and time.
+#
+#	# When the status_command prints a new line to stdout, swaybar updates.
+#	# The default just shows the current date and time.
 #	status_command \
 #		${XDG_CONFIG_HOME:-$HOME/.config}/sway/statusbar
 #
@@ -248,8 +248,13 @@ bar {
 #	}
 #}
 
+smart_borders on
+gaps outer 8
+
 # no borders
 default_border pixel
 default_floating_border pixel
+
+client.focused #282828 #808080 #ffffff
 
 include /etc/sway/config.d/*

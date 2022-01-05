@@ -12,29 +12,6 @@
 
 @define-color highlight #5294e2 ;
 
-@keyframes blink-warning {
-	70% {
-		color: white;
-	}
-
-	to {
-		color: white;
-		background-color: orange;
-	}
-}
-
-@keyframes blink-critical {
-	70% {
-		color: white;
-	}
-
-	to {
-		color: white;
-		background-color: red;
-	}
-}
-
-
 /* -----------------------------------------------------------------------------
  * Base styles
  * -------------------------------------------------------------------------- */
@@ -50,7 +27,7 @@
 
 /* The whole bar */
 #waybar {
-	background: transparent;
+	background: #0e0e0e;
 	color: white;
 	font-family: UbuntuMono;
 }
@@ -94,20 +71,6 @@
 	color: red;
 }
 
-#battery.warning.discharging {
-	animation-name: blink-warning;
-	animation-duration: 3s;
-}
-
-#battery.critical.discharging {
-	animation-name: blink-critical;
-	animation-duration: 2s;
-}
-
-#cpu{
-
-}
-
 #cpu.warning {
 	color: orange;
 }
@@ -146,9 +109,6 @@
 	color: orange;
 }
 
-#pulseaudio{
-} 
-
 #pulseaudio.muted {
 	color: @highlight; 
 }
@@ -157,24 +117,18 @@
 	color: red;
 }
 
-#window {
-	font-weight: bold;
-}
-
-
 #workspaces{
 	background: #0e0e0e;
 	border-radius: 50px;
 	margin: 0;
 }
 #workspaces button {
-	color: #808080;
+	color: white;
 	margin: 0;
 }
 
 #workspaces button.focused {
-	color: black;
-	background: #808080;
+	color: black; background: #808080;
 	margin: 0;
 }
 
