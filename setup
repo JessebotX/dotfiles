@@ -88,6 +88,9 @@ ln -sf $current/.config/gtk-2.0/gtkrc $confighome/gtk-2.0/gtkrc
 mkdir -p $confighome/gtk-3.0
 ln -sf $current/.config/gtk-3.0/settings.ini $confighome/gtk-3.0/settings.ini
 
+mkdir -p $confighome/imv
+ln -sf $current/.config/imv/config $confighome/imv/config
+
 mkdir -p $confighome/lynx
 ln -sf $current/.config/lynx/lynx.lss $confighome/lynx/lynx.lss
 
