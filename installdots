@@ -1,6 +1,14 @@
 #!/bin/sh
 
 # work in progress script to install dotfiles
+# REQUIRES:
+# - ln
+# - find
+# - dirname
+# - echo
+# - mkdir
+# - sed
+# - mv
 
 mv .git ../ || err "Not enough perms to install dots"
 
