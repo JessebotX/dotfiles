@@ -55,6 +55,11 @@ export FFF_MARK_FORMAT="> %f*"
 #
 export SHFM_OPENER="$HOME/.local/bin/shfmrifle"
 
+# cd-on-exit
+f() {
+	shfm && cd "$(cat ${XDG_CACHE_HOME:-$HOME/.cache}/shfm/exitpath)"
+}
+
 export GOPATH="$XDG_DATA_HOME"/go 
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 
@@ -62,20 +67,3 @@ export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export PATH="$PATH:$HOME/.local/bin/:/usr/sbin/:/usr/local/sbin/:/sbin/:$HOME/.local/share/applications/:$GOPATH/bin"
 export PATH="$PATH:$XDG_DATA_HOME/cargo/env:$XDG_DATA_HOME/cargo/bin"
 
-########################
-# STARTUP APPLICATIONS #
-########################
-
-# start pfetch/fastfetch/neofetch
-#if [ -x "$(command -v pfetch)" ]; then
-	#pfetch
-#elif [ -x "$(command -v fastfetch)" ]; then
-	#fastfetch
-#else
-	#neofetch
-#fi
-
-# SHFM
-f() {
-	shfm && cd "$(cat ${XDG_CACHE_HOME:-$HOME/.cache}/shfm/exitpath)"
-}
