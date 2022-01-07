@@ -21,7 +21,6 @@ alias user="cd $REPOS/usernamesystems"
 
 alias vi="$EDITOR"
 alias vim="$EDITOR"
-alias nvim="$EDITOR"
 alias e="$SCRIPTS/edit ~"
 alias '?'="$SCRIPTS/search"
 alias sxiv="nsxiv"
