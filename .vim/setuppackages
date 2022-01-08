@@ -5,6 +5,7 @@
 com="$HOME/.local/bin/vimpkg"
 
 $com i morhetz/gruvbox
+$com i plasticboy/vim-markdown
 $com i mhinz/vim-startify
 $com i pacha/vem-tabline
 #$com i preservim/nerdtree
