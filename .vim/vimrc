@@ -5,6 +5,7 @@ syntax on
 
 set clipboard^=unnamed,unnamedplus
 
+set conceallevel=2
 set nocompatible
 set autoindent
 set autoread
@@ -75,6 +76,10 @@ let g:netrw_winsize = 15
 nmap <C-x>tt :Vexplore<CR>
 
 if (isdirectory(expand("~/.vim/pack"))) 
+	"
+	" VIM MARKDOWN
+	"
+	let g:vim_markdown_folding_disabled = 1	
 	"
 	" VIM STARTIFY
 	"
