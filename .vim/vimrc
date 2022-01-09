@@ -77,10 +77,10 @@ nmap <C-x>tt :Vexplore<CR>
 
 if (isdirectory(expand("~/.vim/pack"))) 
 	"
-	" VIM MARKDOWN
+	" NERDTREE
 	"
-	let g:vim_markdown_folding_disabled = 1	
-	let g:vim_markdown_new_list_item_indent = 0
+	nmap <leader>tt :NERDTree<CR>
+	let NERDTreeShowHidden=1	
 
 	"
 	" VIM STARTIFY

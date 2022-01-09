@@ -8,7 +8,8 @@ $com i morhetz/gruvbox
 $com i plasticboy/vim-markdown
 $com i mhinz/vim-startify
 $com i pacha/vem-tabline
-#$com i preservim/nerdtree
+$com i preservim/nerdtree
+$com i preservim/nerdcommenter
 $com i junegunn/goyo.vim
 $com i junegunn/limelight.vim
 #$com i ryanoasis/vim-devicons
