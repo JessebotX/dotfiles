@@ -102,7 +102,7 @@ if (isdirectory(expand("~/.vim/pack")))
 				\ {'a': "./"}, 
 				\ {'h': "~/"}, 
 				\ {'c': "~/.vim/vimrc"}, 
-				\ {'r': "~/repos"},
+				\ {'r': "~/Repos"},
 				\ ]
 	let g:startify_enable_special = 0
 
