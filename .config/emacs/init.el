@@ -118,8 +118,7 @@
   :init
   (setq dashboard-set-heading-icons t)
   (setq dashboard-set-file-icons t)
-  (setq dashboard-banner-logo-title "Neovim")
-  ;;(setq dashboard-startup-banner "~/.config/emacs/dashboard.png")
+  (setq dashboard-startup-banner "~/.config/emacs/dashboard.png")
   (setq dashboard-center-content nil)
   (setq dashboard-items '((recents . 3)
 			  (bookmarks . 5)
@@ -183,6 +182,7 @@
 
 (setq display-time-format "%a %b %d, %-l:%M"
       display-time-default-load-average nil)
+(display-time-mode)
 
 ;;
 ;; DOOM THEMES
