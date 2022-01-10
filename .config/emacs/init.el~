@@ -6,19 +6,22 @@
 ;;
 (setq inhibit-startup-message t) ; Stop displaying stupid emacs startpage
 
+(set-default-coding-systems 'utf-8)
 (menu-bar-mode -1)               ; Disable menubar
 (scroll-bar-mode -1)             ; Disable scrollbar
 (tool-bar-mode -1)               ; Disable toolbar 
 (tooltip-mode -1)                ; Disable tooltips
 (set-fringe-mode 10)             ; margins 
+(global-visual-line-mode)
 ;; display line numbers
 (column-number-mode)
 (global-display-line-numbers-mode t)
 
-(setq scroll-conservatively 101) ;; value greater than 100 gets rid of half page jumping
+;;(setq scroll-conservatively 101) ;; value greater than 100 gets rid of half page jumping
 (setq mouse-wheel-scroll-amount '(3 ((shift) . 3))) ;; how many lines at a time
 (setq mouse-wheel-progressive-speed t) ;; accelerate scrolling
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+(setq scroll-step 1) ;; keyboard scroll one line at a time
 (setq scroll-margin 5) ;; scroll off 5
 
 ;; Disable line numbers for some modes
@@ -26,6 +29,7 @@
 		term-mode-hook
 		treemacs-mode-hook
 		shell-mode-hook
+		markdown-mode-hook
 		eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
@@ -176,6 +180,9 @@
   :ensure t
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
+
+(setq display-time-format "%a %b %d, %-l:%M"
+      display-time-default-load-average nil)
 
 ;;
 ;; DOOM THEMES
@@ -392,7 +399,7 @@
   :commands (lsp lsp-deferred)
   :hook (lsp-mode . user/lsp-mode-setup)
   :init
-  (setq lsp-keymap-prefix "SPC l")
+  (setq lsp-keymap-prefix "C-c l")
   :config
   (lsp-enable-which-key-integration t))
 
