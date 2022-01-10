@@ -3,7 +3,7 @@
 	editor = vim
 [user]
 	email = username.git@posteo.net
-	name = Jesse
+	name = iii...iii
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
