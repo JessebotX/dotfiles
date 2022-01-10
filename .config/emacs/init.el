@@ -37,7 +37,6 @@
 ;; make ESC quit prompts like C-g
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
-(set-face-attribute 'default nil :font "JetBrainsMono Nerd Font" :height 200)
 ;;
 ;; FAST STARTUP
 ;;
