@@ -13,6 +13,7 @@
 (tooltip-mode -1)                ; Disable tooltips
 (set-fringe-mode 10)             ; margins 
 (global-visual-line-mode)
+
 ;; display line numbers
 (column-number-mode)
 (global-display-line-numbers-mode t)
