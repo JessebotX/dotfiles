@@ -50,6 +50,13 @@ export FFF_TRASH=$HOME/.local/share/trash
 export FFF_FILE_FORMAT="%f"
 export FFF_MARK_FORMAT="> %f*"
 
+# Add this to your .bashrc, .zshrc or equivalent.
+# Run 'fff' with 'f' or whatever you decide to name the function.
+fm() {
+    fff "$@"
+    cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"
+}
+
 # 
 # shfm
 #
