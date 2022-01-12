@@ -45,12 +45,17 @@ if (has('termguicolors'))
 endif
 
 if (isdirectory(expand("~/.vim/pack")))
-	let g:gruvbox_italic=1
-	let g:gruvbox_contrast_dark="soft"
+	if (!has('termguicolors'))
+		let g:gruvbox_termcolors=16
+	elseif (has('termguicolors'))
+		let g:gruvbox_italic=1
+		let g:gruvbox_contrast_dark="soft"
+	endif
 
 	set cursorline
 	colors gruvbox
 	hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
+	hi link CursorLine CursorColumn
 endif
 
 "
