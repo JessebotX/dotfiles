@@ -120,7 +120,7 @@
 		"format": " {volume}%",
 		"format-bluetooth": "{volume}%  {format_source}",
 		"format-bluetooth-muted": "  {format_source}",
-		"format-muted": "婢{format_source}",
+		"format-muted": "婢 {format_source}",
 		"format-source": "{volume}% ",
 		"format-source-muted": "",
 		"on-click": "pavucontrol",
