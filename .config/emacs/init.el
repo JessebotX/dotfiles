@@ -24,6 +24,7 @@
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 (setq scroll-step 1) ;; keyboard scroll one line at a time
 (setq scroll-margin 5) ;; scroll off 5
+(setq create-lockfiles nil)
 
 ;; Disable line numbers for some modes
 (dolist (mode '(org-mode-hook
@@ -367,6 +368,7 @@
     "h" 'dired-single-up-directory
     "l" 'dired-single-buffer
     "f" 'dired-create-empty-file
+    "." 'dired-hide-dotfiles-mode
     "n" 'dired-create-directory))
 
 (use-package dired-single
