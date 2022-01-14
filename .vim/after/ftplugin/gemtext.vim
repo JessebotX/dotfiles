@@ -12,8 +12,8 @@ vmap 0 g0
 vmap dd g0dg$
 vmap yy g0yg$
 
-set nonu nornu
-set colorcolumn=
+setlocal nonu nornu
+setlocal colorcolumn=
 
 
 if (isdirectory(expand("~/.vim/pack"))) 
@@ -24,8 +24,8 @@ if (isdirectory(expand("~/.vim/pack")))
 			silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
 		endif
 		Limelight " focus (limelight.vim)
-		set scrolloff=999 " typewriter style centered cursor
-		set noshowmode " don't show mode
+		setlocal scrolloff=999 " typewriter style centered cursor
+		setlocal noshowmode " don't show mode
 	endfunction
 
 	" commands to call after exiting Goyo mode
@@ -36,7 +36,7 @@ if (isdirectory(expand("~/.vim/pack")))
 			silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
 		endif
 		Limelight! " turn off limelight
-		set scrolloff=5 " set scroll margin to 5
-		set showmode " show mode
+		setlocal scrolloff=5 " set scroll margin to 5
+		setlocal showmode " show mode
 	endfunction
 endif

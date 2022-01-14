@@ -1,4 +1,4 @@
-set tabstop=2
-set softtabstop=2
-set expandtab
-set nonu nornu
+setlocal tabstop=2
+setlocal softtabstop=2
+setlocal expandtab
+setlocal nonu nornu
