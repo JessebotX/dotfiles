@@ -52,7 +52,6 @@ if (isdirectory(expand("~/.vim/pack")))
 		let g:gruvbox_contrast_dark="soft"
 	endif
 
-	set cursorline
 	colors gruvbox
 	hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 	hi link CursorLine CursorColumn
