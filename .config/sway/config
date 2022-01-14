@@ -249,7 +249,7 @@ bar {
 #}
 
 smart_borders on
-gaps outer 8
+gaps outer 10
 
 # no borders
 default_border pixel
