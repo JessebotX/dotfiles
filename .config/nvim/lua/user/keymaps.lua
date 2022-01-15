@@ -32,9 +32,9 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
-keymap("n", "<leader>l", ":bn<CR>", opts)
-keymap("n", "<leader>h", ":bp<CR>", opts)
-keymap("n", "<leader>k", ":bd<CR>", opts)
+keymap("n", "<S-l>", ":bn<CR>", opts)
+keymap("n", "<S-h>", ":bp<CR>", opts)
+keymap("n", "<S-k>", ":bd<CR>", opts)
 
 -- Visual --
 -- Stay in indent mode
