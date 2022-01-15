@@ -13,14 +13,14 @@
 mv .git ../ || err "Not enough perms to install dots"
 
 current=$PWD
-last=$(find $current) 
+dots=$(find $current) 
 
 err() {
 	printf 'ERROR: %s\n' $1
 	exit 1
 }
 
-for i in $last; do
+for i in $dots; do
 	if [ ! -d $i -a $i != "$current/installdots" -a $i != "$current/README" -a $i != "$current/setup" ]
 	then
 		file="$(echo $i | sed "s|$current|$HOME|g")"
