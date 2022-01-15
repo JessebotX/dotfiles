@@ -44,6 +44,7 @@ if (has('termguicolors'))
 	set termguicolors
 endif
 
+
 if (isdirectory(expand("~/.vim/pack")))
 	if (!has('termguicolors'))
 		let g:gruvbox_termcolors=16
@@ -87,10 +88,29 @@ nmap <C-c>     <C-w>c
 vmap <         <gv
 vmap >         >gv
 
+" netrw (not in use)
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_winsize = 15
 
+" FILETYPE SPECIFIC
+au Filetype markdown,pandoc,html,css setlocal tabstop=2 expandtab softtabstop=2
+au Filetype gemtext setlocal colorcolumn=
+au Filetype gemtext nmap <buffer> j  gj
+au Filetype gemtext nmap <buffer> k  gk
+au Filetype gemtext nmap <buffer> $  g$
+au Filetype gemtext nmap <buffer> 0  g0
+au Filetype gemtext nmap <buffer> dd g0dg$
+au Filetype gemtext nmap <buffer> yy g0yg$
+au Filetype gemtext vmap <buffer> j  gj
+au Filetype gemtext vmap <buffer> k  gk
+au Filetype gemtext vmap <buffer> $  g$
+au Filetype gemtext vmap <buffer> 0  g0
+au Filetype gemtext vmap <buffer> dd g0dg$
+au Filetype gemtext vmap <buffer> yy g0yg$
+
+" Plugins
+" Using vim8 package manager
 if (isdirectory(expand("~/.vim/pack"))) 
 	"
 	" NERDTREE
