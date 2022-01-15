@@ -21,7 +21,7 @@ err() {
 }
 
 for i in $dots; do
-	if [ ! -d $i -a $i != "$current/installdots" -a $i != "$current/README" -a $i != "$current/setup" ]
+	if [ ! -d $i -a $i != "$current/installdots" -a $i != "$current/README.md" -a $i != "$current/setup" ]
 	then
 		file="$(echo $i | sed "s|$current|$HOME|g")"
 		directory="$(dirname $file)"
