@@ -27,6 +27,7 @@ local options = {
 	tabstop          = 8,
 	smartindent      = true,
 	cursorline       = false,
+	--colorcolumn      = 80
 	numberwidth      = 4,
 	signcolumn       = "no",
 	wrap             = true,
