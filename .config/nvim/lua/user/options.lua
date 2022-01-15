@@ -48,11 +48,16 @@ end
 
 -- color scheme
 vim.cmd [[
-let g:gruvbox_italic=1
-let g:gruvbox_contrast_dark="soft"
-colorscheme gruvbox
-hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
-hi link CursorLine CursorColumn
+try
+	let g:gruvbox_italic=1
+	let g:gruvbox_contrast_dark="soft"
+	colorscheme gruvbox
+	hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
+	hi link CursorLine CursorColumn
+catch /^Vim\%((\a\+)\)\=:E185/
+	colorscheme default
+	set background=dark
+endtry
 ]]
 
 -- netrw
