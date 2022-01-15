@@ -55,10 +55,7 @@ return packer.startup(function(use)
 	use "windwp/nvim-autopairs"
 	use "lewis6991/gitsigns.nvim"
 	use "akinsho/bufferline.nvim"
-	use {
-		'kyazdani42/nvim-tree.lua',
-		config = function() require'nvim-tree'.setup {} end
-	}
+	use 'kyazdani42/nvim-tree.lua'
 	use 'glepnir/dashboard-nvim'
 	use 'nvim-lualine/lualine.nvim'
 
