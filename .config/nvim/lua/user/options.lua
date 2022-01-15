@@ -40,7 +40,6 @@ local options = {
 
 opt.shortmess:append "c"
 opt.iskeyword:append "-"
-opt.whichwrap:append "<,>,[,],h,l"
 
 for k, v in pairs(options) do
 	opt[k] = v
