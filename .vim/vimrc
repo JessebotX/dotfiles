@@ -72,9 +72,9 @@ let g:mapleader=" "
 vmap p         dP
 
 " buffers
-nmap <Leader>h :bp<CR>
-nmap <Leader>l :bn<CR>
-nmap <Leader>k :bd<CR>
+nmap <S-h>     :bp<CR>
+nmap <S-l>     :bn<CR>
+nmap <S-k>     :bd<CR>
 
 " window navigation
 nmap <C-h>     <C-w>h
