@@ -49,9 +49,11 @@ end
 -- color scheme
 vim.cmd [[
 try
-	let g:gruvbox_italic=1
-	let g:gruvbox_contrast_dark="soft"
-	colorscheme gruvbox
+	set termguicolors
+	let g:gruvbox_material_enable_italic = 1
+	let g:gruvbox_material_background="soft"
+	set background=dark
+	colorscheme gruvbox-material
 	hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 	hi link CursorLine CursorColumn
 catch /^Vim\%((\a\+)\)\=:E185/
