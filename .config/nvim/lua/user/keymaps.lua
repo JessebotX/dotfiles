@@ -34,7 +34,7 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 -- Navigate buffers
 keymap("n", "<S-l>", ":bn<CR>", opts)
 keymap("n", "<S-h>", ":bp<CR>", opts)
-keymap("n", "<S-k>", ":bd<CR>", opts)
+keymap("n", "<S-k>", ":Bdelete<CR>", opts)
 
 -- Visual --
 -- Stay in indent mode

@@ -61,6 +61,7 @@ return packer.startup(function(use)
 	use 'nvim-telescope/telescope-media-files.nvim'
 	use 'goolord/alpha-nvim'
 	use "ahmedkhalf/project.nvim"
+	use 'famiu/bufdelete.nvim'
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
