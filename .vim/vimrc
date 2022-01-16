@@ -32,6 +32,11 @@ set rnu
 set linebreak
 set wrap
 
+" new backup and swap directories
+set backupdir="~/.vim/backup//"
+set directory="~/.vim/swap//"
+set undodir="~/.vim/undo//"
+
 set colorcolumn=80
 " tab width
 set tabstop=8
