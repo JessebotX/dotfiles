@@ -33,9 +33,9 @@ set linebreak
 set wrap
 
 " new backup and swap directories
-set backupdir="~/.vim/backup//"
-set directory="~/.vim/swap//"
-set undodir="~/.vim/undo//"
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
 
 set colorcolumn=80
 " tab width
@@ -75,7 +75,7 @@ let mapleader=" "
 let g:mapleader=" "
 
 " better copypaste
-vmap p         dP
+"vmap p         dP
 
 " buffers
 nmap <S-h>     :bp<CR>
