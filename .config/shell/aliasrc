@@ -19,6 +19,7 @@ alias r="cd $REPOS"
 alias repos="cd $REPOS"
 alias txev="cd $REPOS/txev"
 alias user="cd $REPOS/usernamesystems"
+alias test="cd ${TESTING:-$HOME/Repos/testinggrounds}"
 
 alias vi="$EDITOR"
 alias vim="$EDITOR"

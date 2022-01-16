@@ -22,6 +22,7 @@ export GAMES="$HOME/Games"
 export APPLICATIONS="$HOME/Applications"
 export REPOS="$HOME/Repos"
 export SCRIPTS="$HOME/.local/bin"
+export TESTING="$HOME/Repos/testinggrounds"
 
 # application configs
 export LYNX_LSS="$XDG_CONFIG_HOME"/lynx/lynx.lss
