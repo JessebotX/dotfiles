@@ -27,7 +27,6 @@ local options = {
 	tabstop          = 8,
 	smartindent      = true,
 	cursorline       = false,
-	--colorcolumn      = 80
 	numberwidth      = 4,
 	signcolumn       = "no",
 	wrap             = true,
@@ -45,6 +44,9 @@ for k, v in pairs(options) do
 	opt[k] = v
 end
 
+vim.cmd [[
+set colorcolumn=80
+]]
 
 -- color scheme
 vim.cmd [[
@@ -53,8 +55,8 @@ try
 	let g:gruvbox_material_enable_italic = 1
 	let g:gruvbox_material_background="soft"
 	set background=dark
-	colorscheme gruvbox-material
-	hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
+	colorscheme onedark
+	"hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 	hi link CursorLine CursorColumn
 catch /^Vim\%((\a\+)\)\=:E185/
 	colorscheme default

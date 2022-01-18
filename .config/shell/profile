@@ -71,6 +71,6 @@ export GOPATH="$XDG_DATA_HOME"/go
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 
 # PATH
-export PATH="$PATH:$HOME/.local/bin/:/usr/sbin/:/usr/local/sbin/:/sbin/:$HOME/.local/share/applications/:$GOPATH/bin"
+export PATH="$PATH:$HOME/.local/bin:/usr/sbin:/usr/local/sbin:$GOPATH/bin"
 export PATH="$PATH:$XDG_DATA_HOME/cargo/env:$XDG_DATA_HOME/cargo/bin"
 
