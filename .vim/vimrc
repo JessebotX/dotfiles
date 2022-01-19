@@ -95,13 +95,13 @@ vmap >         >gv
 
 " netrw (not in use)
 let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_winsize = 15
+" let g:netrw_liststyle = 3
+" let g:netrw_winsize = 15
 
 " KEYMAP WILL BE OVERWRITTEN BY NERDTREE
-if (!isdirectory(expand("~/.vim/pack")))
+"if (!isdirectory(expand("~/.vim/pack")))
 	nmap <leader>e :Lex 20<CR>
-endif
+"endif
 
 " FILETYPE SPECIFIC
 au Filetype markdown,pandoc,html,css setlocal tabstop=2 expandtab softtabstop=2
@@ -125,8 +125,8 @@ if (isdirectory(expand("~/.vim/pack")))
 	"
 	" NERDTREE
 	"
-	nmap <leader>e :NERDTreeToggle<CR>
-	let NERDTreeShowHidden=1	
+	"nmap <leader>e :NERDTreeToggle<CR>
+	"let NERDTreeShowHidden=1	
 
 	"
 	" VIM STARTIFY
