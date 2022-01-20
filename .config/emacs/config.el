@@ -5,6 +5,25 @@
 (setq inhibit-startup-message t) ; disable emacs start page
 
 ;;
+;; STARTUP DASHBOARD
+;;
+(use-package dashboard
+  :init
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-file-icons t)
+  (setq dashboard-banner-logo-title "Emacs")
+  (setq dashboard-startup-banner 'logo)  ;; use custom image as banner
+  (setq dashboard-items '((recents . 5)
+                          (bookmarks . 3)
+                          (projects . 3)))
+  :config
+  (dashboard-setup-startup-hook)
+  (dashboard-modify-heading-icons '((recents . "file-text")
+                                    (bookmarks . "book"))))
+
+(setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
+
+;;
 ;; AUTO UPDATE PACKAGES
 ;;
 (use-package auto-package-update
@@ -63,10 +82,41 @@
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
 
+(display-time-mode 1)
+
 ;;
 ;; GENERAL EDITING
 ;;
 (delete-selection-mode t) ; delete selected text when typingn
+
+;;
+;; RAINBOW DELIMITERS
+;;
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
+
+;;
+;; CODE COMMENTING
+;;
+(use-package evil-nerd-commenter
+  :bind ("M-/" . evilnc-comment-or-uncomment-lines))
+
+;;
+;; SCROLLING
+;;
+(setq scroll-step 1)
+(setq scroll-conservatively 10000)
+(setq auto-window-vscroll nil)
+(setq scroll-margin 5)
+;; scroll one line at a time (less "jumpy" than defaults)
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+
+;;
+;; KEYBOARD
+;;
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 ;;
 ;; IVY AND COUNSEL
@@ -87,7 +137,9 @@
          ("C-k" . ivy-previous-line)
          ("C-d" . ivy-reverse-i-search-kill))
   :config
-  (ivy-mode 1))
+  (ivy-mode 1)
+  ;; remove ^ prefix so it can start looking anywhere in the string
+  (setq ivy-initial-inputs-alist nil))
 
 (use-package ivy-rich
   :after ivy
@@ -113,6 +165,51 @@
   (ivy-prescient-mode 1))
 
 ;;
+;; HELPFUL
+;;
+(use-package helpful
+  :commands (helpful-callable helpful-variable helpful-command helpful-key)
+  :custom
+  (counsel-describe-function-function #'helpful-callable)
+  (counsel-describe-variable-function #'helpful-variable)
+  :bind
+  ([remap describe-function] . counsel-describe-function)
+  ([remap describe-command] . helpful-command)
+  ([remap describe-variable] . counsel-describe-variable)
+  ([remap describe-key] . helpful-key))
+
+;;
+;; DIRED
+;;
+(use-package dired
+  :ensure nil
+  :commands (dired dired-jump)
+  :bind (("C-x C-j" . dired-jump)
+	 :map dired-mode-map
+	 ("f" . dired-create-empty-file)
+	 ("n" . dired-create-directory))
+  :custom ((dired-listing-switches "-agho --group-directories-first")))
+
+(use-package dired-single
+  :commands (dired dired-jump))
+
+(use-package all-the-icons-dired
+  :hook (dired-mode . all-the-icons-dired-mode))
+
+(use-package dired-open
+  :commands (dired dired-jump)
+  :config
+  ;; Doesn't work as expected!
+  ;;(add-to-list 'dired-open-functions #'dired-open-xdg t)
+  (setq dired-open-extensions '(("png" . "imv")
+                                ("mkv" . "mpv"))))
+
+(use-package dired-hide-dotfiles
+  :hook (dired-mode . dired-hide-dotfiles-mode)
+  :bind (:map dired-mode-map
+	      ("H" . dired-hide-dotfiles-mode)))
+
+;;
 ;; ORG MODE
 ;;
 (defun user/org-mode-setup ()
@@ -129,6 +226,41 @@
   :hook (org-mode . org-bullets-mode)
   :custom
   (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
+
+(with-eval-after-load 'org
+  ;; This is needed as of Org 9.2
+  (require 'org-tempo)
+
+  (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+  (add-to-list 'org-structure-template-alist '("sh" . "src shell")))
+
+;;
+;; MAGIT
+;;
+(use-package magit
+  :commands magit-status
+  :custom
+  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+
+;;
+;; PROJECTILE
+;;
+(use-package projectile
+  :diminish projectile-mode
+  :config (projectile-mode)
+  :custom ((projectile-completion-system 'ivy))
+  :bind-keymap
+  ("C-c p" . projectile-command-map)
+  :init
+  ;; NOTE: Set this to the folder where you keep your Git repos!
+  (when (file-directory-p "~/Repos")
+    (setq projectile-project-search-path '("~/Repos")))
+  (setq projectile-switch-project-action #'projectile-dired))
+
+(use-package counsel-projectile
+  :after projectile
+  :config (counsel-projectile-mode))
+
 
 ;;
 ;; WHICH KEY
