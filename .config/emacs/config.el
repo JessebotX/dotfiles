@@ -250,9 +250,7 @@
   :config
   (setq elfeed-search-feed-face ":foreground #fff :weight bold"
         elfeed-feeds (quote
-                       (("https://www.reddit.com/r/linux.rss" reddit linux)
-                        ("https://www.reddit.com/r/commandline.rss" reddit commandline)
-			("https://lukesmith.xyz/rss.xml" blog lukesmith)
+                       (("https://lukesmith.xyz/rss.xml" blog lukesmith)
 	                ("https://videos.lukesmith.xyz/feeds/videos.xml?sort=-publishedAt" videos lukesmith)
 	                ("https://archlinux.org/feeds/news/" news linux arch)
                         ("https://www.debian.org/News/news" news linux debian)
