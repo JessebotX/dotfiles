@@ -21,7 +21,7 @@
   (dashboard-modify-heading-icons '((recents . "file-text")
                                     (bookmarks . "book"))))
 
-;; requires for emacsclient
+;; required for emacsclient
 (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
 
 ;;
