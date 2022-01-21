@@ -21,6 +21,7 @@
   (dashboard-modify-heading-icons '((recents . "file-text")
                                     (bookmarks . "book"))))
 
+;; requires for emacsclient
 (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
 
 ;;
@@ -92,7 +93,7 @@
 (use-package modus-themes)
 (use-package doom-themes)
 
-(load-theme 'doom-one t)
+(load-theme 'modus-operandi t)
 
 (use-package doom-modeline
   :init (doom-modeline-mode 1)
@@ -261,9 +262,7 @@
 ;; MAGIT
 ;;
 (use-package magit
-  :commands magit-status
-  :custom
-  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+  :commands magit-status)
 
 ;;
 ;; PROJECTILE
@@ -273,7 +272,7 @@
   :config (projectile-mode)
   :custom ((projectile-completion-system 'ivy))
   :bind-keymap
-  ("C-c p" . projectile-command-map)
+  ("C-x p" . projectile-command-map)
   :init
   ;; NOTE: Set this to the folder where you keep your Git repos!
   (when (file-directory-p "~/Repos")
