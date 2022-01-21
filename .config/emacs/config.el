@@ -117,7 +117,7 @@
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 ;;
-;; IVY AND COUNSEL
+;; IVY AND COUNSEL MINIBUFFER THINGS
 ;;
 (use-package ivy
   :diminish
