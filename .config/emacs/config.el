@@ -70,13 +70,29 @@
 (tooltip-mode -1)
 (menu-bar-mode -1)
 
-(set-fringe-mode 10) ; margins
+(set-fringe-mode 10); margins
 
-;;
+;; improve scrolling
+(setq scroll-step 1)
+(setq scroll-conservatively 10000)
+(setq auto-window-vscroll nil)
+(setq scroll-margin 5)
+;; scroll one line at a time (less "jumpy" than defaults)
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+
+(use-package visual-fill-column)
+
+;; WRITEROOM
+(use-package writeroom-mode
+  :bind (("C-x t b" . writeroom-mode)))
+
 ;; THEMING
-;;
-(use-package doom-themes
-  :init (load-theme 'doom-one t))
+(use-package modus-themes)
+(use-package doom-themes)
+
+(load-theme 'doom-one t)
 
 (use-package doom-modeline
   :init (doom-modeline-mode 1)
@@ -89,29 +105,11 @@
 ;;
 (delete-selection-mode t) ; delete selected text when typingn
 
-;;
-;; RAINBOW DELIMITERS
-;;
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
-;;
-;; CODE COMMENTING
-;;
 (use-package evil-nerd-commenter
   :bind ("M-/" . evilnc-comment-or-uncomment-lines))
-
-;;
-;; SCROLLING
-;;
-(setq scroll-step 1)
-(setq scroll-conservatively 10000)
-(setq auto-window-vscroll nil)
-(setq scroll-margin 5)
-;; scroll one line at a time (less "jumpy" than defaults)
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
-(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
-(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 
 ;;
 ;; KEYBOARD
@@ -148,6 +146,7 @@
 
 (use-package counsel
   :bind (("C-M-j" . 'counsel-switch-buffer)
+	 ("C-x t t" . 'counsel-load-theme)
          :map minibuffer-local-map
          ("C-r" . 'counsel-minibuffer-history))
   :custom
@@ -202,23 +201,33 @@
   ;; Doesn't work as expected!
   ;;(add-to-list 'dired-open-functions #'dired-open-xdg t)
   (setq dired-open-extensions '(("png" . "imv")
+				("jpg" . "imv")
+				("jpeg" . "imv")
+				("webp" . "imv")
+				("mp4" . "mpv")
                                 ("mkv" . "mpv"))))
 
 (use-package dired-hide-dotfiles
   :hook (dired-mode . dired-hide-dotfiles-mode)
   :bind (:map dired-mode-map
-	      ("H" . dired-hide-dotfiles-mode)))
+	      ("." . dired-hide-dotfiles-mode)))
 
 ;;
-;; ORG MODE
+;; LANGUAGE SUPPORT
 ;;
 (defun user/org-mode-setup ()
   (org-indent-mode)
   (visual-line-mode 1))
 
+(defun user/markdown-mode-setup ()
+  (visual-line-mode 1))
+
+(use-package markdown-mode
+  :hook (markdown-mode . user/markdown-mode-setup))
+
 (use-package org
   :pin org
-  :hook (org-mode . efs/org-mode-setup)
+  :hook (org-mode . user/org-mode-setup)
   :config
   (setq org-ellipsis " ▾"))
 
@@ -233,6 +242,22 @@
 
   (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
   (add-to-list 'org-structure-template-alist '("sh" . "src shell")))
+
+;;
+;; ELFEED
+;;
+(use-package elfeed
+  :config
+  (setq elfeed-search-feed-face ":foreground #fff :weight bold"
+        elfeed-feeds (quote
+                       (("https://www.reddit.com/r/linux.rss" reddit linux)
+                        ("https://www.reddit.com/r/commandline.rss" reddit commandline)
+			("https://lukesmith.xyz/rss.xml" blog lukesmith)
+	                ("https://videos.lukesmith.xyz/feeds/videos.xml?sort=-publishedAt" videos lukesmith)
+	                ("https://archlinux.org/feeds/news/" news linux arch)
+                        ("https://www.debian.org/News/news" news linux debian)
+                        ("http://suckless.org/atom.xml" news suckless linux)
+                        ("https://bugswriter.com/atom.xml" blog bugswriter)))))
 
 ;;
 ;; MAGIT
