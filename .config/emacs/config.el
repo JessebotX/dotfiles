@@ -84,7 +84,6 @@
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 
 (use-package visual-fill-column)
-
 ;; WRITEROOM
 (use-package writeroom-mode
   :bind (("C-x t b" . writeroom-mode)))
@@ -95,6 +94,7 @@
 
 (load-theme 'modus-operandi t)
 
+;; MODELINE
 (use-package doom-modeline
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
@@ -116,6 +116,7 @@
 ;; KEYBOARD
 ;;
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+(global-set-key (kbd "C-x t e") 'eval-buffer)
 
 ;;
 ;; IVY AND COUNSEL MINIBUFFER THINGS
@@ -201,12 +202,12 @@
   :config
   ;; Doesn't work as expected!
   ;;(add-to-list 'dired-open-functions #'dired-open-xdg t)
-  (setq dired-open-extensions '(("png" . "imv")
-				("jpg" . "imv")
+  (setq dired-open-extensions '(("png"  . "imv")
+				("jpg"  . "imv")
 				("jpeg" . "imv")
 				("webp" . "imv")
-				("mp4" . "mpv")
-                                ("mkv" . "mpv"))))
+				("mp4"  . "mpv")
+                                ("mkv"  . "mpv"))))
 
 (use-package dired-hide-dotfiles
   :hook (dired-mode . dired-hide-dotfiles-mode)
@@ -282,6 +283,54 @@
 (use-package counsel-projectile
   :after projectile
   :config (counsel-projectile-mode))
+
+;;
+;; TERMINALS
+;;
+(use-package eterm-256color
+  :hook (term-mode . eterm-256color-mode))
+
+;; windows people, just use shell-mode
+(when (eq system-type 'windows-nt)
+  (setq explicit-shell-file-name "powershell.exe")
+  (setq explicit-powershell.exe-args '()))
+
+(use-package term
+  :commands term
+  :config
+  (setq explicit-shell-file-name "bash"))
+
+;; note, vterm has dependencies: https://github.com/akermu/emacs-libvterm/#requirements
+(use-package vterm
+  :commands vterm
+  :config
+  ;;(setq vterm-shell "sh")
+  (setq vterm-max-scrollback 100000))
+
+(defun efs/configure-eshell ()
+  ;; Save command history when commands are entered
+  (add-hook 'eshell-pre-command-hook 'eshell-save-some-history)
+
+  ;; Truncate buffer for performance
+  (add-to-list 'eshell-output-filter-functions 'eshell-truncate-buffer)
+
+  (setq eshell-history-size         10000
+        eshell-buffer-maximum-lines 10000
+        eshell-hist-ignoredups t
+        eshell-scroll-to-bottom-on-input t))
+
+(use-package eshell-git-prompt
+  :after eshell)
+
+(use-package eshell
+  :hook (eshell-first-time-mode . efs/configure-eshell)
+  :config
+
+  (with-eval-after-load 'esh-opt
+    (setq eshell-destroy-buffer-when-process-dies t)
+    (setq eshell-visual-commands '("htop" "zsh" "vim")))
+
+  (eshell-git-prompt-use-theme 'powerline))
 
 
 ;;
