@@ -73,6 +73,8 @@
 
 (set-fringe-mode 10); margins
 
+(set-face-attribute 'default nil :font "JetBrainsMono Nerd Font" :height 110)
+
 ;; improve scrolling
 (setq scroll-step 1)
 (setq scroll-conservatively 10000)
@@ -83,10 +85,15 @@
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 
-(use-package visual-fill-column)
-;; WRITEROOM
-(use-package writeroom-mode
-  :bind (("C-x t b" . writeroom-mode)))
+(defun user/writeroom-mode-visual-fill ()
+  (setq visual-fill-column-width 80
+        visual-fill-column-center-text t)
+  (visual-fill-column-mode 1))
+
+(use-package visual-fill-column
+  :hook
+  (org-mode . user/writeroom-mode-visual-fill)
+  (markdown-mode . user/writeroom-mode-visual-fill))
 
 ;; THEMING
 (use-package modus-themes)
@@ -116,6 +123,7 @@
 ;; KEYBOARD
 ;;
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+;; elisping
 (global-set-key (kbd "C-x t e") 'eval-buffer)
 
 ;;
@@ -219,13 +227,29 @@
 ;;
 (defun user/org-mode-setup ()
   (org-indent-mode)
-  (visual-line-mode 1))
+  (visual-line-mode 1)
+  (dolist (face '((org-level-1 . 1.4)
+                  (org-level-2 . 1.25)
+                  (org-level-3 . 1.1)
+                  (org-level-4 . 1.0)
+                  (org-level-5 . 1.0)
+                  (org-level-6 . 1.0)
+                  (org-level-7 . 1.0)
+                  (org-level-8 . 1.0)))
+    (set-face-attribute (car face) nil :weight 'medium :height (cdr face))))
 
 (defun user/markdown-mode-setup ()
-  (visual-line-mode 1))
+  (visual-line-mode 1)
+  (dolist (face '((markdown-header-face-1 . 1.9)
+                  (markdown-header-face-2 . 1.5)
+                  (markdown-header-face-3 . 1.2)
+                  (markdown-header-face-4 . 1.1)
+                  (markdown-header-face-5 . 1.0)))
+    (set-face-attribute (car face) nil :weight 'medium :height (cdr face))))
 
 (use-package markdown-mode
   :hook (markdown-mode . user/markdown-mode-setup))
+
 
 (use-package org
   :pin org
