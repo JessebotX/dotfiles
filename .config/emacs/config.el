@@ -21,6 +21,7 @@
 (defvar user/pkg-list
   '(all-the-icons
     auto-package-update
+    consult
     dashboard
     doom-modeline
     doom-themes
@@ -30,9 +31,12 @@
     markdown-mode
     modus-themes
     no-littering
+    orderless
     org
     projectile
     rainbow-delimiters
+    savehist
+    vertico
     visual-fill-column
     which-key)
   "List of packages to be installed")
@@ -131,13 +135,37 @@
 (setq mouse-wheel-follow-mouse 't)
 
 ;; theming
-(load-theme 'modus-operandi t)
+(load-theme 'doom-gruvbox t)
 
 ;; modeline
 (require 'doom-modeline)
 (with-eval-after-load 'doom-modeline
   (doom-modeline-mode 1))
-(setq doom-modeline-height 40)
+
+(setq doom-modeline-height 20)
+(display-time-mode 1)
+
+;; --------------------
+;; COMPLETION FRAMEWORK
+;; --------------------
+;; Currently, i'm using vertico
+(require 'vertico)
+(with-eval-after-load 'vertico
+  (vertico-mode 1)
+  (setq vertico-scroll-margin 3)
+  (setq vertico-cycle t))
+
+;; vertico sort by history
+(require 'savehist)
+(with-eval-after-load 'savehist
+  (savehist-mode 1))
+
+;; better completion with vertico
+(require 'orderless)
+(setq completion-styles '(orderless))
+
+;; provide good commands for vertico. See KEYBOARD section
+(require 'consult)
 
 ;; ---------------
 ;; GENERAL EDITING
@@ -232,8 +260,11 @@ mode using the visual-fill-column package"
 ;; KEYBOARD
 ;; --------
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-(global-set-key (kbd "C-c t t") 'load-theme)
+(global-set-key (kbd "C-c t t") 'consult-theme)
 (global-set-key (kbd "C-c o e") 'elfeed)
+(global-set-key (kbd "M-s l") 'elfeed)
 (global-set-key (kbd "C-c t e") 'eval-buffer)
 (global-set-key (kbd "C-c j") 'text-scale-decrease)
 (global-set-key (kbd "C-c k") 'text-scale-increase)
+(global-set-key (kbd "C-s") 'consult-line)
+(global-set-key (kbd "C-x b") 'consult-buffer)
