@@ -12,7 +12,7 @@
 ;; -------------------
 (defvar user/transparency '(100 . 100))
 (defvar user/default-font-size 130)
-(defvar user/windows-font-size 140)
+(defvar user/windows-font-size 100)
 (defvar user/mac-font-size 140)
 
 ;; ------------
@@ -73,8 +73,8 @@
   (setq dashboard-banner-logo-title "Emacs")
   (setq dashboard-startup-banner 'logo)  ;; use custom image as banner
   (setq dashboard-items '((recents . 5)
-                          (bookmarks . 3)
-                          (projects . 3))))
+                          (bookmarks . 5)
+                          (projects . 5))))
 
 (dashboard-setup-startup-hook)
 (dashboard-modify-heading-icons '((recents . "file-text")
