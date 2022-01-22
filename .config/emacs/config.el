@@ -4,9 +4,6 @@
 (setq gc-cons-threshold (* 50 1000 1000)) ; make emacs faster
 (setq inhibit-startup-message t) ; disable emacs start page
 
-;;
-;; STARTUP DASHBOARD
-;;
 (use-package dashboard
   :init
   (setq dashboard-set-heading-icons t)
@@ -155,7 +152,7 @@
   (ivy-rich-mode 1))
 
 (use-package counsel
-  :bind (("C-M-j" . 'counsel-switch-buffer)
+  :bind (("C-x b" . 'counsel-switch-buffer)
 	 ("C-x t t" . 'counsel-load-theme)
          :map minibuffer-local-map
          ("C-r" . 'counsel-minibuffer-history))
@@ -208,8 +205,6 @@
 (use-package dired-open
   :commands (dired dired-jump)
   :config
-  ;; Doesn't work as expected!
-  ;;(add-to-list 'dired-open-functions #'dired-open-xdg t)
   (setq dired-open-extensions '(("png"  . "imv")
 				("jpg"  . "imv")
 				("jpeg" . "imv")
