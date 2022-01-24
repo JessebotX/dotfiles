@@ -268,3 +268,8 @@ mode using the visual-fill-column package"
 (global-set-key (kbd "C-c k") 'text-scale-increase)
 (global-set-key (kbd "C-s") 'consult-line)
 (global-set-key (kbd "C-x b") 'consult-buffer)
+
+;; dired keys
+(with-eval-after-load 'dired
+  (define-key dired-mode-map (kbd "n") 'dired-create-directory)
+  (define-key dired-mode-map (kbd "f") 'dired-create-empty-file))
