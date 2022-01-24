@@ -260,16 +260,16 @@ mode using the visual-fill-column package"
 ;; KEYBOARD
 ;; --------
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-(global-set-key (kbd "C-c t t") 'consult-theme)
-(global-set-key (kbd "C-c o e") 'elfeed)
+(global-set-key (kbd "M-s t t") 'consult-theme)
 (global-set-key (kbd "M-s l") 'elfeed)
-(global-set-key (kbd "C-c t e") 'eval-buffer)
-(global-set-key (kbd "C-c j") 'text-scale-decrease)
-(global-set-key (kbd "C-c k") 'text-scale-increase)
+(global-set-key (kbd "M-s t e") 'eval-buffer)
+(global-set-key (kbd "M-s j") 'text-scale-decrease)
+(global-set-key (kbd "M-s k") 'text-scale-increase)
 (global-set-key (kbd "C-s") 'consult-line)
-(global-set-key (kbd "C-x b") 'consult-buffer)
-
+(global-set-key (kbd "M-s b") 'consult-buffer)
+(global-set-key (kbd "M-s g") 'magit)
 ;; dired keys
+(global-set-key (kbd "M-s d") 'dired)
 (with-eval-after-load 'dired
   (define-key dired-mode-map (kbd "n") 'dired-create-directory)
   (define-key dired-mode-map (kbd "f") 'dired-create-empty-file))
