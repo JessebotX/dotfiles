@@ -37,7 +37,9 @@ set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
 
-set colorcolumn=80
+" text width for wrapping
+set textwidth=72
+set colorcolumn=72
 " tab width
 set tabstop=8
 set shiftwidth=0 " make it always = tabstop
@@ -95,7 +97,7 @@ vmap >         >gv
 
 " netrw (not in use)
 let g:netrw_banner = 0
-let g:netrw_liststyle = 2
+let g:netrw_liststyle = 3
 " let g:netrw_winsize = 16
 
 " KEYMAP WILL BE OVERWRITTEN BY NERDTREE
@@ -105,6 +107,13 @@ nmap <leader>e :Lex 20<CR>
 
 " FILETYPE SPECIFIC
 au Filetype markdown,pandoc,html,css setlocal tabstop=2 expandtab softtabstop=2
+" I have no fucking idea how conceal works
+au Filetype markdown,pandoc syn match UnorderedListStarPoint /^\*/ conceal cchar=•
+au Filetype markdown,pandoc syn match UnorderedListStarSpace contained " " conceal cchar=\ 
+au Filetype markdown,pandoc syn match UnorderedListStarFull "->" contains=UnorderedListStarPoint,UnorderedListStarSpace
+au Filetype markdown,pandoc syn match UnorderedListDashPoint /^-/ conceal cchar=•
+au Filetype markdown,pandoc syn match UnorderedListDashSpace contained " " conceal cchar=\   
+au Filetype markdown,pandoc syn match UnorderedListDashFull "->" contains=UnorderedListDashPoint,UnorderedListDashSpace
 au Filetype gemtext setlocal colorcolumn=
 au Filetype gemtext nmap <buffer> j  gj
 au Filetype gemtext nmap <buffer> k  gk
@@ -189,7 +198,7 @@ if (isdirectory(expand("~/.vim/pack")))
 		Limelight! " turn off limelight
 		set scrolloff=5 " set scroll margin to 5
 		set showmode " show mode
-		set colorcolumn=80 " show vertical ruler
+		set colorcolumn=72 " show vertical ruler
 	endfunction
 endif
 
