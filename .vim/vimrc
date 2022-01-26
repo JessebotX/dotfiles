@@ -38,7 +38,8 @@ set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
 
 " text width for wrapping
-set textwidth=72
+set textwidth=72 fo=cq wm=0
+
 set colorcolumn=72
 " tab width
 set tabstop=8
@@ -106,14 +107,15 @@ nmap <leader>e :Lex 20<CR>
 "endif
 
 " FILETYPE SPECIFIC
-au Filetype markdown,pandoc,html,css setlocal tabstop=2 expandtab softtabstop=2
+au Filetype markdown,asciidoc,pandoc,html,css setlocal tabstop=2 expandtab softtabstop=2
 " I have no fucking idea how conceal works
-au Filetype markdown,pandoc syn match UnorderedListStarPoint /^\*/ conceal cchar=•
-au Filetype markdown,pandoc syn match UnorderedListStarSpace contained " " conceal cchar=\ 
-au Filetype markdown,pandoc syn match UnorderedListStarFull "->" contains=UnorderedListStarPoint,UnorderedListStarSpace
-au Filetype markdown,pandoc syn match UnorderedListDashPoint /^-/ conceal cchar=•
-au Filetype markdown,pandoc syn match UnorderedListDashSpace contained " " conceal cchar=\   
-au Filetype markdown,pandoc syn match UnorderedListDashFull "->" contains=UnorderedListDashPoint,UnorderedListDashSpace
+au Filetype markdown,asciidoc,pandoc syn match UnorderedListStarPoint /^\*/ conceal cchar=•
+au Filetype markdown,asciidoc,pandoc syn match UnorderedListStarSpace contained " " conceal cchar=\ 
+au Filetype markdown,asciidoc,pandoc syn match UnorderedListStarFull "->" contains=UnorderedListStarPoint,UnorderedListStarSpace
+au Filetype markdown,asciidoc,pandoc syn match UnorderedListDashPoint /^-/ conceal cchar=•
+au Filetype markdown,asciidoc,pandoc syn match UnorderedListDashSpace contained " " conceal cchar=\   
+au Filetype markdown,asciidoc,pandoc syn match UnorderedListDashFull "->" contains=UnorderedListDashPoint,UnorderedListDashSpace
+au Filetype gemtext setlocal textwidth=
 au Filetype gemtext setlocal colorcolumn=
 au Filetype gemtext nmap <buffer> j  gj
 au Filetype gemtext nmap <buffer> k  gk
