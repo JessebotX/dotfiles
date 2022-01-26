@@ -1,6 +1,8 @@
+export TERMINAL=foot
 # main EDITOR
 export VISUAL=vim
 export EDITOR=vim
+export PAGER=less
 
 # User Directories
 export XDG_CONFIG_HOME="$HOME"/.config
