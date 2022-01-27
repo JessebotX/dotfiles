@@ -32,6 +32,7 @@ local options = {
 	wrap             = true,
 	scrolloff        = 5,
 	sidescrolloff    = 5,
+	textwidth        = 72,
 	number           = true,
 	relativenumber   = true,
 }
@@ -45,7 +46,7 @@ for k, v in pairs(options) do
 end
 
 vim.cmd [[
-set colorcolumn=80
+set colorcolumn=72
 ]]
 
 -- color scheme
