@@ -2,23 +2,23 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,
+      initial-scale=1.0">
 
 		<meta name="description" content="DESCRIPTION">
-		<meta name="keywords" content="ONE, TWO, THREE">
+		<meta name="keywords" content="KEYWORDS">
 		<meta name="author" content="AUTHOR">
 		<meta property="og:title" content="TITLE" />
-		<meta property="og:description" content="TITLE" />
+		<meta property="og:description" content="DESCRIPTION" />
 		<meta property="og:image" content="IMG">
 		<!-- Include this to make the og:image larger -->
 		<meta name="twitter:card" content="summary_large_image">
 
-		<link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
 
 		<title>TITLE</title>
 	</head>
 	<body>
-		<h1>Hello world</h1>
-		lorem ipsum
+    <!-- BODY -->
 	</body>
 </html>
