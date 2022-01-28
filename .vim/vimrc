@@ -42,7 +42,7 @@ set textwidth=72 fo=cq wm=0
 
 set colorcolumn=72
 " tab width
-set tabstop=4
+set tabstop=8
 set shiftwidth=0 " make it always = tabstop
 
 "
