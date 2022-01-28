@@ -4,6 +4,7 @@ require "user.keymaps"
 require "user.filetypes"
 
 require "user.alpha"
+require "user.cmp"
 require "user.nvimtree"
 require "user.telescope"
 require "user.gitsigns"
