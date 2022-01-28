@@ -27,6 +27,8 @@
     doom-themes
     elfeed
     elpher
+		evil
+		evil-collection
     magit
     markdown-mode
     modus-themes
@@ -262,6 +264,24 @@ mode using the visual-fill-column package"
 ;; --------
 ;; KEYBOARD
 ;; --------
+;; EVIL vi/m keybindings
+(setq evil-want-keybinding nil)
+(with-eval-after-load 'evil
+  (setq evil-want-integration t)
+  (setq evil-want-C-u-scroll t)
+  (setq evil-want-C-i-jump nil))
+
+(evil-mode 1)
+(evil-collection-init)
+;; Use visual line motions even outside of visual-line-mode buffers
+(evil-global-set-key 'motion "j" 'evil-next-visual-line)
+(evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+(evil-set-initial-state 'messages-buffer-mode 'normal)
+(evil-set-initial-state 'dashboard-mode 'normal)
+(evil-collection-define-key 'normal 'dired-mode-map
+		"h" 'dired-single-up-directory
+		"l" 'dired-single-buffer)
+
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 (global-set-key (kbd "M-s t t") 'consult-theme)
 (global-set-key (kbd "M-s l") 'elfeed)
