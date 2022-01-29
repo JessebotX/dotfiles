@@ -175,8 +175,8 @@
 ;; ---------------
 (delete-selection-mode t)
 
-(setq-default tab-width 2)
-(setq tab-width 2)
+(setq-default tab-width 8)
+(setq tab-width 8)
 
 ;; ---------
 ;; LANGUAGES
