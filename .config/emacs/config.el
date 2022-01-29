@@ -23,6 +23,7 @@
     auto-package-update
     consult
     dashboard
+		dired-single
     doom-modeline
     doom-themes
     elfeed
@@ -270,7 +271,6 @@ mode using the visual-fill-column package"
   (setq evil-want-integration t)
   (setq evil-want-C-u-scroll t)
   (setq evil-want-C-i-jump nil))
-
 (evil-mode 1)
 (evil-collection-init)
 ;; Use visual line motions even outside of visual-line-mode buffers
@@ -282,6 +282,9 @@ mode using the visual-fill-column package"
 		"h" 'dired-single-up-directory
 		"l" 'dired-single-buffer)
 
+(with-eval-after-load 'vertico
+  (define-key minibuffer-local-map (kbd "C-j") 'next-line)
+  (define-key minibuffer-local-map (kbd "C-k") 'previous-line))
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 (global-set-key (kbd "M-s t t") 'consult-theme)
 (global-set-key (kbd "M-s l") 'elfeed)
@@ -295,4 +298,5 @@ mode using the visual-fill-column package"
 (global-set-key (kbd "M-s d") 'dired)
 (with-eval-after-load 'dired
   (define-key dired-mode-map (kbd "n") 'dired-create-directory)
-  (define-key dired-mode-map (kbd "f") 'dired-create-empty-file))
+  (define-key dired-mode-map (kbd "f") 'dired-create-empty-file)
+	(define-key dired-mode-map (kbd "h") 'dired-single-up-directory))
