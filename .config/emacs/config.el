@@ -21,15 +21,19 @@
 (defvar user/pkg-list
   '(all-the-icons
     auto-package-update
+    company
+    company-box
     consult
     dashboard
-		dired-single
+    dired-single
     doom-modeline
     doom-themes
     elfeed
     elpher
-		evil
-		evil-collection
+    evil
+    evil-collection
+    lsp-mode
+    lsp-ui
     magit
     markdown-mode
     modus-themes
@@ -175,8 +179,24 @@
 ;; ---------------
 (delete-selection-mode t)
 
+;; setting tab width function
+(defun user/set-tab-width (width)
+  (setq tab-width width)
+  ;; for EVIL mode
+  (setq-default evil-shift-width width))
+
+;; default tab width
 (setq-default tab-width 8)
-(setq tab-width 8)
+(user/set-tab-width 8)
+
+(setq backward-delete-char-untabify-method 'hungry)
+(setq whitespace-style '(face tabs tab-mark trailing))
+(custom-set-faces
+ '(whitespace-tab ((t (:foreground "#636363")))))
+(setq whitespace-display-mappings
+  '((tab-mark 9 [124 9] [92 9]))) ; 124 is the ascii ID for '\|'
+(global-whitespace-mode) ; Enable whitespace mode everywhere
+; END TABS CONFIG
 
 ;; ---------
 ;; LANGUAGES
@@ -192,6 +212,16 @@ mode using the visual-fill-column package"
 ;; for programming in general
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
+;; html/css
+(defun user/web-stuff-modes-setup ()
+  (setq indent-tabs-mode nil)
+  (user/set-tab-width 2))
+
+(add-hook 'html-mode-hook #'user/web-stuff-modes-setup)
+(add-hook 'mhtml-mode-hook #'user/web-stuff-modes-setup)
+(add-hook 'sgml-mode-hook #'user/web-stuff-modes-setup)
+(add-hook 'css-mode-hook #'user/web-stuff-modes-setup)
+
 ;; markdown
 (defun user/markdown-mode-setup ()
   (dolist (face '((markdown-header-face-1 . 1.9)
@@ -201,7 +231,9 @@ mode using the visual-fill-column package"
 		  (markdown-header-face-5 . 1.0)))
     (set-face-attribute (car face) nil :weight 'bold :height (cdr face)))
   (user/writeroom-mode-visual-fill)
-  (visual-line-mode 1))
+  (visual-line-mode 1)
+  (setq indent-tabs-mode nil)
+  (set-tab-width 2))
 
 (add-hook 'markdown-mode-hook #'user/markdown-mode-setup)
 
@@ -226,6 +258,37 @@ mode using the visual-fill-column package"
   (require 'org-tempo)
   (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
   (add-to-list 'org-structure-template-alist '("sh" . "src shell")))
+
+;; ----------------
+;; LANGUAGE SERVERS
+;; ----------------
+(defun user/lsp-mode-setup ()
+  (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
+  (lsp-headerline-breadcrumb-mode)
+  (lsp-ui-mode t))
+
+(defun user/company-mode-setup ()
+  (define-key company-active-map (kbd "<tab>") 'company-complete-selection)
+  (define-key lsp-mode-map (kbd "<tab>") 'company-indent-or-complete-common)
+  (setq company-minimum-prefix-length 1)
+  (setq company-idle-delay 0.0))
+
+(require 'lsp-mode)
+(add-hook 'lsp-mode-hook #'user/lsp-mode-setup)
+(with-eval-after-load 'lsp-mode
+  (setq lsp-keymap-prefix "M-s l"))
+(setq lsp-enable-which-key-integration t)
+
+(setq lsp-ui-doc-position 'bottom)
+
+;; enable lsp-mode on certain languages
+(add-hook 'c-mode-hook #'lsp-deferred)
+(add-hook 'c++-mode-hook #'lsp-deferred)
+
+(add-hook 'lsp-mode-hook #'company-mode)
+
+(add-hook 'company-mode-hook #'user/company-mode-setup)
+(add-hook 'company-mode-hook #'company-box-mode)
 
 ;; -----
 ;; MAGIT
