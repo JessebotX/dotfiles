@@ -108,13 +108,6 @@ nmap <leader>e :Lex 20<CR>
 
 " FILETYPE SPECIFIC
 au Filetype markdown,asciidoc,pandoc,html,css setlocal tabstop=2 expandtab softtabstop=2
-" I have no fucking idea how conceal works
-au Filetype markdown,asciidoc,pandoc syn match UnorderedListStarPoint /^\*/ conceal cchar=•
-au Filetype markdown,asciidoc,pandoc syn match UnorderedListStarSpace contained " " conceal cchar=\ 
-au Filetype markdown,asciidoc,pandoc syn match UnorderedListStarFull "->" contains=UnorderedListStarPoint,UnorderedListStarSpace
-au Filetype markdown,asciidoc,pandoc syn match UnorderedListDashPoint /^-/ conceal cchar=•
-au Filetype markdown,asciidoc,pandoc syn match UnorderedListDashSpace contained " " conceal cchar=\   
-au Filetype markdown,asciidoc,pandoc syn match UnorderedListDashFull "->" contains=UnorderedListDashPoint,UnorderedListDashSpace
 au Filetype gemtext setlocal textwidth=
 au Filetype gemtext setlocal colorcolumn=
 au Filetype gemtext nmap <buffer> j  gj
