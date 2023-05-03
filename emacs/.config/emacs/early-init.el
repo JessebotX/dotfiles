@@ -1,0 +1,10 @@
+(setq vc-follow-symlinks nil)
+(setq package-enable-at-startup nil)
+(setq site-run-file nil)
+(setq inhibit-startup-message t)
+(setq initial-major-mode 'fundamental-mode)
+(setq initial-scratch-message nil)
+
+(push '(tool-bar-lines . 0) default-frame-alist)
+(push '(menu-bar-lines . 0) default-frame-alist)
+(push '(vertical-scroll-bars) default-frame-alist)
