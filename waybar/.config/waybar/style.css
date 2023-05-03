@@ -1,0 +1,58 @@
+* {
+	font-family: FontAwesome, JetBrainsMono Nerd Font Mono, Iosevka Comfy Fixed, Roboto, sans-serif;
+	font-size: 14px;
+}
+
+#waybar {
+	background-color:  transparent;
+}
+
+#waybar .hidden {
+	opacity: 0.2;
+}
+
+.modules-left {
+	margin-left: 1px;
+}
+
+.modules-left, .modules-right {
+	background-color: #ebdbb2;
+	border: 2px solid #fe8019;
+	box-shadow: 4px 4px 0 #282828;
+	color: #282828;
+	margin-bottom: 4px;
+	margin-right: 4px;
+}
+
+/*
+.modules-left {
+	background-color:  #1d2021;
+	border: 2px solid #7287fd;
+	border-radius: 16px;
+	color: #ebdbb2;
+	padding: 5px 10px;
+}*/
+
+#window {
+	padding: 5px 10px;
+}
+
+#battery {
+	padding: 5px 10px;
+}
+
+#custom-separator {
+	margin: 0 5px;
+}
+
+#clock {
+	padding: 5px 10px;
+}
+
+#network {
+	padding: 5px 10px;
+}
+
+#wireplumber {
+	padding: 5px 10px;
+}
