@@ -12,7 +12,7 @@ export PATH="${USER_SCRIPTS}:${HOME}/.local/bin:${HOME}/bin:${PATH}"
 
 ### nix
 if [ -d "~/.nix-profile" ]; then
-	. ~/.nix-profile/etc/profile.d/nix.sh
+	. "~/.nix-profile/etc/profile.d/nix.sh"
 fi
 
 ### fff
@@ -40,6 +40,24 @@ export LYNX_CFG_PATH="$XDG_CONFIG_HOME"/lynx.cfg
 
 ### nuget
 export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
+
+### nvm (node.js version manager)
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+### pnpm
+export PNPM_HOME="/home/user/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+### rust
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+
+[ -f "${CARGO_HOME}"/env ] && . "${CARGO_HOME}"/env
 
 ### wget
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"

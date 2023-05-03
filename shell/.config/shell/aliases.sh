@@ -11,3 +11,7 @@ alias repos="cd ${REPOS}"
 if [ "$(command -v fastfetch)" ]; then
 	alias neofetch="fastfetch"
 fi
+
+if [ "$(command -v gvim)" ]; then
+	alias vim="gvim -v"
+fi
