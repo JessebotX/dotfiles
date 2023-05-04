@@ -21,8 +21,11 @@ PS1="${PS1}\[\e[01;30m\]"
 PS1="${PS1}$ "
 PS1="${PS1}\[\e[00m\]"
 
-source "${HOME}/.config/shell/profile.sh"
-source "${HOME}/.config/shell/aliases.sh"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/profile.sh" ] && \
+	source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/profile.sh"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliases.sh" ] && \
+	source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliases.sh"
+
 
 #
 # Shell options
@@ -35,6 +38,7 @@ shopt -s dotglob
 shopt -s extglob
 
 bind 'set show-all-if-ambiguous on'
+bind 'set completion-ignore-case on'
 bind 'TAB:menu-complete'
 
 stty stop undef # disable control-s accidental terminal stops
