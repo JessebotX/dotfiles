@@ -6,6 +6,8 @@ alias vi="${EDITOR}"
 alias "cd.."="cd .."
 alias r="cd ${REPOS}"
 alias repos="cd ${REPOS}"
+alias dot="cd ${REPOS}/dotfiles"
+alias dotfiles="cd ${REPOS}/dotfiles"
 
 # fastfetch
 if [ "$(command -v fastfetch)" ]; then
