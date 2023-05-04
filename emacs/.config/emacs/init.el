@@ -83,10 +83,18 @@
 (evil-mode 1)
 
 (evil-select-search-module 'evil-search-module 'evil-search)
-(define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
 (global-set-key (kbd "C-M-u") 'universal-argument)
 (evil-global-set-key 'motion "j" 'evil-next-visual-line)
 (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+
+(let ((map evil-insert-state-map))
+  (define-key map (kbd "C-g") 'evil-normal-state))
+
+(let ((map evil-normal-state-map))
+  (define-key map (kbd "C-h") 'evil-window-left)
+  (define-key map (kbd "C-j") 'evil-window-down)
+  (define-key map (kbd "C-k") 'evil-window-up)
+  (define-key map (kbd "C-l") 'evil-window-right))
 
 (evilnc-default-hotkeys)
 
@@ -238,8 +246,15 @@ folder, otherwise delete a word"
 ;;; Treemacs
 (straight-use-package 'treemacs)
 
+(customize-set-variable 'treemacs-indentation 2)
+
 (my/leader-keys
-  "e" 'treemacs-add-and-display-current-project-exclusively)
+  "er" 'treemacs
+  "ee" 'treemacs-add-and-display-current-project-exclusively)
+
+(require 'treemacs)
+(evil-define-key 'normal treemacs-mode-map (kbd "a") 'treemacs-create-file)
+(evil-define-key 'normal treemacs-mode-map (kbd "d") 'treemacs-delete)
 
 ;;; Dired
 (straight-use-package 'dired-single)
