@@ -177,6 +177,7 @@
 (straight-use-package 'doom-modeline)
 (customize-set-variable 'doom-modeline-height 30)
 (customize-set-variable 'doom-modeline-enable-word-count t)
+(customize-set-variable 'doom-modeline-icon t)
 (doom-modeline-mode 1)
 
 (column-number-mode 1)
@@ -243,6 +244,9 @@ folder, otherwise delete a word"
 ;;; Dired
 (straight-use-package 'dired-single)
 (straight-use-package 'all-the-icons-dired)
+
+(add-hook 'dired-mode-hook 'dired-hide-details-mode)
+(customize-set-variable 'dired-hide-details-hide-symlink-targets nil)
 
 (defun my/dired-init ()
   "Bunch of stuff to run for dired, either immediately or when it's
