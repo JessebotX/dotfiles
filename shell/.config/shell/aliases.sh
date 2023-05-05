@@ -1,4 +1,5 @@
 alias ls="ls --color=auto"
+alias ll="ls -lA --color=auto"
 alias dir="ls -lA --color=auto"
 alias vi="${EDITOR}"
 
@@ -14,6 +15,9 @@ if [ "$(command -v fastfetch)" ]; then
 	alias neofetch="fastfetch"
 fi
 
-if [ "$(command -v gvim)" ]; then
-	alias vim="gvim -v"
+# exa
+if [ "$(command -v exa)" ]; then
+	alias exa="exa --icons -a"
+	alias ll="exa --icons --long -a"
+	alias dir="exa --icons --long -a"
 fi
