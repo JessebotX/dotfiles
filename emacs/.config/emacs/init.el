@@ -287,6 +287,10 @@ folder, otherwise delete a word"
 (straight-use-package 'vterm)
 
 ;;; Writeroom
+(straight-use-package 'olivetti)
+(customize-set-variable 'olivetti-body-width 70)
+
+;;;; Fullscreen writeroom
 (straight-use-package 'writeroom-mode)
 (customize-set-variable 'writeroom-width 70)
 
@@ -305,10 +309,12 @@ folder, otherwise delete a word"
 (customize-set-variable 'denote-directory "~/Sync/vault/zet")
 (customize-set-variable 'denote-file-type 'markdown-yaml)
 (customize-set-variable 'denote-yaml-front-matter
-                        "title:       %1$s
+                        "---
+title:       %1$s
 date:       \"%2$s\"
 tags:       %3$s
 identifier: %4$s
+---
 \n")
 (add-hook 'dired-mode-hook #'denote-dired-mode)
 
