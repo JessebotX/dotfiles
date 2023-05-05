@@ -366,6 +366,12 @@ identifier: %4$s
   (define-key map (kbd "S-TAB") 'corfu-previous)
   (define-key map (kbd "S-<return>") 'corfu-insert))
 
+;;;; Tree-sitter
+(straight-use-package 'tree-sitter)
+(global-tree-sitter-mode 1)
+
+(straight-use-package 'tree-sitter-langs)
+
 ;;;; HTML/CSS
 (setq-default sgml-basic-offset 2)
 (setq-default css-indent-offset 2)
@@ -380,17 +386,18 @@ identifier: %4$s
 (straight-use-package 'lsp-tailwindcss)
 
 ;;;; Javascript/Typescript
+(defun my/js-ts-mode-hook-setup ()
+  (lsp-deferred)
+  (my/indent-with-spaces 2))
+
 (setq-default js-indent-level 2)
-(add-hook 'js-jsx-mode-hook #'user/2-space-indents)
-(add-hook 'js-mode-hook #'user/2-space-indents)
-(add-hook 'js-mode-hook 'lsp-deferred)
-(add-hook 'js-jsx-mode-hook 'lsp-deferred)
+(add-hook 'js-mode-hook #'my/js-ts-mode-hook-setup)
+(add-hook 'js-jsx-mode-hook 'my/js-ts-mode-hook-setup)
 
 (straight-use-package 'typescript-mode)
 (setq-default typescript-indent-level 2)
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
-(add-hook 'typescript-mode-hook 'lsp-deferred)
-(add-hook 'typescript-mode-hook #'user/2-space-indents)
+(add-hook 'typescript-mode-hook #'my/js-ts-mode-hook-setup)
 
 ;;;; C/C++
 (defun my/cc-mode-hook-setup ()
