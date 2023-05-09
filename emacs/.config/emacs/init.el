@@ -50,6 +50,7 @@
 
 (blink-cursor-mode -1)
 (delete-selection-mode 1)
+(global-auto-revert-mode)
 (global-so-long-mode 1)
 (global-whitespace-mode 1)
 
@@ -86,6 +87,22 @@
 (global-set-key (kbd "C-M-u") 'universal-argument)
 (evil-global-set-key 'motion "j" 'evil-next-visual-line)
 (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+
+;;;; Visual shifting
+(defun my/evil-shift-right ()
+  (interactive)
+  (evil-shift-right evil-visual-beginning evil-visual-end)
+  (evil-normal-state)
+  (evil-visual-restore))
+
+(defun my/evil-shift-left ()
+  (interactive)
+  (evil-shift-left evil-visual-beginning evil-visual-end)
+  (evil-normal-state)
+  (evil-visual-restore))
+
+(evil-define-key 'visual global-map (kbd ">") 'my/evil-shift-right)
+(evil-define-key 'visual global-map (kbd "<") 'my/evil-shift-left)
 
 (let ((map evil-insert-state-map))
   (define-key map (kbd "C-g") 'evil-normal-state))
@@ -134,10 +151,10 @@
 (customize-set-variable 'fontaine-presets
                         '((regular
                            :default-family "JetBrainsMono Nerd Font"
-                           :default-height 120)
+                           :default-height 140)
                           (iosevka_comfy_duo
                            :default-family "Iosevka Comfy Duo"
-                           :default-height 120)))
+                           :default-height 150)))
 
 (fontaine-set-preset (or (fontaine-restore-latest-preset) 'regular))
 
@@ -388,6 +405,16 @@ identifier: %4$s
 (add-hook 'css-mode-hook #'my/web-dev-mode-setup)
 (add-hook 'html-mode-hook #'my/web-dev-mode-setup)
 
+;;;; Templating engines
+(straight-use-package 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.ejs\\'" . web-mode))
+
+(customize-set-variable 'web-mode-markup-indent-offset 2)
+(customize-set-variable 'web-mode-code-indent-offset 2)
+(customize-set-variable 'web-mode-css-indent-offset 2)
+(add-hook 'web-mode-hook #'my/web-dev-mode-setup)
+
 ;;;; Tailwind CSS
 (straight-use-package 'lsp-tailwindcss)
 
@@ -437,8 +464,6 @@ identifier: %4$s
   (auto-fill-mode 1)
   (visual-line-mode 1)
   (setq-local fill-column 60))
-
-(add-hook 'text-mode-hook #'my/text-modes-hook-setup)
 
 ;;;;; Markdown
 (straight-use-package 'markdown-mode)

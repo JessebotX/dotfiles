@@ -5,6 +5,8 @@ window:
 font:
   normal:
     family: JetBrainsMono Nerd Font Mono
+  size:
+    15
 # The definition of color schemes.
 schemes:
   gruvbox_material_hard_dark: &gruvbox_material_hard_dark
