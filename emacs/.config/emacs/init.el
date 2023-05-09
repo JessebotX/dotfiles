@@ -33,6 +33,7 @@
 (customize-set-variable 'bidi-inhibit-bpa t)
 (customize-set-variable 'create-lockfiles nil)       ; Don't make lock files
 (customize-set-variable 'custom-file (no-littering-expand-etc-file-name "custom.el")) ; set custom file to a different location
+(customize-set-variable 'global-auto-revert-non-file-buffers t)
 (customize-set-variable 'make-backup-files nil)      ; Don't make backup files
 (customize-set-variable 'ring-bell-function 'ignore) ; Don't make beep sound (audible bell)
 (customize-set-variable 'scroll-conservatively 1001) ; Smoother scrolling
@@ -151,7 +152,7 @@
 (customize-set-variable 'fontaine-presets
                         '((regular
                            :default-family "JetBrainsMono Nerd Font"
-                           :default-height 140)
+                           :default-height 150)
                           (iosevka_comfy_duo
                            :default-family "Iosevka Comfy Duo"
                            :default-height 150)))
