@@ -124,3 +124,6 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
 
   colorscheme gruvbox
 endif 
+
+""" Viminfo
+if !has('nvim') | set viminfofile=$XDG_STATE_HOME/vim/viminfo | endif
