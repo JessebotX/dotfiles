@@ -1,7 +1,7 @@
 # .bashrc
 
 PS1="\[\e[01;30m\]"
-PS1="${PS1}╔» "
+PS1="${PS1}═» "
 PS1="${PS1}\[\e[01;34m\]"
 PS1="${PS1}\w "
 PS1="${PS1}\[\e[01;30m\]"
@@ -16,7 +16,7 @@ PS1="${PS1}\[\e[01;30m\]"
 PS1="${PS1}]"
 PS1="${PS1}\n"
 PS1="${PS1}\[\e[01;30m\]"
-PS1="${PS1}╚═"
+PS1="${PS1}═"
 PS1="${PS1}\[\e[01;30m\]"
 PS1="${PS1}$ "
 PS1="${PS1}\[\e[00m\]"
@@ -41,6 +41,9 @@ bind 'set show-all-if-ambiguous on'
 bind 'set completion-ignore-case on'
 bind 'TAB:menu-complete'
 
+set keymap vi-command "^P": previous-history
+set keymap vi-insert "^P": previous-history
+
 stty stop undef # disable control-s accidental terminal stops
 
 #
@@ -61,3 +64,19 @@ complete -r
 #
 #[ -f "${XDG_DATA_HOME:-${HOME}/.local/share}/ble.sh/out/ble.sh" ] && \
 #	source "${XDG_DATA_HOME:-${HOME}/.local/share}/ble.sh/out/ble.sh"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/user/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/user/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/user/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/user/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
