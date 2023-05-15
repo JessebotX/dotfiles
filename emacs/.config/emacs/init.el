@@ -458,6 +458,13 @@ identifier: %4$s
 (add-hook 'lisp-mode-hook #'my/lisp-mode-hook-setup)
 (add-hook 'emacs-lisp-mode-hook #'my/lisp-mode-hook-setup)
 
+;;;; Python
+(defun my/python-mode-hook-setup ()
+  (customize-set-variable 'python-indent-offset 4)
+  (my/indent-with-spaces 4))
+
+(add-hook 'python-mode-hook #'my/python-mode-hook-setup)
+
 ;;;; Text modes
 (defun my/text-modes-hook-setup ()
   (jinx-mode) ; Spellcheck

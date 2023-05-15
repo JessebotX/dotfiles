@@ -59,5 +59,8 @@ export CARGO_HOME="$XDG_DATA_HOME"/cargo
 
 [ -f "${CARGO_HOME}"/env ] && . "${CARGO_HOME}"/env
 
+### sqlite3
+export SQLITE_HISTORY=$XDG_DATA_HOME/sqlite_history
+
 ### wget
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
