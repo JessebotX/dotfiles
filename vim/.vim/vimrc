@@ -17,7 +17,7 @@ set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set fileformats=unix,dos,mac   " Use Unix as the standard file type
 
 " Better clipboard functionality
-set clipboard=unnamedplus,unnamed
+set clipboard=unnamedplus
 
 set background=dark            " Assume dark background
 set autoindent                 " Indent at the same level of the previous line
@@ -120,6 +120,7 @@ nnoremap <C-l> <C-W>l
 if filereadable(expand("~/.vim/autoload/plug.vim"))
   call plug#begin('~/.local/share/vim/plugins')
     Plug 'morhetz/gruvbox'
+    Plug 'jasonccox/vim-wayland-clipboard'
   call plug#end()
 
   colorscheme gruvbox
