@@ -10,7 +10,9 @@ alias r="cd ${REPOS}"
 alias repos="cd ${REPOS}"
 alias dot="cd ${REPOS}/dotfiles"
 alias dotfiles="cd ${REPOS}/dotfiles"
-
+alias s="cd ${HOME}/Sync"
+alias sync="cd ${HOME}/Sync"
+alias w="cd ${HOME}/Sync/work"
 
 # fastfetch
 if [ "$(command -v fastfetch)" ]; then

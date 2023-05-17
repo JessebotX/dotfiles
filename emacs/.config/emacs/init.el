@@ -308,12 +308,12 @@ folder, otherwise delete a word"
 (straight-use-package 'olivetti)
 (customize-set-variable 'olivetti-body-width 70)
 
+(my/leader-keys
+  "tb" 'olivetti-mode)
+
 ;;;; Fullscreen writeroom
 (straight-use-package 'writeroom-mode)
 (customize-set-variable 'writeroom-width 70)
-
-(my/leader-keys
-  "tb" 'writeroom-mode)
 
 ;;; Magit
 (straight-use-package 'magit)
