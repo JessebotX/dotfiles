@@ -14,6 +14,9 @@ alias s="cd ${HOME}/Sync"
 alias sync="cd ${HOME}/Sync"
 alias w="cd ${HOME}/Sync/work"
 
+# bookworm
+alias bookworm="com.github.babluboy.bookworm"
+
 # fastfetch
 if [ "$(command -v fastfetch)" ]; then
 	alias neofetch="fastfetch"

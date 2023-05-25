@@ -63,6 +63,11 @@
 (add-to-list 'recentf-exclude
              (recentf-expand-file-name no-littering-etc-directory))
 
+;;; Beacon Cursor
+(straight-use-package 'beacon)
+
+(beacon-mode 1)
+
 ;;; Undo
 (straight-use-package 'undo-fu)
 (customize-set-variable 'undo-limit 67108864) ; 64mb.
@@ -207,6 +212,8 @@
 (doom-modeline-mode 1)
 
 (column-number-mode 1)
+(display-time-mode 1)
+(customize-set-variable 'display-time-default-load-average nil)
 
 ;;; Minibuffer
 (defun my/minibuffer-backward-kill (arg)
@@ -252,6 +259,12 @@ folder, otherwise delete a word"
 (customize-set-variable 'completion-category-defaults nil)
 (customize-set-variable 'completion-category-overrides
                         '((file (styles . (partial-completion)))))
+
+;;; Imenu
+(straight-use-package 'imenu-list)
+
+(my/leader-keys
+  "ei" 'imenu-list-smart-toggle)
 
 ;;; Jinx Spellchecker
 (straight-use-package 'jinx)
@@ -324,14 +337,16 @@ folder, otherwise delete a word"
 ;;; Denote
 (straight-use-package 'denote)
 
-(customize-set-variable 'denote-directory "~/Sync/vault/zet")
+(defconst my/notes-directory "~/Sync/vault/notes/zet")
+
+(customize-set-variable 'denote-directory my/notes-directory)
 (customize-set-variable 'denote-file-type 'markdown-yaml)
 (customize-set-variable 'denote-yaml-front-matter
                         "---
-title:       %1$s
+title:      %1$s
 date:       \"%2$s\"
 tags:       %3$s
-identifier: %4$s
+identifier: \"%4$s\"
 ---
 \n")
 (add-hook 'dired-mode-hook #'denote-dired-mode)
@@ -339,7 +354,7 @@ identifier: %4$s
 (defun my/denote-dired-notes ()
   (interactive)
   (require 'dired)
-  (dired-jump nil "~/Sync/vault/zet/"))
+  (dired-jump nil (concat denote-directory "/")))
 
 (my/leader-keys
   "nn" 'denote
@@ -471,6 +486,7 @@ identifier: %4$s
   (my/indent-with-spaces 2) ; 2 space indentation
   (auto-fill-mode 1)
   (visual-line-mode 1)
+  (olivetti-mode 1)
   (setq-local fill-column 60))
 
 ;;;;; Markdown

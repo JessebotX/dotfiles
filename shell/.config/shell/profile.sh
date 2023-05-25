@@ -33,7 +33,7 @@ fm() {
 ### go
 export GOPATH="$XDG_DATA_HOME"/go
 export GOMODCACHE="$XDG_CACHE_HOME"/go/mod
-export PATH="${PATH}:/usr/local/go/bin"
+export PATH="${PATH}:${GOPATH}/bin:/usr/local/go/bin"
 
 ### lynx
 export LYNX_CFG_PATH="$XDG_CONFIG_HOME"/lynx.cfg
