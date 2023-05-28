@@ -153,14 +153,32 @@
 (straight-use-package 'fontaine)
 
 (customize-set-variable 'fontaine-latest-state-file
-                        (no-littering-expand-etc-file-name "fontaine-latest-state.eld"))
+                       (no-littering-expand-etc-file-name "fontaine-latest-state.eld"))
 (customize-set-variable 'fontaine-presets
-                        '((regular
-                           :default-family "JetBrainsMono Nerd Font"
-                           :default-height 150)
-                          (iosevka_comfy_duo
-                           :default-family "Iosevka Comfy Duo"
-                           :default-height 150)))
+                       '((regular
+                          :default-family "JetBrainsMono Nerd Font"
+                          :default-height 150)
+                         (jetbrains
+                          :default-family "JetBrains Mono NL"
+                          :default-height 150)
+                         (proggy
+                          :default-family "ProggyCleanCE Nerd Font"
+                          :default-height 180)
+                         (go
+                          :default-family "GoMono Nerd Font"
+                          :default-height 150)
+                         (fira
+                          :default-family "FiraMono Nerd Font"
+                          :default-height 150)
+                         (liberation
+                          :default-family "LiterationMono Nerd Font"
+                          :default-height 150)
+                         (comic_sans
+                          :default-family "ComicShannsMono Nerd Font"
+                          :default-height 150)
+                         (iosevka_comfy_duo
+                          :default-family "Iosevka Comfy Duo"
+                          :default-height 150)))
 
 (fontaine-set-preset (or (fontaine-restore-latest-preset) 'regular))
 
@@ -168,6 +186,9 @@
 
 (define-key global-map (kbd "C-c f") #'fontaine-set-preset)
 (define-key global-map (kbd "C-c F") #'fontaine-set-face-font)
+
+(my/leader-keys
+  "tf" 'fontaine-set-preset)
 
 ;;; Theme
 ;;;; Ef themes
@@ -212,8 +233,8 @@
 (doom-modeline-mode 1)
 
 (column-number-mode 1)
-(display-time-mode 1)
 (customize-set-variable 'display-time-default-load-average nil)
+(display-time-mode 1)
 
 ;;; Minibuffer
 (defun my/minibuffer-backward-kill (arg)
@@ -361,6 +382,11 @@ identifier: \"%4$s\"
   "nr" 'denote-rename-file-using-front-matter
   "nl" #'my/denote-dired-notes)
 
+;;; Which key
+(straight-use-package 'which-key)
+(which-key-mode 1)
+(customize-set-variable 'which-key-idle-delay 0.2)
+
 ;;; Editing & Programming
 (defun my/indent-with-spaces (width)
   (interactive)
@@ -392,7 +418,7 @@ identifier: \"%4$s\"
 (customize-set-variable 'corfu-auto-prefix 2)
 (customize-set-variable 'corfu-auto-delay 0.0)
 (customize-set-variable 'corfu-quit-at-boundary 'separator)
-(customize-set-variable 'corfu-echo-documentation 0.25)
+;;(customize-set-variable 'corfu-echo-documentation 0.25)
 (customize-set-variable 'corfu-preview-current 'insert)
 (customize-set-variable 'corfu-preselect-first nil)
 
@@ -460,7 +486,7 @@ identifier: \"%4$s\"
 
 ;;;; Go
 (defun my/go-mode-hook-setup ()
-  (lsp-deferred)
+;;  (lsp-deferred)
   (flycheck-mode))
 
 (straight-use-package 'go-mode)
