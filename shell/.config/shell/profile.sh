@@ -4,7 +4,7 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 export XDG_STATE_HOME="${HOME}/.local/state"
 
 export TERMINAL="alacritty"
-export EDITOR="vim"
+export EDITOR="nvim"
 export REPOS="${HOME}/Repos"
 export USER_SCRIPTS="${REPOS}/bin"
 
