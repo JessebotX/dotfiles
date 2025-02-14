@@ -139,11 +139,11 @@ require('lazy').setup({
         config = function()
             local opts = { noremap = true, silent = true }
 
-            vim.api.nvim_set_keymap('n', '<leader>k', '<Cmd>BufferPrevious<CR>', opts)
-            vim.api.nvim_set_keymap('n', '<leader>j', '<Cmd>BufferNext<CR>', opts)
+            vim.api.nvim_set_keymap('n', '<leader>j', '<Cmd>BufferPrevious<CR>', opts)
+            vim.api.nvim_set_keymap('n', '<leader>k', '<Cmd>BufferNext<CR>', opts)
             vim.api.nvim_set_keymap('n', '<leader>-', '<Cmd>BufferClose<CR>', opts)
-            vim.api.nvim_set_keymap('n', '<leader>K', '<Cmd>BufferMovePrevious<CR>', opts)
-            vim.api.nvim_set_keymap('n', '<leader>J', '<Cmd>BufferMoveNext<CR>', opts)
+            vim.api.nvim_set_keymap('n', '<leader>J', '<Cmd>BufferMovePrevious<CR>', opts)
+            vim.api.nvim_set_keymap('n', '<leader>K', '<Cmd>BufferMoveNext<CR>', opts)
             vim.api.nvim_set_keymap('n', '<A-1>', '<Cmd>BufferGoto 1<CR>', opts)
             vim.api.nvim_set_keymap('n', '<A-2>', '<Cmd>BufferGoto 2<CR>', opts)
             vim.api.nvim_set_keymap('n', '<A-3>', '<Cmd>BufferGoto 3<CR>', opts)
