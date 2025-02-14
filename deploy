@@ -1,3 +1,11 @@
 #!/bin/sh
 
-stow --dotfiles --no-folding -t "${HOME}" "${1}"
+if [ -n $(command -v stow) ]; then
+    if [ -n "${1}" ]; then
+        stow --dotfiles --no-folding -t "${HOME}" "${1}"
+    else
+        echo "Usage: ./deploy <package>"
+    fi
+else
+    echo "Error: `stow` command not found."
+fi
