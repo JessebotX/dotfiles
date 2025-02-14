@@ -1,0 +1,3 @@
+#!/bin/sh
+
+stow --dotfiles --no-folding -t "${HOME}" "${1}"
