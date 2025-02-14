@@ -5,7 +5,9 @@ if [ -n $(command -v stow) ]; then
         stow --dotfiles --no-folding -t "${HOME}" "${1}"
     else
         echo "Usage: ./deploy <package>"
+        exit 1
     fi
 else
     echo "Error: `stow` command not found."
+    exit 1
 fi
