@@ -125,6 +125,37 @@ require('lazy').setup({
     'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
     {
+        'sainnhe/gruvbox-material',
+        priority = 1000, -- Make sure to load this before all the other start plugins.
+        --lazy = true,
+        init = function()
+            -- Load the colorscheme here.
+            vim.g.gruvbox_material_enable_italic = true
+            vim.g.gruvbox_material_background = 'medium'
+            vim.g.gruvbox_material_better_performance = 1
+            vim.g.gruvbox_material_foreground = 'material'
+            vim.cmd.colorscheme 'gruvbox-material'
+
+            -- You can configure highlights by doing something like:
+            vim.cmd.hi 'Comment gui=none'
+        end,
+    },
+
+    --[[
+    {
+        'catppuccin/nvim',
+        name = 'catppuccin',
+        priority = 1000,
+        --lazy = true,
+        init = function()
+            vim.cmd.colorscheme 'catppuccin-mocha'
+
+            vim.cmd.hi 'Comment gui=none'
+        end,
+    },
+    --]]
+
+    {
         'romgrk/barbar.nvim',
         dependencies = {
             'lewis6991/gitsigns.nvim',
@@ -216,7 +247,7 @@ require('lazy').setup({
         branch = '0.1.x',
         dependencies = {
             'nvim-lua/plenary.nvim',
-            { -- If encountering errors, see telescope-fzf-native README for installation instructions
+            {
                 'nvim-telescope/telescope-fzf-native.nvim',
 
                 -- `build` is used to run some command when the plugin is installed/updated.
@@ -235,37 +266,7 @@ require('lazy').setup({
             { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
         },
         config = function()
-            -- Telescope is a fuzzy finder that comes with a lot of different things that
-            -- it can fuzzy find! It's more than just a "file finder", it can search
-            -- many different aspects of Neovim, your workspace, LSP, and more!
-            --
-            -- The easiest way to use Telescope, is to start by doing something like:
-            --  :Telescope help_tags
-            --
-            -- After running this command, a window will open up and you're able to
-            -- type in the prompt window. You'll see a list of `help_tags` options and
-            -- a corresponding preview of the help.
-            --
-            -- Two important keymaps to use while in Telescope are:
-            --  - Insert mode: <c-/>
-            --  - Normal mode: ?
-            --
-            -- This opens a window that shows you all of the keymaps for the current
-            -- Telescope picker. This is really useful to discover what Telescope can
-            -- do as well as how to actually do it!
-
-            -- [[ Configure Telescope ]]
-            -- See `:help telescope` and `:help telescope.setup()`
             require('telescope').setup {
-                -- You can put your default mappings / updates / etc. in here
-                --  All the info you're looking for is in `:help telescope.setup()`
-                --
-                -- defaults = {
-                --   mappings = {
-                --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-                --   },
-                -- },
-                -- pickers = {}
                 extensions = {
                     ['ui-select'] = {
                         require('telescope.themes').get_dropdown(),
@@ -680,26 +681,6 @@ require('lazy').setup({
                     { name = 'path' },
                 },
             }
-        end,
-    },
-
-    { -- You can easily change to a different colorscheme.
-        -- Change the name of the colorscheme plugin below, and then
-        -- change the command in the config to whatever the name of that colorscheme is.
-        --
-        -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-        'sainnhe/gruvbox-material',
-        priority = 1000, -- Make sure to load this before all the other start plugins.
-        init = function()
-            -- Load the colorscheme here.
-            vim.g.gruvbox_material_enable_italic = true
-            vim.g.gruvbox_material_background = 'hard'
-            vim.g.gruvbox_material_better_performance = 1
-            vim.g.gruvbox_material_foreground = 'material'
-            vim.cmd.colorscheme 'gruvbox-material'
-
-            -- You can configure highlights by doing something like:
-            vim.cmd.hi 'Comment gui=none'
         end,
     },
 
