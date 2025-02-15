@@ -11,6 +11,7 @@ export XDG_STATE_HOME="${HOME}/.local/state"
 export USER_SYNC="${HOME}/Sync"
 export USER_REPOS="${HOME}/src"
 export USER_SCRIPTS="${USER_REPOS}/bin"
+export USER_DOTFILES="${USER_REPOS}/dotfiles"
 
 export PATH="${PATH}:${HOME}/.local/bin"
 export PATH="${PATH}:${USER_SCRIPTS}"
