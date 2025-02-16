@@ -24,6 +24,8 @@ if [ -f ~/.config/shell/local-aliases.sh ]; then
 	. ~/.config/shell/local-aliases.sh
 fi
 
+set -o vi
+
 bind 'TAB:menu-complete'
 bind 'set show-all-if-ambiguous on'
 bind 'set completion-ignore-case on'
