@@ -141,19 +141,17 @@ require('lazy').setup({
         end,
     },
 
-    --[[
     {
         'catppuccin/nvim',
         name = 'catppuccin',
         priority = 1000,
         --lazy = true,
         init = function()
-            vim.cmd.colorscheme 'catppuccin-mocha'
+            --vim.cmd.colorscheme 'catppuccin-mocha'
 
-            vim.cmd.hi 'Comment gui=none'
+            --vim.cmd.hi 'Comment gui=none'
         end,
     },
-    --]]
 
     {
         'romgrk/barbar.nvim',
