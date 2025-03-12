@@ -33,6 +33,7 @@ Controls `indent-tabs-mode'."
 (setopt scroll-conservatively 100)
 (setopt fast-but-imprecise-scrolling t)
 (setopt scroll-preserve-screen-position t)
+(setopt jit-lock-defer-time 0)
 
 ;; Better buffer search
 (setopt isearch-lazy-count t)
