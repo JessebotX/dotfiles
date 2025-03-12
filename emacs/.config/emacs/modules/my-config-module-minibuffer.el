@@ -25,7 +25,8 @@
 
 (use-package marginalia
   :ensure t
-  :hook (vertico-mode . marginalia-mode))
+  :config
+  (marginalia-mode 1))
 
 ;; End
 (provide 'my-config-module-minibuffer)
