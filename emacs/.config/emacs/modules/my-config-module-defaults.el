@@ -96,7 +96,7 @@ Controls `indent-tabs-mode'."
 (keymap-global-set "C-+" 'text-scale-increase)
 (keymap-global-set "M-]" 'forward-paragraph)
 (keymap-global-set "M-[" 'backward-paragraph)
-
+(keymap-global-set "C-c SPC" 'just-one-space)
 
 ;;; End
 (provide 'my-config-module-defaults)

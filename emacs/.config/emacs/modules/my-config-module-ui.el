@@ -111,5 +111,26 @@ NOTE: value must be scaled for Emacs font height fields.")
   :ensure t
   :defer t)
 
+;;; Mode line configuration
+(setopt display-time-default-load-average nil)
+
+(display-time-mode 1)
+(column-number-mode)
+
+;; only display battery when using portable battery
+(use-package battery
+  :config
+  (when
+      (and battery-status-function
+           (not (string-match-p "N/A"(battery-format "%B" (funcall battery-status-function)))))
+    (display-battery-mode 1)))
+
+(use-package doom-modeline
+  :ensure t
+  :hook (emacs-startup . doom-modeline-mode)
+  :custom
+  (doom-modeline-height 35)
+  (doom-modeline-enable-word-count t))
+
 ;;; End
 (provide 'my-config-module-ui)

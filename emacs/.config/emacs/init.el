@@ -1,18 +1,7 @@
 ;;; init.el -*- lexical-binding: t; -*-
 
 ;; Copyright (c) 2025.
-
-;; Permission to use, copy, modify, and/or distribute this software
-;; for any purpose with or without fee is hereby granted.
-;;
-;; THE SOFTWARE IS PROVIDED “AS IS” AND THE AUTHOR DISCLAIMS ALL
-;; WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
-;; WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
-;; AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR
-;; CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS
-;; OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT,
-;; NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
-;; CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+;; SPDX-License-Identifier: 0BSD
 
 ;;; Commentary:
 ;;
@@ -34,26 +23,6 @@
   (add-to-list 'load-path (locate-user-emacs-file dir)))
 
 ;;;; Commands
-(defun my/indent-with-spaces (width)
-  "Set the local buffer's line indent size to WIDTH and insert as
-spaces.
-
-The value of WIDTH should be a positive integer."
-  (interactive "nIndent space width: ")
-  (setq-local evil-shift-width width)
-  (setq-local tab-width width)
-  (setq-local indent-tabs-mode nil))
-
-(defun my/indent-with-tabs (width)
-  "Set the local buffer's line indent size to be WIDTH and insert as
-a tab character.
-
-The value of WIDTH should be a positive integer."
-  (interactive "nIndent tab width: ")
-  (setq-local evil-shift-width width)
-  (setq-local tab-width width)
-  (setq-local indent-tabs-mode t))
-
 (defun my/set-theme (theme)
   "Set emacs current color theme to THEME.
 

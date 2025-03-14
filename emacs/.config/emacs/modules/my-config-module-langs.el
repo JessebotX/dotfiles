@@ -7,26 +7,67 @@
 
 ;;; Code:
 
+(defun my/indent-with-spaces (width)
+  "Set the local buffer's line indent size to WIDTH and insert as
+spaces.
+
+The value of WIDTH should be a positive integer."
+  (interactive "nIndent space width: ")
+  (setq-local evil-shift-width width)
+  (setq-local tab-width width)
+  (setq-local indent-tabs-mode nil))
+
+(defun my/indent-with-tabs (width)
+  "Set the local buffer's line indent size to be WIDTH and insert as
+a tab character.
+
+The value of WIDTH should be a positive integer."
+  (interactive "nIndent tab width: ")
+  (setq-local evil-shift-width width)
+  (setq-local tab-width width)
+  (setq-local indent-tabs-mode t))
+
+;;;; HTML
+
+(defun my/lang-hook--html-mode ()
+  (setopt sgml-basic-offset 4)
+  (my/indent-with-spaces 4))
+(add-hook 'html-mode-hook #'my/lang-hook--html-mode)
+
+;;;; CSS
+
+(defun my/lang-hook--css-mode ()
+  (setopt css-indent-offset 4)
+  (my/indent-with-spaces 4))
+(add-hook 'css-mode-hook #'my/lang-hook--css-mode)
+
+;;;; JavaScript
+
+(defun my/lang-hook--js-mode ()
+  (setopt js-indent-level 4)
+  (my/indent-with-spaces 4))
+(add-hook 'js-mode-hook #'my/lang-hook--js-mode)
+
 ;;; Markdown
+
 (use-package markdown-mode
   :ensure t
   :mode "\\.\\(?:md\\|txt\\|markdown\\|mkd\\|mdown\\|mkdn\\|mdwn\\)\\'"
   :preface
-  (defun my/hook--markdown-mode ()
+  (defun my/lang-hook--markdown-mode ()
     "Settings for `markdown-mode-hook'."
-    (my/indent-with-spaces 2))
+    (my/indent-with-tabs 4))
   :custom
   (markdown-max-image-size '(512 . 512))
   :config
-  (add-hook 'markdown-mode-hook #'my/hook--markdown-mode))
+  (add-hook 'markdown-mode-hook #'my/lang-hook--markdown-mode))
 
 ;;; Org mode
-;;;; Org mode
 
 (use-package org
   :ensure nil
   :preface
-  (defun my/hook--org-mode ()
+  (defun my/lang-hook--org-mode ()
     "Settings for `org-mode-hook'"
     (my/indent-with-spaces 8)
     (setq paragraph-start "\\|[    ]*$")
@@ -35,7 +76,7 @@
     (display-line-numbers-mode -1)
     ;(my/large-headings-mode 1)
     )
-  :hook (org-mode . my/hook--org-mode)
+  :hook (org-mode . my/lang-hook--org-mode)
   :custom
   (org-hide-leading-stars t)
   (org-id-link-to-org-use-id 'use-existing)
