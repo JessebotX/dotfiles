@@ -86,17 +86,9 @@ Controls `indent-tabs-mode'."
 
 (blink-cursor-mode -1)
 (global-so-long-mode 1)
-(recentf-mode 1)
+(unless (eq system-type 'windows-nt) ; slows down Emacs on windows
+  (recentf-mode 1))
 (winner-mode 1) ; Save window layouts
-
-(global-set-key [remap list-buffers] 'ibuffer)
-(keymap-global-set "<escape>" 'keyboard-escape-quit)
-(keymap-global-set "C--" 'text-scale-decrease)
-(keymap-global-set "C-=" 'text-scale-increase)
-(keymap-global-set "C-+" 'text-scale-increase)
-(keymap-global-set "M-]" 'forward-paragraph)
-(keymap-global-set "M-[" 'backward-paragraph)
-(keymap-global-set "C-c SPC" 'just-one-space)
 
 ;;; End
 (provide 'my-config-module-defaults)

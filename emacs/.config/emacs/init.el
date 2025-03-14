@@ -12,7 +12,7 @@
 
 ;;; Variables
 
-(defvar my/define-leader-key-prefix "C-c")
+(defvar my/leader-key "C-c")
 (defvar my/lisp-modules-dirs '("lisp" "modules"))
 (defvar my/package-etc-directory (locate-user-emacs-file "etc"))
 (defvar my/package-var-directory (locate-user-emacs-file "var"))
@@ -53,6 +53,11 @@ e.g. \"tango-dark\" => 'tango-dark"
   (my/defaults-indent-width 4)
   (my/defaults-indent-expand-tabs t))
 
+(use-package my-config-module-keybindings
+  :ensure nil
+  :config
+  (my/define-leader-key "SPC" 'just-one-space))
+
 ;; Emacs themes, fonts, and other UI packages
 (use-package my-config-module-ui
   :ensure nil
@@ -68,6 +73,10 @@ e.g. \"tango-dark\" => 'tango-dark"
   :ensure nil
   :config
   (with-eval-after-load 'consult
+    (my/define-leader-key "r r" 'consult-recent-file)
+    (my/define-leader-key "r b" 'consult-bookmark)
+    (my/define-leader-key "s s" 'consult-line)
+
     (global-set-key [remap switch-to-buffer] 'consult-buffer)
     (global-set-key [remap bookmark-jump] 'consult-bookmark))
 
