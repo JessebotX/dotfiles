@@ -130,5 +130,78 @@ e.g. \"tango-dark\" => 'tango-dark"
 
 (keymap-global-set "C-0" #'my/font-size-reset)
 
+(defun my/buffer-copy-base-file-name ()
+  "Copy the current buffer's file name"
+  (interactive)
+  (if (buffer-file-name)
+      (kill-new
+       (concat
+        (file-name-base buffer-file-name)
+        "."
+        (file-name-extension buffer-file-name)))
+    (message "Error: (buffer-file-name) returned nil")))
+
+(defun my/buffer-insert-relative-link-to-file (filepath &optional useless)
+  "Get a relative link from the file in the current buffer to FILEPATH.
+
+USELESS is not used."
+  (interactive (find-file-read-args "Link to file: " (confirm-nonexistent-file-or-buffer)))
+  (if (buffer-file-name)
+      (insert
+       (file-relative-name filepath (file-name-directory buffer-file-name)))
+    (message "Error: (buffer-file-name) returned nil")))
+
+(my/define-leader-key "l i" #'my/buffer-insert-relative-link-to-file)
+
+(defun my/open-file ()
+  "Open file.
+
+Credit: xahlee.info"
+  (interactive)
+  (let ((path (if (eq major-mode 'dired-mode)
+                  (if (eq nil (dired-get-marked-files))
+                      default-directory
+                    (car (dired-get-marked-files)))
+                (if buffer-file-name
+                    buffer-file-name
+                  default-directory))))
+    (cond
+     ((eq system-type 'windows-nt)
+      (shell-command
+       (format "PowerShell -Command invoke-item '%s'" (expand-file-name path))))
+     ((eq system-type 'darwin)
+      (shell-command (concat "open -R " (shell-quote-argument path))))
+     (t
+      (call-process shell-file-name nil 0 nil
+                    shell-command-switch
+                    (format "xdg-open '%s'" (expand-file-name path)))))))
+
+(defun my/open-current-directory ()
+  "Open the current directory"
+  (interactive)
+  (cond
+   ((eq system-type 'windows-nt)
+    (shell-command
+     (format "PowerShell -Command invoke-item '%s'" (expand-file-name default-directory))))
+   ((eq system-type 'darwin)
+    (shell-command
+     (concat "open -R " (shell-quote-argument (expand-file-name default-directory)))))
+   (t
+    (call-process shell-file-name nil 0 nil
+                  shell-command-switch
+                  (format "xdg-open '%s'" (expand-file-name default-directory))))))
+
+(defun my/directory-consult-grep ()
+  (interactive)
+  (require 'consult)
+  (consult-grep (expand-file-name default-directory)))
+(my/define-leader-key "r d" #'my/directory-consult-grep)
+
+(defun my/directory-consult-ripgrep ()
+  (interactive)
+  (require 'consult)
+  (consult-ripgrep (expand-file-name default-directory)))
+(my/define-leader-key "r g" #'my/directory-consult-ripgrep)
+
 ;;; End
 (load (locate-user-emacs-file "machine-init.el") :noerror :nomessage)

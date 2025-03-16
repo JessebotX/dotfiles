@@ -59,7 +59,7 @@
 (push '(font . "Maple Mono 12") default-frame-alist) ; fallback font for frames
 
 (setq inhibit-startup-screen t)
-(setq initial-scratch-message nil)
+;(setq initial-scratch-message nil)
 (setq inhibit-startup-buffer-menu t)
 (setq frame-inhibit-implied-resize t)
 (setq frame-resize-pixelwise t)
