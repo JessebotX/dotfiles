@@ -1,10 +1,8 @@
 ;;; init.el -*- lexical-binding: t; -*-
-
 ;; Copyright (c) 2025.
 ;; SPDX-License-Identifier: 0BSD
 
 ;;; Commentary:
-;;
 ;; Main emacs configuration file. See `early-init.el' for
 ;; configurations that happen before emacs startup.
 
@@ -96,6 +94,12 @@ e.g. \"tango-dark\" => 'tango-dark"
 ;; Text/programming languages
 (use-package my-config-module-langs
   :ensure nil)
+
+;;; Other emacs packages
+(use-package my-config-module-apps
+  :ensure nil
+  :config
+  (global-set-key [remap other-window] 'ace-window))
 
 ;;; End
 (load (locate-user-emacs-file "machine-init.el") :noerror :nomessage)
