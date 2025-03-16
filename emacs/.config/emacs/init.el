@@ -101,5 +101,34 @@ e.g. \"tango-dark\" => 'tango-dark"
   :config
   (global-set-key [remap other-window] 'ace-window))
 
+;;; TODO move to modules
+(defun my/font-size-increase ()
+  (interactive)
+  (let ((font-size (+ (face-attribute 'default :height) 10)))
+    (message (format "Font size: %d" font-size))
+    (custom-set-faces
+     `(default ((t :height ,font-size))))))
+
+(keymap-global-set "C-=" #'my/font-size-increase)
+(keymap-global-set "C-+" #'my/font-size-increase)
+
+(defun my/font-size-decrease ()
+  (interactive)
+  (let ((font-size (- (face-attribute 'default :height) 10)))
+    (message (format "Font size: %d" font-size))
+    (custom-set-faces
+     `(default ((t :height ,font-size))))))
+
+(keymap-global-set "C--" #'my/font-size-decrease)
+
+(defun my/font-size-reset ()
+  (interactive)
+  (let ((font-size (* my/ui-font-size-default 10)))
+    (message (format "Font size: %d" font-size))
+    (custom-set-faces
+     `(default ((t :height ,font-size))))))
+
+(keymap-global-set "C-0" #'my/font-size-reset)
+
 ;;; End
 (load (locate-user-emacs-file "machine-init.el") :noerror :nomessage)

@@ -51,6 +51,9 @@ NOTE: value must be scaled for Emacs font height fields.")
        (cascadia-code
         :default-family "Cascadia Code"
         :fixed-pitch-family "Cascadia Code")
+       (ibm-plex-mono
+        :default-family "IBM Plex Mono"
+        :fixed-pitch-family "IBM Plex Mono")
        (tengwar-cursive-variable-pitch
         :variable-pitch-family "Tengwar Cursive")
        (julia-mono
