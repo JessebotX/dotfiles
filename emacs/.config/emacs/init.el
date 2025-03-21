@@ -11,13 +11,33 @@
 ;;; Variables
 
 (defvar my/leader-key "C-c")
-(defvar my/lisp-modules-dirs '("lisp" "modules"))
+(defvar my/lisp-modules-directories '("lisp" "modules"))
 (defvar my/package-etc-directory (locate-user-emacs-file "etc"))
 (defvar my/package-var-directory (locate-user-emacs-file "var"))
+(defvar my/local-lisp-directory (locate-user-emacs-file "lisp"))
+(defvar my/local-modules-directory (locate-user-emacs-file "modules"))
+(defvar my/home-directory (getenv "HOME"))
+(defvar my/src-directory (expand-file-name "src" my/home-directory))
+(defvar my/dotfiles-directory (expand-file-name "dotfiles" my/src-directory))
+(defvar my/dotfiles-emacs-directory (expand-file-name "emacs/.config/emacs" my/dotfiles-directory))
+
+(defun my/update-dotfiles-dir ()
+  "Update sync-ed dotfiles directory at `my/dotfiles-emacs-directory' with
+my current emacs configuration in `~/.config/emacs'"
+  (interactive)
+  (let ((dotfiles-emacs-dir (expand-file-name "emacs/.config/emacs/" my/dotfiles-directory))
+        (emacs-gitignore-file (locate-user-emacs-file ".gitignore"))
+        (emacs-init-file (locate-user-emacs-file "init.el"))
+        (emacs-early-init-file (locate-user-emacs-file "early-init.el")))
+    (copy-file emacs-init-file dotfiles-emacs-dir t)
+    (copy-file emacs-init-file dotfiles-emacs-dir t)
+    (copy-directory my/local-lisp-directory dotfiles-emacs-dir)
+    (copy-directory my/local-modules-directory dotfiles-emacs-dir))
+  (message "Emacs dotfiles directory updated!"))
 
 ;;; General settings
 ;;;; Load path
-(dolist (dir my/lisp-modules-dirs)
+(dolist (dir my/lisp-modules-directories)
   (add-to-list 'load-path (locate-user-emacs-file dir)))
 
 ;;;; Commands
