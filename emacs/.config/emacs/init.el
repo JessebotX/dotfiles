@@ -21,44 +21,11 @@
 (defvar my/dotfiles-directory (expand-file-name "dotfiles" my/src-directory))
 (defvar my/dotfiles-emacs-directory (expand-file-name "emacs/.config/emacs" my/dotfiles-directory))
 
-(defun my/update-dotfiles-dir ()
-  "Update sync-ed dotfiles directory at `my/dotfiles-emacs-directory' with
-my current emacs configuration in `~/.config/emacs'"
-  (interactive)
-  (let ((dotfiles-emacs-dir (expand-file-name "emacs/.config/emacs/" my/dotfiles-directory))
-        (emacs-gitignore-file (locate-user-emacs-file ".gitignore"))
-        (emacs-init-file (locate-user-emacs-file "init.el"))
-        (emacs-early-init-file (locate-user-emacs-file "early-init.el")))
-    (copy-file emacs-init-file dotfiles-emacs-dir t)
-    (copy-file emacs-init-file dotfiles-emacs-dir t)
-    (copy-directory my/local-lisp-directory dotfiles-emacs-dir)
-    (copy-directory my/local-modules-directory dotfiles-emacs-dir))
-  (message "Emacs dotfiles directory updated!"))
-
 ;;; General settings
-;;;; Load path
 (dolist (dir my/lisp-modules-directories)
   (add-to-list 'load-path (locate-user-emacs-file dir)))
 
-;;;; Commands
-(defun my/set-theme (theme)
-  "Set emacs current color theme to THEME.
-
-THEME is a string matching its symbol name.
-e.g. \"tango-dark\" => 'tango-dark"
-  (interactive (list (completing-read "Set theme: " (custom-available-themes))))
-  (mapc 'disable-theme custom-enabled-themes)
-  (load-theme (intern theme) t)
-  (enable-theme (intern theme)))
-
-(defun my/kill-ring-clear ()
-  "Clear Emacs copy-paste clipboard (i.e. `kill-ring')."
-  (interactive)
-  (setq kill-ring nil)
-  (garbage-collect))
-
 ;;; Elisp package management
-
 (require 'my-config-elpaca-pkgm)
 
 ;;; Config modules
@@ -96,7 +63,17 @@ e.g. \"tango-dark\" => 'tango-dark"
     (my/define-leader-key "s s" 'consult-line)
 
     (global-set-key [remap switch-to-buffer] 'consult-buffer)
-    (global-set-key [remap bookmark-jump] 'consult-bookmark))
+    (global-set-key [remap bookmark-jump] 'consult-bookmark)
+
+    (defun my/directory-consult-grep ()
+      (interactive)
+      (consult-grep (expand-file-name default-directory)))
+    (my/define-leader-key "r d" #'my/directory-consult-grep)
+
+    (defun my/directory-consult-ripgrep ()
+      (interactive)
+      (consult-ripgrep (expand-file-name default-directory)))
+    (my/define-leader-key "r g" #'my/directory-consult-ripgrep))
 
   (with-eval-after-load 'vertico
     (let ((map vertico-map))
@@ -121,8 +98,9 @@ e.g. \"tango-dark\" => 'tango-dark"
   :config
   (global-set-key [remap other-window] 'ace-window))
 
-;;; TODO move to modules
+;;; Other commands
 (defun my/font-size-increase ()
+  "Increase font size by 10 (ie. font height by 10)."
   (interactive)
   (let ((font-size (+ (face-attribute 'default :height) 10)))
     (message (format "Font size: %d" font-size))
@@ -133,6 +111,7 @@ e.g. \"tango-dark\" => 'tango-dark"
 (keymap-global-set "C-+" #'my/font-size-increase)
 
 (defun my/font-size-decrease ()
+  "Decrease font size by 1 (ie. font height by 10)."
   (interactive)
   (let ((font-size (- (face-attribute 'default :height) 10)))
     (message (format "Font size: %d" font-size))
@@ -142,11 +121,20 @@ e.g. \"tango-dark\" => 'tango-dark"
 (keymap-global-set "C--" #'my/font-size-decrease)
 
 (defun my/font-size-reset ()
+  "Reset the font size to `my/ui-font-size-default'"
   (interactive)
   (let ((font-size (* my/ui-font-size-default 10)))
     (message (format "Font size: %d" font-size))
     (custom-set-faces
      `(default ((t :height ,font-size))))))
+
+(defun my/font-size-set (value)
+  "Manually input a font size (e.g. 12)"
+  (interactive "nEnter font size (e.g. 12): ")
+  (let ((font-size (* value 10)))
+    (custom-set-faces
+     `(default ((t :height ,font-size))))
+    (message (format "Font height set to %d" font-size))))
 
 (keymap-global-set "C-0" #'my/font-size-reset)
 
@@ -211,17 +199,36 @@ Credit: xahlee.info"
                   shell-command-switch
                   (format "xdg-open '%s'" (expand-file-name default-directory))))))
 
-(defun my/directory-consult-grep ()
+(defun my/update-dotfiles-dir ()
+  "Update sync-ed dotfiles directory at `my/dotfiles-emacs-directory' with
+my current emacs configuration in `~/.config/emacs'"
   (interactive)
-  (require 'consult)
-  (consult-grep (expand-file-name default-directory)))
-(my/define-leader-key "r d" #'my/directory-consult-grep)
+  (let ((dotfiles-emacs-dir (expand-file-name "emacs/.config/emacs/" my/dotfiles-directory))
+        (emacs-gitignore-file (locate-user-emacs-file ".gitignore"))
+        (emacs-init-file (locate-user-emacs-file "init.el"))
+        (emacs-early-init-file (locate-user-emacs-file "early-init.el")))
+    (copy-file emacs-gitignore-file dotfiles-emacs-dir t)
+    (copy-file emacs-early-init-file dotfiles-emacs-dir t)
+    (copy-file emacs-init-file dotfiles-emacs-dir t)
+    (copy-directory my/local-lisp-directory dotfiles-emacs-dir)
+    (copy-directory my/local-modules-directory dotfiles-emacs-dir)
+    (message "Emacs dotfiles directory updated!")))
 
-(defun my/directory-consult-ripgrep ()
+(defun my/set-theme (theme)
+  "Set emacs current color theme to THEME.
+
+THEME is a string matching its symbol name.
+e.g. \"tango-dark\" => 'tango-dark"
+  (interactive (list (completing-read "Set theme: " (custom-available-themes))))
+  (mapc 'disable-theme custom-enabled-themes)
+  (load-theme (intern theme) t)
+  (enable-theme (intern theme)))
+
+(defun my/kill-ring-clear ()
+  "Clear Emacs copy-paste clipboard (i.e. `kill-ring')."
   (interactive)
-  (require 'consult)
-  (consult-ripgrep (expand-file-name default-directory)))
-(my/define-leader-key "r g" #'my/directory-consult-ripgrep)
+  (setq kill-ring nil)
+  (garbage-collect))
 
 ;;; End
 (load (locate-user-emacs-file "machine-init.el") :noerror :nomessage)
