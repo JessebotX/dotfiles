@@ -14,7 +14,7 @@ return {
         { '\\', ':Neotree reveal_force_cwd reveal<CR>', desc = 'NeoTree reveal', silent = true },
     },
     opts = {
-        close_if_last_window = true,
+        bind_to_cwd = true, -- true creates a 2-way binding between vim's cwd and neo-tree's root
         filesystem = {
             window = {
                 mappings = {
@@ -22,5 +22,6 @@ return {
                 },
             },
         },
+        close_if_last_window = true,
     },
 }
