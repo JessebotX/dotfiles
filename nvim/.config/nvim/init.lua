@@ -1,5 +1,9 @@
 --[[ Neovim config based off of kickstart.nvim ]]
 
+-- [[Neovide GUI]]
+vim.g.neovide_opacity = 0.95
+vim.g.neovide_normal_opacity = 0.95
+
 -- Set <space> as the leader key
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
@@ -125,6 +129,15 @@ require('lazy').setup({
     'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
     {
+        'ibhagwan/fzf-lua',
+        -- optional for icon support
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        -- or if using mini.icons/mini.nvim
+        -- dependencies = { "echasnovski/mini.icons" },
+        opts = {},
+    },
+
+    {
         'sainnhe/gruvbox-material',
         priority = 1000, -- Make sure to load this before all the other start plugins.
         --lazy = true,
@@ -138,6 +151,10 @@ require('lazy').setup({
 
             -- You can configure highlights by doing something like:
             vim.cmd.hi 'Comment gui=none'
+
+            -- [[ Neovide GUI ]]
+            vim.g.neovide_title_background_color = string.format('%x', vim.api.nvim_get_hl(0, { id = vim.api.nvim_get_hl_id_by_name 'Normal' }).bg)
+            --vim.g.neovide_title_text_color = 'pink'
         end,
     },
 
