@@ -41,6 +41,17 @@ The value of WIDTH should be a positive integer."
   (my/indent-with-spaces 4))
 (add-hook 'css-mode-hook #'my/lang-hook--css-mode)
 
+;;;; Go
+
+(use-package go-mode
+  :ensure t
+  :mode "\\.\\(?:go\\)\\'"
+  :preface
+  (defun my/lang-hook--go-mode ()
+    (my/indent-with-tabs 8))
+  :config
+  (add-hook 'go-mode-hook #'my/lang-hook--go-mode))
+
 ;;;; JavaScript
 
 (defun my/lang-hook--js-mode ()
