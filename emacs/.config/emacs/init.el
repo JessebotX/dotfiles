@@ -31,6 +31,11 @@
 ;;; Config modules
 ;; NOTE: Modules under (locate-user-emacs-file "modules/")
 
+(use-package no-littering
+  :ensure t
+  :config
+  (no-littering-theme-backups))
+
 ;; Base emacs configurations
 (use-package my-config-module-defaults
   :ensure nil
