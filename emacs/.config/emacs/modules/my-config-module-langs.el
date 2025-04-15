@@ -31,7 +31,9 @@ The value of WIDTH should be a positive integer."
 
 (defun my/lang-hook--html-mode ()
   (setopt sgml-basic-offset 4)
-  (my/indent-with-spaces 4))
+  (my/indent-with-spaces 4)
+  (with-eval-after-load 'olivetti
+    (olivetti-mode -1)))
 (add-hook 'html-mode-hook #'my/lang-hook--html-mode)
 
 ;;;; CSS
