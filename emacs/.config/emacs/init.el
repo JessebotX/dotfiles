@@ -228,9 +228,13 @@ Credit: http://xahlee.info/emacs/emacs/emacs_open_in_terminal.html"
    ((eq system-type 'windows-nt)
     (shell-command (format "wt -d \"%s\"" default-directory)))
    ((eq system-type 'darwin)
-    (shell-command (format "open -a terminal %s" (shell-quote-argument (expand-file-name default-directory)))))
+    (shell-command
+     (format "open -a terminal %s" (shell-quote-argument (expand-file-name default-directory)))))
    (t
-    (start-process "" nil "x-terminal-emulator" (format "--working-directory=%s" (shell-quote-argument (expand-file-name default-directory)))))))
+    (start-process "" nil "x-terminal-emulator"
+                   (format "--working-directory=%s"
+                           (shell-quote-argument
+                            (expand-file-name default-directory)))))))
 
 (defun my/set-theme (theme)
   "Set emacs current color theme to THEME.
