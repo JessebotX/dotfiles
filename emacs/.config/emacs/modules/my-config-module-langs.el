@@ -69,7 +69,7 @@ The value of WIDTH should be a positive integer."
   :preface
   (defun my/lang-hook--markdown-mode ()
     "Settings for `markdown-mode-hook'."
-    (my/indent-with-tabs 4))
+    (my/indent-with-spaces 2))
   :custom
   (markdown-max-image-size '(512 . 512))
   :config
