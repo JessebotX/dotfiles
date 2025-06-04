@@ -40,6 +40,13 @@ if [ -n "$(command -v nvim)" ]; then
 	alias vim="nvim"
 fi
 
+### python
+
+if [ -n "$(command -v python)" ]; then
+	alias pyv="source ./.venv/bin/activate"
+	alias zephv="source ${USER_REPOS}/zephyrproject/.venv/bin/activate"
+fi
+
 ### xdg-open
 
 if [ -n "$(command -v xdg-open)" ]; then

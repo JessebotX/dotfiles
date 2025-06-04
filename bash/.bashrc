@@ -56,8 +56,26 @@ if ! shopt -oq posix; then
 	fi
 fi
 
-### Custom bash prompt (using starship.rs)
-eval "$(starship init bash)"
+PS1=""
+PS1="${PS1}\[\e[34;1m\]"
+PS1="${PS1}["
+PS1="${PS1}\[\e[32;1m\]"
+PS1="${PS1}\u"
+PS1="${PS1}@"
+PS1="${PS1}\h"
+PS1="${PS1}\[\e[34;1m\]"
+PS1="${PS1}]"
+PS1="${PS1}\n"
+PS1="${PS1}├["
+PS1="${PS1}\[\e[33;1m\]"
+PS1="${PS1}\w"
+PS1="${PS1}\[\e[34;1m\]"
+PS1="${PS1}]"
+PS1="${PS1}\n"
+PS1="${PS1}\[\e[34;1m\]"
+PS1="${PS1}└$"
+PS1="${PS1}\[\e[00;0m\]"
+PS1="${PS1} "
 
 ### End
 # vim: ts=8 sw=8 sts=8 noet
