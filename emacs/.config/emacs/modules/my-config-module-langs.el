@@ -31,7 +31,9 @@ The value of WIDTH should be a positive integer."
 
 (defun my/lang-hook--html-mode ()
   (setopt sgml-basic-offset 4)
-  (my/indent-with-spaces 4))
+  (my/indent-with-spaces 4)
+  (with-eval-after-load 'olivetti
+    (olivetti-mode -1)))
 (add-hook 'html-mode-hook #'my/lang-hook--html-mode)
 
 ;;;; CSS
@@ -40,6 +42,17 @@ The value of WIDTH should be a positive integer."
   (setopt css-indent-offset 4)
   (my/indent-with-spaces 4))
 (add-hook 'css-mode-hook #'my/lang-hook--css-mode)
+
+;;;; Go
+
+(use-package go-mode
+  :ensure t
+  :mode "\\.\\(?:go\\)\\'"
+  :preface
+  (defun my/lang-hook--go-mode ()
+    (my/indent-with-tabs 8))
+  :config
+  (add-hook 'go-mode-hook #'my/lang-hook--go-mode))
 
 ;;;; JavaScript
 
@@ -56,7 +69,7 @@ The value of WIDTH should be a positive integer."
   :preface
   (defun my/lang-hook--markdown-mode ()
     "Settings for `markdown-mode-hook'."
-    (my/indent-with-tabs 4))
+    (my/indent-with-spaces 2))
   :custom
   (markdown-max-image-size '(512 . 512))
   :config
