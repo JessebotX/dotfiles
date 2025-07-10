@@ -8,6 +8,7 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 export XDG_STATE_HOME="${HOME}/.local/state"
 
 #### Local scripts bin
+export USER_APPLICATIONS="${HOME}/Applications"
 export USER_SYNC="${HOME}/Sync"
 export USER_REPOS="${HOME}/src"
 export USER_SCRIPTS="${USER_REPOS}/bin"
@@ -26,6 +27,9 @@ export GOPATH="${XDG_DATA_HOME}/go"
 export GOMODCACHE="${XDG_CACHE_HOME}/go/mod"
 export PATH="${PATH}:/usr/local/go/bin:${GOPATH}/bin"
 
+### GTK 2
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc":"$XDG_CONFIG_HOME/gtk-2.0/gtkrc.mine"
+
 ### Lynx browser
 
 export LYNX_CFG="${XDG_CONFIG_HOME}/lynx/lynx.cfg"
@@ -38,6 +42,17 @@ export RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
 if [ -f "${CARGO_HOME}/env" ]; then
 	. ${CARGO_HOME}/env
 fi
+
+### yazi
+export PATH="${PATH}:${USER_APPLICATIONS}/yazi-x86_64-unknown-linux-gnu"
+
+y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
 
 ### w3m
 export W3M_DIR="${XDG_STATE_HOME}/w3m"

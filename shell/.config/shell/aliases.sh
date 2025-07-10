@@ -14,7 +14,8 @@ alias dots="cd ${USER_DOTFILES}"
 
 if [ -x '/usr/bin/dircolors' ]; then
 	test -r '~/.dircolors' && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-	alias ls='ls --color=auto'
+	alias ls='ls -A --color=auto'
+	alias ll='ls -goA --color=auto'
 	alias dir='dir --color=auto'
 	alias vdir='vdir --color=auto'
 
@@ -33,11 +34,14 @@ if [ -n "$(command -v eza)" ]; then
 	alias tree="eza --icons --tree"
 fi
 
-### Neovim
+### [Neo]vim
 
 if [ -n "$(command -v nvim)" ]; then
 	alias vi="nvim"
 	alias vim="nvim"
+elif [ -n "$(command -v vim)" ]; then
+	alias vi="vim"
+	alias vim="vim"
 fi
 
 ### python
@@ -57,4 +61,9 @@ fi
 
 alias wget="wget --hsts-file=${XDG_CACHE_HOME:-${HOME}/.cache}/wget-hsts"
 
+### yazi
+
+alias yy="yazi"
+
 # vim: ts=8 sw=8 noet
+
