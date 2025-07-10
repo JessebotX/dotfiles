@@ -14,8 +14,9 @@ alias dots="cd ${USER_DOTFILES}"
 
 if [ -x '/usr/bin/dircolors' ]; then
 	test -r '~/.dircolors' && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+	alias l='ls -A --color=auto'
 	alias ls='ls -A --color=auto'
-	alias ll='ls -goA --color=auto'
+	alias ll='ls -lAho --color=auto'
 	alias dir='dir --color=auto'
 	alias vdir='vdir --color=auto'
 
