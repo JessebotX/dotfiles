@@ -8,7 +8,7 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 export XDG_STATE_HOME="${HOME}/.local/state"
 
 #### Local scripts bin
-export USER_APPLICATIONS="${HOME}/Applications"
+export USER_APPLICATIONS="${HOME}/bin"
 export USER_SYNC="${HOME}/Sync"
 export USER_REPOS="${HOME}/src"
 export USER_SCRIPTS="${USER_REPOS}/bin"
@@ -16,6 +16,7 @@ export USER_DOTFILES="${USER_REPOS}/dotfiles"
 
 export PATH="${PATH}:${HOME}/.local/bin"
 export PATH="${PATH}:${USER_SCRIPTS}"
+export PATH="${PATH}:${USER_APPLICATIONS}"
 
 ### GCC
 # colored GCC warnings and errors
@@ -34,13 +35,18 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc":"$XDG_CONFIG_HOME/gtk-2.0/
 
 export LYNX_CFG="${XDG_CONFIG_HOME}/lynx/lynx.cfg"
 
+### python
+export PYTHON_HISTORY="${XDG_STATE_HOME}/python_history"
+export PYTHONPYCACHEPREFIX="${XDG_CACHE_HOME}/python"
+export PYTHONUSERBASE="${XDG_DATA_HOME}/python"
+
 ### Rust programming language
 
 export CARGO_HOME="${XDG_DATA_HOME}/cargo" 
 export RUSTUP_HOME="${XDG_DATA_HOME}/rustup" 
 
 if [ -f "${CARGO_HOME}/env" ]; then
-	. ${CARGO_HOME}/env
+	. "${CARGO_HOME}/env"
 fi
 
 ### yazi
@@ -50,7 +56,7 @@ y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
 	IFS= read -r -d '' cwd < "$tmp"
-	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd" || exit
 	rm -f -- "$tmp"
 }
 

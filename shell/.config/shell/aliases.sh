@@ -65,6 +65,8 @@ alias wget="wget --hsts-file=${XDG_CACHE_HOME:-${HOME}/.cache}/wget-hsts"
 ### yazi
 
 alias yy="yazi"
+alias ld="yazi"
+alias lg="y"
 
 # vim: ts=8 sw=8 noet
 
