@@ -10,6 +10,12 @@ alias r="cd ${USER_REPOS}"
 alias sy="cd ${USER_SYNC}"
 alias dots="cd ${USER_DOTFILES}"
 
+### cht.sh
+
+if [ -n "$(command -v cht.sh)" ]; then
+	alias h="cht.sh"
+fi
+
 ### ls
 
 if [ -x '/usr/bin/dircolors' ]; then

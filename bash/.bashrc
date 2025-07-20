@@ -8,20 +8,20 @@ esac
 
 ### Shared aliases and environment
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-if [ -f ~/.config/shell/profile.sh ]; then
-	. ~/.config/shell/profile.sh
+if [ -f "${HOME}/.config/shell/profile.sh" ]; then
+	. "${HOME}/.config/shell/profile.sh"
 fi
 
-if [ -f ~/.config/shell/local-profile.sh ]; then
-	. ~/.config/shell/local-profile.sh
+if [ -f "${HOME}/.config/shell/local-profile.sh" ]; then
+	. "${HOME}/.config/shell/local-profile.sh"
 fi
 
-if [ -f ~/.config/shell/aliases.sh ]; then
-	. ~/.config/shell/aliases.sh
+if [ -f "${HOME}/.config/shell/aliases.sh" ]; then
+	. "${HOME}/.config/shell/aliases.sh"
 fi
 
-if [ -f ~/.config/shell/local-aliases.sh ]; then
-	. ~/.config/shell/local-aliases.sh
+if [ -f "${HOME}/.config/shell/local-aliases.sh" ]; then
+	. "${HOME}/.config/shell/local-aliases.sh"
 fi
 
 bind 'TAB:menu-complete'
@@ -47,10 +47,10 @@ shopt -s checkwinsize
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 if ! shopt -oq posix; then
-	if [ -f /usr/share/bash-completion/bash_completion ]; then
-		. /usr/share/bash-completion/bash_completion
-	elif [ -f /etc/bash_completion ]; then
-		. /etc/bash_completion
+	if [ -f "/usr/share/bash-completion/bash_completion" ]; then
+		. "/usr/share/bash-completion/bash_completion"
+	elif [ -f "/etc/bash_completion" ]; then
+		. "/etc/bash_completion"
 	fi
 fi
 
