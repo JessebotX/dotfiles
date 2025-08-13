@@ -7,21 +7,12 @@ case $- in
 esac
 
 ### Shared aliases and environment
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-if [ -f "${HOME}/.config/shell/profile.sh" ]; then
-	. "${HOME}/.config/shell/profile.sh"
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/profile.sh" ]; then
+	. "${XDG_CONFIG_HOME:-$HOME/.config}/shell/profile.sh"
 fi
 
-if [ -f "${HOME}/.config/shell/local-profile.sh" ]; then
-	. "${HOME}/.config/shell/local-profile.sh"
-fi
-
-if [ -f "${HOME}/.config/shell/aliases.sh" ]; then
-	. "${HOME}/.config/shell/aliases.sh"
-fi
-
-if [ -f "${HOME}/.config/shell/local-aliases.sh" ]; then
-	. "${HOME}/.config/shell/local-aliases.sh"
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/local-profile.sh" ]; then
+	. "${XDG_CONFIG_HOME:-$HOME/.config}/shell/local-profile.sh"
 fi
 
 bind 'TAB:menu-complete'

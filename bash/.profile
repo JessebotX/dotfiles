@@ -20,8 +20,8 @@ if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/profile.sh" ]; then
 	. "${XDG_CONFIG_HOME:-$HOME/.config}/shell/profile.sh"
 fi
 
-if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliases.sh" ]; then
-	. "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliases.sh"
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/local-profile.sh" ]; then
+	. "${XDG_CONFIG_HOME:-$HOME/.config}/shell/local-profile.sh"
 fi
 
 ### End
