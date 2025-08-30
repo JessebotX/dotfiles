@@ -19,12 +19,13 @@ export USER_SRC="${HOME}/src"
 export USER_SCRIPTS="${USER_SRC}/bin"
 export USER_DOTFILES="${USER_SRC}/dotfiles"
 
-export EDITOR="nvim"
+export EDITOR="hx"
 export PATH="${PATH}:${HOME}/.local/bin"
 export PATH="${PATH}:${USER_SCRIPTS}"
 export PATH="${PATH}:${USER_APPLICATIONS}"
 
 alias ?='search' # script that looks things up using lynx, etc.
+alias e="${EDITOR:-vi}"
 # Add an "alert" alias for long running commands.  Use like so: sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias cd..='cd ..'
@@ -51,6 +52,9 @@ if [ -n "$(command -v cht.sh)" ]; then
 	alias h="cht.sh"
 fi
 
+### dotnet
+export DOTNET_CLI_TELEMETRY_OPTOUT="true"
+
 ### eza (ls replacement)
 if [ -n "$(command -v eza)" ]; then
 	alias l="eza -A --icons"
@@ -74,6 +78,9 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc":"$XDG_CONFIG_HOME/gtk-2.0/
 
 ### Lynx
 export LYNX_CFG="${XDG_CONFIG_HOME}/lynx/lynx.cfg"
+
+### nb
+#export NB_DIR="${USER_SYNC}/nb"
 
 ### [Neo]vim
 if [ -n "$(command -v nvim)" ]; then
@@ -134,8 +141,8 @@ y() {
 }
 
 alias yy="yazi"
-alias ld="yazi"
-alias lg="y"
+alias fl="yazi"
+alias ff="y"
 
 # vim: ts=8 sw=8 noet
 
