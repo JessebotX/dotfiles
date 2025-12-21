@@ -1,0 +1,49 @@
+[[language]]
+name = "bash"
+indent = { tab-width = 3, unit = "\t" }
+
+[[language]]
+name = "c"
+indent = { tab-width = 3, unit = "\t" }
+language-servers = []
+
+[[language]]
+name = "cmake"
+indent = { tab-width = 3, unit = "\t" }
+
+[[language]]
+name = "css"
+indent = { tab-width = 3, unit = "\t" }
+
+[[language]]
+name = "cpp"
+language-servers = []
+indent = { tab-width = 3, unit = "\t" }
+
+[[language]]
+name = "go"
+formatter = { command = "gofmt", args = ["-s"] }
+indent = { tab-width = 3, unit = "t" }
+
+[[language]]
+name = "html"
+indent = { tab-width = 3, unit = "\t" }
+
+[[language]]
+name = "javascript"
+indent = { tab-width = 3, unit = "\t" }
+
+[[language]]
+name = "markdown"
+indent = { tab-width = 2, unit = "\t" }
+text-width = 75
+soft-wrap.wrap-at-text-width = true # This enables soft-wrapping at the specified width
+
+[[language]]
+name = "odin"
+indent = { tab-width = 3, unit = "\t" }
+language-servers = []
+
+[[language]]
+name = "typst"
+indent = { tab-width = 2, unit = " " }

@@ -1,0 +1,82 @@
+theme = "acme"
+
+[editor]
+auto-pairs = false
+auto-format = false
+bufferline = "multiple"
+gutters = ["diagnostics", "spacer", "line-numbers", "spacer"]
+indent-heuristic = "simple"
+line-number = "relative"
+popup-border = "all"
+scroll-lines = 3
+scrolloff = 3
+
+[editor.cursor-shape]
+normal = "block"
+insert = "underline"
+select = "block"
+
+# [editor.indent-guides]
+# render = true
+# character = "╎" # Some characters that work well: "▏", "┆", "┊", "⸽"
+
+[editor.soft-wrap]
+enable = true
+wrap-indicator = ""
+
+[editor.statusline]
+left = ["file-name", "read-only-indicator", "file-modification-indicator"]
+right = ["mode", "diagnostics", "position", "file-encoding", "file-type", "file-line-ending"]
+
+[editor.whitespace.render]
+tab = "all"
+newline = "all"
+
+[editor.whitespace.characters]
+tab = "│"
+newline = "·"
+
+[keys.normal]
+C-f = [
+  ':sh rm -f /tmp/unique-file',
+  ':sh rm -f /tmp/unique-cwd-file',
+  ":insert-output yazi --chooser-file=/tmp/unique-file --cwd-file=/tmp/unique-cwd-file",
+  ':insert-output echo "\x1b[?1049h\x1b[?2004h" > /dev/tty',
+  ':open %sh{cat /tmp/unique-file}',
+  ':cd %sh{cat /tmp/unique-cwd-file}',
+  ':redraw',
+]
+C-y = [
+  ':sh rm -f /tmp/unique-file',
+  ':insert-output yazi %{buffer_name} --chooser-file=/tmp/unique-file',
+  ':insert-output echo "\x1b[?1049h\x1b[?2004h" > /dev/tty',
+  ':open %sh{cat /tmp/unique-file}',
+  ':redraw',
+]
+# "C-l" = ":set-option gutters.layout [\"diagnostics\", \"spacer\", \"spacer\", \"spacer\"]"
+# "A-l" = ":set-option gutters.layout [\"diagnostics\", \"spacer\", \"line-numbers\", \"spacer\"]"
+"C-/" = ":format"
+"A-[" = "goto_prev_paragraph"
+"A-]" = "goto_next_paragraph"
+"#" = "toggle_comments"
+"X" = "extend_line_above"
+"H" = "extend_char_left"
+"J" = "extend_visual_line_down"
+"K" = "extend_visual_line_up"
+"L" = "extend_char_right"
+"W" = "extend_next_word_start"
+"B" = "extend_prev_word_start"
+"E" = "extend_next_word_end"
+
+[keys.select]
+"A-[" = "goto_prev_paragraph"
+"A-]" = "goto_next_paragraph"
+"#" = "toggle_comments"
+"X" = "extend_line_above"
+"H" = "extend_char_left"
+"J" = "extend_visual_line_down"
+"K" = "extend_visual_line_up"
+"L" = "extend_char_right"
+"W" = "extend_next_word_start"
+"B" = "extend_prev_word_start"
+"E" = "extend_next_word_end"

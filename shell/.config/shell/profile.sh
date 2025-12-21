@@ -24,13 +24,17 @@ export PATH="${PATH}:${HOME}/.local/bin"
 export PATH="${PATH}:${USER_SCRIPTS}"
 export PATH="${PATH}:${USER_APPLICATIONS}"
 
-alias ?='search' # script that looks things up using lynx, etc.
+if [ "$KITTY_WINDOW_ID" ]; then
+	alias ssh="kitten ssh"
+fi
+
+alias ?="${USER_SCRIPTS}/search" # script that looks things up using lynx, etc.
 alias e="${EDITOR:-vi}"
 # Add an "alert" alias for long running commands.  Use like so: sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias cd..='cd ..'
-alias r="cd ${USER_SRC}"
-alias s="cd ${USER_SYNC}"
+#alias r="cd ${USER_SRC}"
+#alias s="cd ${USER_SYNC}"
 alias sy="cd ${USER_SYNC}"
 alias dots="cd ${USER_DOTFILES}"
 
@@ -54,6 +58,11 @@ fi
 
 ### dotnet
 export DOTNET_CLI_TELEMETRY_OPTOUT="true"
+
+### Emacs
+if [ -n "$(command -v emacs)" ]; then
+	alias emacs2="emacs --init-directory ${XDG_CONFIG_HOME}/emacs-2"
+fi
 
 ### eza (ls replacement)
 if [ -n "$(command -v eza)" ]; then
@@ -95,6 +104,9 @@ fi
 export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}/npm/npmrc"
 export NVM_DIR="${XDG_DATA_HOME}/nvm"
 
+### Odin
+export PATH="${PATH}:${USER_APPLICATIONS}/odin"
+
 ### python
 export PYTHON_HISTORY="${XDG_STATE_HOME}/python_history"
 export PYTHONPYCACHEPREFIX="${XDG_CACHE_HOME}/python"
@@ -132,17 +144,28 @@ fi
 
 ### yazi
 export PATH="${PATH}:${USER_APPLICATIONS}/yazi-x86_64-unknown-linux-gnu"
+# y() {
+# 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+# 	yazi "$@" --cwd-file="$tmp"
+# 	IFS= read -r -d '' cwd < "$tmp"
+# 	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && cd -- "$cwd" || exit
+# 	rm -f -- "$tmp"
+# }
+
+
 y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
 	IFS= read -r -d '' cwd < "$tmp"
-	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && cd -- "$cwd" || exit
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && cd -- "$cwd"
 	rm -f -- "$tmp"
 }
-
 alias yy="yazi"
-alias fl="yazi"
-alias ff="y"
+alias fl="y"
+alias ff="yazi"
+
+### zig
+export PATH="${PATH}:${USER_APPLICATIONS}/zig"
 
 # vim: ts=8 sw=8 noet
 
