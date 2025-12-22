@@ -13,14 +13,16 @@ export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_CACHE_HOME="${HOME}/.cache"
 export XDG_DATA_HOME="${HOME}/.local/share"
 export XDG_STATE_HOME="${HOME}/.local/state"
-export USER_APPLICATIONS="${HOME}/bin"
-export USER_SYNC="${HOME}/Sync"
+export USER_SYS="${HOME}/sys"
+export USER_SYNC="${HOME}/sync"
 export USER_SRC="${HOME}/src"
-export USER_SCRIPTS="${USER_SRC}/bin"
-export USER_DOTFILES="${USER_SRC}/dotfiles"
+export USER_APPLICATIONS="${USER_SYS}/bin"
+export USER_SCRIPTS="${USER_SYS}/bin/scripts"
+export USER_DOTFILES="${USER_SYS}/dotfiles"
 
 export EDITOR="hx"
 export PATH="${PATH}:${HOME}/.local/bin"
+export PATH="${PATH}:${USER_SYS}/bin"
 export PATH="${PATH}:${USER_SCRIPTS}"
 export PATH="${PATH}:${USER_APPLICATIONS}"
 
@@ -88,9 +90,6 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc":"$XDG_CONFIG_HOME/gtk-2.0/
 ### Lynx
 export LYNX_CFG="${XDG_CONFIG_HOME}/lynx/lynx.cfg"
 
-### nb
-#export NB_DIR="${USER_SYNC}/nb"
-
 ### [Neo]vim
 if [ -n "$(command -v nvim)" ]; then
 	alias vi="nvim"
@@ -143,16 +142,6 @@ if [ -n "$(command -v xdg-open)" ]; then
 fi
 
 ### yazi
-export PATH="${PATH}:${USER_APPLICATIONS}/yazi-x86_64-unknown-linux-gnu"
-# y() {
-# 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-# 	yazi "$@" --cwd-file="$tmp"
-# 	IFS= read -r -d '' cwd < "$tmp"
-# 	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && cd -- "$cwd" || exit
-# 	rm -f -- "$tmp"
-# }
-
-
 y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
@@ -160,9 +149,9 @@ y() {
 	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && cd -- "$cwd"
 	rm -f -- "$tmp"
 }
-alias yy="yazi"
-alias fl="y"
-alias ff="yazi"
+
+alias fj="yazi"
+alias ff="y"
 
 ### zig
 export PATH="${PATH}:${USER_APPLICATIONS}/zig"
