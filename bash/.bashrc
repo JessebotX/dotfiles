@@ -58,7 +58,7 @@ PS1="${PS1}\[\e[34;1m\]"
 PS1="${PS1}]"
 PS1="${PS1}\n"
 PS1="${PS1}├["
-PS1="${PS1}\[\e[32;1m\]"
+PS1="${PS1}\[\e[33;1m\]"
 PS1="${PS1}\w"
 PS1="${PS1}\[\e[34;1m\]"
 PS1="${PS1}]"
@@ -78,3 +78,5 @@ PS1="${PS1} "
 if [ -f "${XDG_CONFIG_HOME}/broot/launcher/bash/br" ]; then
 	source "${XDG_CONFIG_HOME}/broot/launcher/bash/br"
 fi
+
+. "$HOME/.local/share/../bin/env"

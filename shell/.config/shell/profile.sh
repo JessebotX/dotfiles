@@ -20,7 +20,7 @@ export USER_APPLICATIONS="${USER_SYS}/bin"
 export USER_SCRIPTS="${USER_SYS}/bin/scripts"
 export USER_DOTFILES="${USER_SYS}/dotfiles"
 
-export EDITOR="hx"
+export EDITOR="nvim"
 export PATH="${PATH}:${HOME}/.local/bin"
 export PATH="${PATH}:${USER_SYS}/bin"
 export PATH="${PATH}:${USER_SCRIPTS}"
