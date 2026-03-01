@@ -1,10 +1,10 @@
 -- [[ Neovide GUI ]]
-vim.g.neovide_refresh_rate = 144
+vim.g.neovide_refresh_rate = 150
 if vim.g.neovide then
     -- neovide specific options...
 end
 
-vim.opt.guifont = { "Maple Mono NF", ":18" }
+vim.opt.guifont = { "Maple Mono NL NF", ":16" }
 
 -- [[ Leader key ]]
 -- See `:help mapleader`
@@ -174,11 +174,22 @@ require("lazy").setup({
         version = false,
         opts = {
             mappings = {
-                comment_line = 'gj',
-                comment_visual = 'gj',
+                comment_line = '<a-;>',
+                comment_visual = '<a-;>',
             },
         },
     },
+    -- {
+    --     "miikanissi/modus-themes.nvim",
+    --     priority = 1000,
+    --     opts = {
+    --         line_nr_column_background = false,
+    --         sign_column_background = false,
+    --     },
+    --     config = function()
+    --         vim.cmd([[colorscheme modus_operandi]])
+    --     end
+    -- },
     {
 
         'projekt0n/github-nvim-theme',
@@ -186,9 +197,6 @@ require("lazy").setup({
         lazy = false, -- make sure we load this during startup if it is your main colorscheme
         priority = 1000, -- make sure to load this before all the other start plugins
         config = function()
-            require('github-theme').setup({
-            })
-
             vim.o.background = 'light'
             vim.cmd('colorscheme github_light_high_contrast')
             vim.g.neovide_title_background_color = '#ffffff'
