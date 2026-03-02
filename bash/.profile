@@ -10,22 +10,20 @@
 
 # if running bash
 if [ -n "${BASH_VERSION}" ]; then
-	# include .bashrc if it exists
-	if [ -f "${HOME}/.bashrc" ]; then
-		. "${HOME}/.bashrc"
-	fi
+    # include .bashrc if it exists
+    if [ -f "${HOME}/.bashrc" ]; then
+        . "${HOME}/.bashrc"
+    fi
 fi
 
 if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/profile.sh" ]; then
-	. "${XDG_CONFIG_HOME:-$HOME/.config}/shell/profile.sh"
+    . "${XDG_CONFIG_HOME:-$HOME/.config}/shell/profile.sh"
 fi
 
 if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/local-profile.sh" ]; then
-	. "${XDG_CONFIG_HOME:-$HOME/.config}/shell/local-profile.sh"
+    . "${XDG_CONFIG_HOME:-$HOME/.config}/shell/local-profile.sh"
 fi
 
-### End
-# vim: ts=8 sw=8 sts=8 noet
-
-
-. "$HOME/.local/share/../bin/env"
+if [ -f "$HOME/.local/share/../bin/env" ]; then
+    . "$HOME/.local/share/../bin/env"
+fi
