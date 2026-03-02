@@ -1,2 +1,5 @@
 [init]
 	defaultBranch = master
+[user]
+	name = Jesse
+	email = jessebot.git@gmail.com
