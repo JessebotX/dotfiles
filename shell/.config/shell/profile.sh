@@ -27,11 +27,17 @@ export PATH="${PATH}:${USER_SCRIPTS}"
 export PATH="${PATH}:${USER_APPLICATIONS}"
 
 if [ "$KITTY_WINDOW_ID" ]; then
-	alias ssh="kitten ssh"
+    alias ssh="kitten ssh"
 fi
 
 alias ?="${USER_SCRIPTS}/search" # script that looks things up using lynx, etc.
 alias e="${EDITOR:-vi}"
+alias ee="neovide"
+
+if [ -n "$(command -v emacs)" ]; then
+    alias runemacs="emacs & disown"
+fi
+
 # Add an "alert" alias for long running commands.  Use like so: sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias cd..='cd ..'
@@ -39,23 +45,25 @@ alias cd..='cd ..'
 #alias s="cd ${USER_SYNC}"
 alias sy="cd ${USER_SYNC}"
 alias dots="cd ${USER_DOTFILES}"
+alias cls="clear"
+alias rmdir="rm -r"
 
 if [ -x '/usr/bin/dircolors' ]; then
-	test -r '~/.dircolors' && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-	alias l='ls -A --color=auto'
-	alias ls='ls -A --color=auto'
-	alias ll='ls -lAho --color=auto'
-	alias dir='dir --color=auto'
-	alias vdir='vdir --color=auto'
+    test -r '~/.dircolors' && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias l='ls -A --color=auto'
+    alias ls='ls -A --color=auto'
+    alias ll='ls -lAho --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
 
-	alias grep='grep --color=auto'
-	alias fgrep='fgrep --color=auto'
-	alias egrep='egrep --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
 fi
 
 ### cht.sh
 if [ -n "$(command -v cht.sh)" ]; then
-	alias h="cht.sh"
+    alias h="cht.sh"
 fi
 
 ### dotnet
@@ -63,16 +71,16 @@ export DOTNET_CLI_TELEMETRY_OPTOUT="true"
 
 ### Emacs
 if [ -n "$(command -v emacs)" ]; then
-	alias emacs2="emacs --init-directory ${XDG_CONFIG_HOME}/emacs-2"
+    alias emacs2="emacs --init-directory ${XDG_CONFIG_HOME}/emacs-2"
 fi
 
 ### eza (ls replacement)
 if [ -n "$(command -v eza)" ]; then
-	alias l="eza -A --icons"
-	alias ls="eza -A --icons"
-	alias ll="eza -lA --icons"
-	alias dir="eza -lA --icons"
-	alias tree="eza --icons --tree"
+    alias l="eza -A --icons"
+    alias ls="eza -A --icons"
+    alias ll="eza -lA --icons"
+    alias dir="eza -lA --icons"
+    alias tree="eza --icons --tree"
 fi
 
 ### GCC
@@ -92,11 +100,11 @@ export LYNX_CFG="${XDG_CONFIG_HOME}/lynx/lynx.cfg"
 
 ### [Neo]vim
 if [ -n "$(command -v nvim)" ]; then
-	alias vi="nvim"
-	alias vim="nvim"
+    alias vi="nvim"
+    alias vim="nvim"
 elif [ -n "$(command -v vim)" ]; then
-	alias vi="vim"
-	alias vim="vim"
+    alias vi="vim"
+    alias vim="vim"
 fi
 
 ### Node.js/npm
@@ -112,8 +120,8 @@ export PYTHONPYCACHEPREFIX="${XDG_CACHE_HOME}/python"
 export PYTHONUSERBASE="${XDG_DATA_HOME}/python"
 
 if [ -n "$(command -v python)" ]; then
-	alias pyv="source ./.venv/bin/activate"
-	alias zephv="source ${USER_SRC}/zephyrproject/.venv/bin/activate"
+    alias pyv="source ./.venv/bin/activate"
+    alias zephv="source ${USER_SRC}/zephyrproject/.venv/bin/activate"
 fi
 
 ### Rust
@@ -121,7 +129,7 @@ export CARGO_HOME="${XDG_DATA_HOME}/cargo"
 export RUSTUP_HOME="${XDG_DATA_HOME}/rustup" 
 
 if [ -f "${CARGO_HOME}/env" ]; then
-	. "${CARGO_HOME}/env"
+    . "${CARGO_HOME}/env"
 fi
 
 ### texlive
@@ -138,16 +146,16 @@ alias wget="wget --hsts-file=${XDG_CACHE_HOME:-${HOME}/.cache}/wget-hsts"
 
 ### xdg-open
 if [ -n "$(command -v xdg-open)" ]; then
-	alias o="xdg-open"
+    alias o="xdg-open"
 fi
 
 ### yazi
 y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	IFS= read -r -d '' cwd < "$tmp"
-	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && cd -- "$cwd"
-	rm -f -- "$tmp"
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+    yazi "$@" --cwd-file="$tmp"
+    IFS= read -r -d '' cwd < "$tmp"
+    [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && cd -- "$cwd"
+    rm -f -- "$tmp"
 }
 
 alias fj="yazi"
@@ -155,6 +163,4 @@ alias ff="y"
 
 ### zig
 export PATH="${PATH}:${USER_APPLICATIONS}/zig"
-
-# vim: ts=8 sw=8 noet
 
