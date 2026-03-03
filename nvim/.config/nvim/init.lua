@@ -1,10 +1,9 @@
 -- [[ Neovide GUI ]]
-vim.g.neovide_refresh_rate = 150
 if vim.g.neovide then
     -- neovide specific options...
 end
 
-vim.opt.guifont = { "Maple Mono NL NF", ":16" }
+vim.opt.guifont = "CommitMono Nerd Font:h14"
 
 -- [[ Leader key ]]
 -- See `:help mapleader`
@@ -14,16 +13,10 @@ vim.g.maplocalleader = ' '
 
 -- [[ Options ]]
 
-vim.cmd.colorscheme 'quiet'
-
---vim.o.shell = 'bash'
---vim.o.shellcmdflag = '-c'
-
 vim.schedule(function()
     vim.o.clipboard = 'unnamedplus'
 end)
 
---vim.o.cursorline = true
 vim.o.guicursor = ''
 vim.o.mouse = 'a'
 vim.o.signcolumn = 'yes'
@@ -163,6 +156,7 @@ require("lazy").setup({
             vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
         end,
     },
+
     {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v3.x",
@@ -173,12 +167,32 @@ require("lazy").setup({
         },
         lazy = false, -- neo-tree will lazily load itself
         config = function()
-            vim.keymap.set('n', '<leader>ee', ':Neotree toggle<CR>', { desc = 'Open left-side Neotree explorer window' })
-            vim.keymap.set('v', '<leader>ee', ':Neotree toggle<CR>', { desc = 'Open left-side Neotree explorer window' })
-            vim.keymap.set('n', '\\', ':Neotree toggle<CR>', { desc = 'Open left-side Neotree explorer window' })
-            vim.keymap.set('v', '\\', ':Neotree toggle<CR>', { desc = 'Open left-side Neotree explorer window' })
+            require('neo-tree').setup({
+                filesystem = {
+                    filtered_items = {
+                        visible = true,
+                        hide_dotfiles = false,
+                        hide_gitignored = false,
+                        hide_hidden = false,
+                        never_show = {},
+                    },
+                },
+            })
+
+            vim.keymap.set('n', 'g\\', ':Neotree ', {})
+            vim.keymap.set('v', 'g\\', ':Neotree ', {})
+
+            vim.keymap.set('n', '\\\\', ':Neotree toggle<CR>', {})
+            vim.keymap.set('v', '\\\\', ':Neotree toggle<CR>', {})
+
+            vim.keymap.set('n', '\\c', ':Neotree close<CR>', {})
+            vim.keymap.set('v', '\\c', ':Neotree close<CR>', {})
+
+            vim.keymap.set('n', '<leader>e', ':Neotree reveal_force_cwd<CR>', {})
+            vim.keymap.set('v', '<leader>e', ':Neotree reveal_force_cwd<CR>', {})
         end
     },
+
     {
         'nvim-mini/mini.comment',
         version = false,
@@ -189,29 +203,16 @@ require("lazy").setup({
             },
         },
     },
-    -- {
-    --     "miikanissi/modus-themes.nvim",
-    --     priority = 1000,
-    --     opts = {
-    --         line_nr_column_background = false,
-    --         sign_column_background = false,
-    --     },
-    --     config = function()
-    --         vim.cmd([[colorscheme modus_operandi]])
-    --     end
-    -- },
-    {
 
-        'projekt0n/github-nvim-theme',
-        name = 'github-theme',
-        lazy = false, -- make sure we load this during startup if it is your main colorscheme
-        priority = 1000, -- make sure to load this before all the other start plugins
-        config = function()
-            vim.o.background = 'light'
-            vim.cmd('colorscheme github_light_high_contrast')
-            vim.g.neovide_title_background_color = '#ffffff'
-            vim.g.neovide_title_text_color = '#000000'
-        end,
+    {
+        "rose-pine/neovim",
+        name = "rose-pine",
+        opts = {
+            highlight_groups = {
+                NonText = { fg = "base" }
+            },
+        }
     }
 })
 
+require('local')
