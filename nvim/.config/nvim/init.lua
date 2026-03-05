@@ -72,12 +72,6 @@ vim.keymap.set('n', 'k', 'v:count == 0 ? "gk" : "k"', { expr = true, silent = tr
 vim.keymap.set('v', '<', '<gv', { noremap = true, desc = 'Visual mode un-indent' })
 vim.keymap.set('v', '>', '>gv', { noremap = true, desc = 'Visual mode indent' })
 
---vim.keymap.set('n', '<leader>ee', ':Lex 30<CR>', { desc = 'Open left-side explorer window' })
---vim.keymap.set('v', '<leader>ee', ':Lex 30<CR>', { desc = 'Open left-side explorer window' })
---vim.keymap.set('n', '\\', ':Lex 30<CR>', { desc = 'Open left-side explorer window' })
---vim.keymap.set('v', '\\', ':Lex 30<CR>', { desc = 'Open left-side explorer window' })
-
-
 -- [[ Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
