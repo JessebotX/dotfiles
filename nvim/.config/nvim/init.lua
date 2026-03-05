@@ -3,7 +3,7 @@ if vim.g.neovide then
     -- neovide specific options...
 end
 
-vim.opt.guifont = "CommitMono Nerd Font:h14"
+vim.opt.guifont = "Maple Mono NL NF:h14"
 
 -- [[ Leader key ]]
 -- See `:help mapleader`
@@ -51,6 +51,7 @@ vim.o.splitbelow = true
 
 vim.o.list = true
 vim.opt.listchars = { tab = '| ', trail = '·', nbsp = '␣' }
+vim.opt.fillchars = { eob = ' ' }
 
 vim.o.wrap = true
 vim.o.linebreak = true
@@ -176,11 +177,8 @@ require("lazy").setup({
             vim.keymap.set('n', 'g\\', ':Neotree ', {})
             vim.keymap.set('v', 'g\\', ':Neotree ', {})
 
-            vim.keymap.set('n', '\\\\', ':Neotree toggle<CR>', {})
-            vim.keymap.set('v', '\\\\', ':Neotree toggle<CR>', {})
-
-            vim.keymap.set('n', '\\c', ':Neotree close<CR>', {})
-            vim.keymap.set('v', '\\c', ':Neotree close<CR>', {})
+            vim.keymap.set('n', '\\', ':Neotree toggle<CR>', {})
+            vim.keymap.set('v', '\\', ':Neotree toggle<CR>', {})
 
             vim.keymap.set('n', '<leader>e', ':Neotree reveal_force_cwd<CR>', {})
             vim.keymap.set('v', '<leader>e', ':Neotree reveal_force_cwd<CR>', {})
@@ -199,14 +197,78 @@ require("lazy").setup({
     },
 
     {
-        "rose-pine/neovim",
-        name = "rose-pine",
+        'rose-pine/neovim',
+        name = 'rose-pine',
         opts = {
             highlight_groups = {
-                NonText = { fg = "base" }
+                -- NonText = { fg = 'base' }
             },
-        }
-    }
+        },
+    },
+
+    {
+        'junegunn/goyo.vim',
+        keys = {
+            { "<leader>tw", ":Goyo<CR>", desc = "Toggle Goyo" },
+        },
+        config = function()
+            vim.api.nvim_create_autocmd("User", {
+                pattern = "GoyoEnter",
+                callback = function()
+                    vim.bo.showmode = false
+                    vim.bo.showcmd = false
+                    vim.bo.scrolloff = 999
+                end,
+            })
+            vim.api.nvim_create_autocmd("User", {
+                pattern = "GoyoLeave",
+                callback = function()
+                    vim.bo.showmode = true
+                    vim.bo.showcmd = true
+                    vim.bo.scrolloff = 5
+                end,
+            })
+        end,
+    },
+
+    {
+        'nvim-treesitter/nvim-treesitter',
+        lazy = false,
+        build = ':TSUpdate',
+        config = function()
+            require('nvim-treesitter').install({
+                'bash',
+                'c',
+                'cpp',
+                'markdown',
+                'markdown_inline',
+                'odin',
+                'vim',
+                'vimdoc',
+            })
+            vim.api.nvim_create_autocmd('FileType', {
+                callback = function(args)
+                    local buf, filetype = args.buf, args.match
+
+                    local language = vim.treesitter.language.get_lang(filetype)
+                    if not language then return end
+
+                    -- check if parser exists and load it
+                    if not vim.treesitter.language.add(language) then return end
+                    -- enables syntax highlighting and other treesitter features
+                    vim.treesitter.start(buf, language)
+
+                    -- enables treesitter based folds
+                    -- for more info on folds see `:help folds`
+                    -- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+                    -- vim.wo.foldmethod = 'expr'
+
+                    -- enables treesitter based indentation
+                    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                end,
+            })
+        end,
+    },
 })
 
 require('local')
