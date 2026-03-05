@@ -221,17 +221,17 @@ require("lazy").setup({
             vim.api.nvim_create_autocmd("User", {
                 pattern = "GoyoEnter",
                 callback = function()
-                    vim.bo.showmode = false
-                    vim.bo.showcmd = false
-                    vim.bo.scrolloff = 999
+                    vim.o.showmode = false
+                    vim.o.showcmd = false
+                    vim.o.scrolloff = 999
                 end,
             })
             vim.api.nvim_create_autocmd("User", {
                 pattern = "GoyoLeave",
                 callback = function()
-                    vim.bo.showmode = true
-                    vim.bo.showcmd = true
-                    vim.bo.scrolloff = 5
+                    vim.o.showmode = true
+                    vim.o.showcmd = true
+                    vim.o.scrolloff = 5
                 end,
             })
         end,
