@@ -51,6 +51,7 @@ vim.o.splitbelow = true
 
 vim.o.list = true
 vim.opt.listchars = { tab = '| ', trail = '·', nbsp = '␣' }
+vim.opt.fillchars = { eob = ' ' }
 
 vim.o.wrap = true
 vim.o.linebreak = true
@@ -206,25 +207,33 @@ require("lazy").setup({
         name = 'rose-pine',
         opts = {
             highlight_groups = {
-                NonText = { fg = 'base' }
+                -- NonText = { fg = 'base' }
             },
-        }
+        },
     },
 
     {
-        'folke/zen-mode.nvim',
-        opts = {
-            window = {
-                backdrop = 1,
-                options = {
-                    signcolumn = 'no',
-                    number = false,
-                    relativenumber = false,
-                },
-            },
+        'junegunn/goyo.vim',
+        keys = {
+            { "<leader>tw", ":Goyo<CR>", desc = "Toggle Goyo" },
         },
         config = function()
-            vim.keymap.set('n', '<leader>tw', ':ZenMode<CR>', {})
+            vim.api.nvim_create_autocmd("User", {
+                pattern = "GoyoEnter",
+                callback = function()
+                    vim.bo.showmode = false
+                    vim.bo.showcmd = false
+                    vim.bo.scrolloff = 999
+                end,
+            })
+            vim.api.nvim_create_autocmd("User", {
+                pattern = "GoyoLeave",
+                callback = function()
+                    vim.bo.showmode = true
+                    vim.bo.showcmd = true
+                    vim.bo.scrolloff = 5
+                end,
+            })
         end,
     },
 
