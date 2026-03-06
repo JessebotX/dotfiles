@@ -3,7 +3,7 @@ if vim.g.neovide then
     -- neovide specific options...
 end
 
-vim.opt.guifont = "Maple Mono NL NF:h14"
+vim.opt.guifont = "Maple Mono NF:h14"
 
 -- [[ Leader key ]]
 -- See `:help mapleader`
