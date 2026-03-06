@@ -215,17 +215,17 @@ require("lazy").setup({
             vim.api.nvim_create_autocmd("User", {
                 pattern = "GoyoEnter",
                 callback = function()
-                    vim.bo.showmode = false
-                    vim.bo.showcmd = false
-                    vim.bo.scrolloff = 999
+                    vim.o.showmode = false
+                    vim.o.showcmd = false
+                    vim.o.scrolloff = 999
                 end,
             })
             vim.api.nvim_create_autocmd("User", {
                 pattern = "GoyoLeave",
                 callback = function()
-                    vim.bo.showmode = true
-                    vim.bo.showcmd = true
-                    vim.bo.scrolloff = 5
+                    vim.o.showmode = true
+                    vim.o.showcmd = true
+                    vim.o.scrolloff = 5
                 end,
             })
         end,
@@ -235,16 +235,26 @@ require("lazy").setup({
         'nvim-treesitter/nvim-treesitter',
         lazy = false,
         build = ':TSUpdate',
+        branch = 'main',
         config = function()
             require('nvim-treesitter').install({
                 'bash',
                 'c',
+                'cmake',
                 'cpp',
+                'css',
+                'go',
+                'html',
+                'json',
+                'lua',
                 'markdown',
                 'markdown_inline',
+                'python',
+                'toml',
                 'odin',
                 'vim',
                 'vimdoc',
+                'yaml',
             })
             vim.api.nvim_create_autocmd('FileType', {
                 callback = function(args)
@@ -268,6 +278,13 @@ require("lazy").setup({
                 end,
             })
         end,
+    },
+
+    {
+        'folke/todo-comments.nvim',
+        event = 'VimEnter',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        opts = { signs = false },
     },
 })
 
