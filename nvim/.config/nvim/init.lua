@@ -3,7 +3,7 @@ if vim.g.neovide then
     -- neovide specific options...
 end
 
-vim.opt.guifont = "Maple Mono NF:h14"
+vim.opt.guifont = "Maple Mono NL NF:h14"
 
 -- [[ Leader key ]]
 -- See `:help mapleader`
@@ -241,16 +241,26 @@ require("lazy").setup({
         'nvim-treesitter/nvim-treesitter',
         lazy = false,
         build = ':TSUpdate',
+        branch = 'main',
         config = function()
             require('nvim-treesitter').install({
                 'bash',
                 'c',
+                'cmake',
                 'cpp',
+                'css',
+                'go',
+                'html',
+                'json',
+                'lua',
                 'markdown',
                 'markdown_inline',
+                'python',
+                'toml',
                 'odin',
                 'vim',
                 'vimdoc',
+                'yaml',
             })
             vim.api.nvim_create_autocmd('FileType', {
                 callback = function(args)
@@ -274,6 +284,13 @@ require("lazy").setup({
                 end,
             })
         end,
+    },
+
+    {
+        'folke/todo-comments.nvim',
+        event = 'VimEnter',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        opts = { signs = false },
     },
 })
 
