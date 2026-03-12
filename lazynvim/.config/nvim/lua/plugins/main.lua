@@ -29,9 +29,18 @@ return {
             },
         },
     },
+    { "saghen/blink.cmp", enabled = false },
     { "neovim/nvim-lspconfig", enabled = false },
     { "nvim/mini.pairs", enabled = false },
-    { "hrsh7th/nvim-cmp", enabled = false },
+    {
+        "hrsh7th/nvim-cmp",
+        enabled = false,
+        opts = {
+            completion = {
+                autocomplete = false,
+            },
+        },
+    },
     { "rose-pine/neovim", name = "rose-pine" },
     {
         "LazyVim/LazyVim",
@@ -63,5 +72,16 @@ return {
                 end,
             })
         end,
+    },
+
+    { "rafamadriz/friendly-snippets", enabled = false },
+
+    {
+        "folke/snacks.nvim",
+        opts = {
+            indent = {
+                enabled = false,
+            },
+        },
     },
 }

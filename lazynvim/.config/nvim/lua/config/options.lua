@@ -11,5 +11,6 @@ vim.o.guifont = "Maple Mono NF:h12"
 
 vim.o.linebreak = true
 vim.o.wrap = true
+vim.o.completeopt = "noselect"
 
 vim.opt.listchars = { tab = "| ", trail = "·", nbsp = "␣" }
