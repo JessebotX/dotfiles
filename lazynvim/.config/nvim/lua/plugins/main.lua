@@ -87,4 +87,6 @@ return {
             vim.g.snacks_animate = false
         end,
     },
+
+    { "lewis6991/gitsigns.nvim", enabled = false },
 }
