@@ -83,5 +83,8 @@ return {
                 enabled = false,
             },
         },
+        config = function()
+            vim.g.snacks_animate = false
+        end,
     },
 }
