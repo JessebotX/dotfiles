@@ -61,6 +61,8 @@ return {
                     vim.o.showmode = false
                     vim.o.showcmd = false
                     vim.o.scrolloff = 999
+
+                    require("lualine").hide()
                 end,
             })
             vim.api.nvim_create_autocmd("User", {
@@ -69,6 +71,8 @@ return {
                     vim.o.showmode = true
                     vim.o.showcmd = true
                     vim.o.scrolloff = 3
+
+                    require("lualine").hide({ unhide = true })
                 end,
             })
         end,
