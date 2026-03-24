@@ -61,6 +61,7 @@ return {
                     vim.o.showmode = false
                     vim.o.showcmd = false
                     vim.o.scrolloff = 999
+                    vim.o.cursorline = false
 
                     require("lualine").hide()
                 end,
@@ -71,6 +72,7 @@ return {
                     vim.o.showmode = true
                     vim.o.showcmd = true
                     vim.o.scrolloff = 3
+                    vim.o.cursorline = false
 
                     require("lualine").hide({ unhide = true })
                 end,

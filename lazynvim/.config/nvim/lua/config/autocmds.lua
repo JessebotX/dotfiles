@@ -46,6 +46,8 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.bo.shiftwidth = 2
         vim.bo.softtabstop = 2
         vim.bo.expandtab = true
+        vim.bo.textwidth = 70
+        vim.bo.wrapmargin = 70
     end,
 })
 

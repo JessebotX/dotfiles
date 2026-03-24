@@ -19,3 +19,5 @@ vim.opt.listchars = { tab = "| ", trail = "·", nbsp = "␣" }
 --vim.g.neovide_scroll_animation_length = 0
 vim.g.neovide_scroll_animation_length = 0.15
 vim.g.neovide_scroll_animation_far_lines = 1
+
+vim.o.conceallevel = 0
